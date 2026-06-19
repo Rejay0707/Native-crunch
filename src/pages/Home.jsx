@@ -28,7 +28,7 @@ const Home = () => {
 
       <BestSellerSection products={bestSellers} />
 
-      <section id="categories" className="bg-[#e7bd9e] py-20">
+      <section id="categories" className="bg-[#ecdcd0] py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <p className="uppercase text-xs tracking-[4px] text-[#C97A34]">
