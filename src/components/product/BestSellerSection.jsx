@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 
 const BestSellerSection = ({ products }) => {
   return (
-    <section id="products" className="bg-white py-20">
+    <section id="products" className="bg-[#e7bd9e] py-20">
       <div className="max-w-7xl mx-auto px-6">
         <motion.p
           initial={{
