@@ -27,44 +27,39 @@ const heroCards = [
 const HeroSection = () => {
   return (
     <section id="home" className="bg-[#F8F2EA] pt-2">
-      <div className="grid grid-cols-1 md:grid-cols-12 xl:grid-cols-4">
-        
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4">
         {heroCards.map((card, index) => (
-
           <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4"
             key={card.id}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.6,
               delay: index * 0.1,
-              
             }}
-            className="
-  group
-  relative
-
-  overflow-hidden
-  flex
-  items-start
-  justify-center
-  bg-[#F8F2EA]
-"
+            className="overflow-hidden bg-[#F8F2EA]"
           >
             <motion.img
-  src={card.image}
-  alt=""
-  className="
-    w-full
-    h-150
-    
-  "
-/>
+              src={card.image}
+              alt=""
+              className="
+            w-full
+            h-[320px]
+            sm:h-[420px]
+            lg:h-[520px]
+            xl:h-[600px]
+            object-fill
+          "
+              whileHover={{
+                scale: 1.03,
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+            />
           </motion.div>
         ))}
-        </div>
-      
+      </div>
     </section>
   );
 };

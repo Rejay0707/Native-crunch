@@ -14,19 +14,23 @@ import peanutBar from "../assets/products/peanut-bar.jpeg";
 export const categories = [
   {
     id: "all",
-    label: "All Bars",
+    label: "All Products",
   },
   {
-    id: "peanut-butter-bar",
-    label: "Peanut Butter Bars",
+    id: "peanut-butter",
+    label: "Peanut Butter Bar",
   },
   {
-    id: "peanut-chikki-bar",
-    label: "Peanut Chikki Bars",
+    id: "peanut-chikki",
+    label: "Peanut Chikki Bar",
   },
   {
-    id: "specialty-bar",
-    label: "Specialty Bars",
+    id: "palm-jaggery",
+    label: "Palm Jaggery",
+  },
+  {
+    id: "no-added-sugar",
+    label: "No Added Sugar",
   },
 ];
 
@@ -34,7 +38,7 @@ export const products = [
   {
     id: 1,
     name: "Mango Peanut Butter Bar",
-    category: "peanut-butter-bar",
+    category: "peanut-butter",
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: mangoPeanutButterBar,
@@ -42,7 +46,7 @@ export const products = [
   {
     id: 2,
     name: "Orange Peanut Butter Bar",
-    category: "peanut-butter-bar",
+    category: "peanut-butter",
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: orangePeanutButterBar,
@@ -50,7 +54,7 @@ export const products = [
   {
     id: 3,
     name: "Chocolate Peanut Butter Bar",
-    category: "peanut-butter-bar",
+    category: "peanut-butter",
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: chocolatePeanutButterBar,
@@ -58,7 +62,7 @@ export const products = [
   {
     id: 4,
     name: "Orange Peanut Chikki Bar",
-    category: "peanut-chikki-bar",
+    category: "peanut-chikki",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: orangePeanutChikkiBar,
@@ -66,7 +70,7 @@ export const products = [
   {
     id: 5,
     name: "Palm Jaggery Peanut Chikki Bar",
-    category: "peanut-chikki-bar",
+    category: "palm-jaggery",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: palmJaggeryPeanutChikkiBar,
@@ -74,7 +78,7 @@ export const products = [
   {
     id: 6,
     name: "Country Jaggery Peanut Chikki Bar (Classic)",
-    category: "peanut-chikki-bar",
+    category: "peanut-chikki",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: countryJaggeryPeanutChikkiBar,
@@ -82,7 +86,7 @@ export const products = [
   {
     id: 7,
     name: "Kulfi Peanut Chikki Bar",
-    category: "peanut-chikki-bar",
+    category: "peanut-chikki",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: kulfiPeanutChikkiBar,
@@ -90,7 +94,7 @@ export const products = [
   {
     id: 8,
     name: "Chilli Guava Peanut Chikki Bar",
-    category: "peanut-chikki-bar",
+    category: "peanut-chikki",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: chilliGuavaPeanutChikkiBar,
@@ -98,7 +102,7 @@ export const products = [
   {
     id: 9,
     name: "Palm Jaggery Sesame Chikki Bar",
-    category: "specialty-bar",
+    category: "palm-jaggery",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: palmJaggerySesameChikkiBar,
@@ -106,7 +110,7 @@ export const products = [
   {
     id: 10,
     name: "Palm Jaggery Pumpkin Bar",
-    category: "specialty-bar",
+    category: "palm-jaggery",
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: palmJaggeryPumpkinBar,
@@ -114,7 +118,7 @@ export const products = [
   {
     id: 11,
     name: "Pumpkin Bar",
-    category: "specialty-bar",
+    category: "no-added-sugar",
     tags: ["No Added Sugar", "Monk Fruit Sweetened", "Vegan"],
     price: 139,
     image: pumpkinBar,
@@ -122,7 +126,7 @@ export const products = [
   {
     id: 12,
     name: "Peanut Bar",
-    category: "specialty-bar",
+    category: "no-added-sugar",
     tags: ["No Added Sugar", "Monk Fruit Sweetened", "Vegan"],
     price: 119,
     image: peanutBar,

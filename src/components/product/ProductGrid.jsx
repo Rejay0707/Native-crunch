@@ -1,37 +1,83 @@
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import "swiper/css";
+
 import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ products }) => {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: false,
-        amount: 0.1,
-      }}
-      transition={{
-        duration: 0.6,
-      }}
-      className="
-        grid
-        sm:grid-cols-2
-        lg:grid-cols-4
-        gap-6
-      "
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.1 }}
+      transition={{ duration: 0.6 }}
+      className="relative"
     >
-      {products.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-        />
-      ))}
+      <button
+        className="
+          product-prev
+          absolute
+          left-0
+          top-1/2
+          -translate-y-1/2
+          z-10
+          cursor-pointer
+          p-2
+          rounded-full
+          bg-white/90
+          shadow-md
+        "
+      >
+        <ChevronLeft size={18} />
+      </button>
+
+      <button
+        className="
+          product-next
+          absolute
+          right-0
+          top-1/2
+          -translate-y-1/2
+          z-10
+          cursor-pointer
+          p-2
+          rounded-full
+          bg-white/90
+          shadow-md
+        "
+      >
+        <ChevronRight size={18} />
+      </button>
+
+      <Swiper
+        modules={[Navigation]}
+        navigation={{
+          prevEl: ".product-prev",
+          nextEl: ".product-next",
+        }}
+        slidesPerGroup={1}
+        spaceBetween={24}
+        breakpoints={{
+          0: {
+            slidesPerView: 1,
+          },
+          640: {
+            slidesPerView: 2,
+          },
+          1024: {
+            slidesPerView: 4,
+          },
+        }}
+      >
+        {products.map((product) => (
+          <SwiperSlide key={product.id}>
+            <ProductCard product={product} />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </motion.div>
   );
 };

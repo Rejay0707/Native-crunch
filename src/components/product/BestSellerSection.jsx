@@ -1,87 +1,134 @@
 import { motion } from "framer-motion";
-import ProductCard from "./ProductCard";
 
-const BestSellerSection = ({ products }) => {
+import mangoPeanutButterBar from "../../assets/products/mango-peanut-butter-bar.jpeg";
+import palmJaggeryPeanutChikkiBar from "../../assets/products/palm-jaggery-peanut-chikki-bar.jpeg";
+import palmJaggeryPumpkinBar from "../../assets/products/palm-jaggery-pumpkin-bar.jpeg";
+import pumpkinBar from "../../assets/products/pumpkin-bar.jpeg";
+
+const collections = [
+  {
+    id: 1,
+    title: "Peanut Butter Bar",
+    image: mangoPeanutButterBar,
+  },
+  {
+    id: 2,
+    title: "Peanut Chikki Bar",
+    image: palmJaggeryPeanutChikkiBar,
+  },
+  {
+    id: 3,
+    title: "Palm Jaggery",
+    image: palmJaggeryPumpkinBar,
+  },
+  {
+    id: 4,
+    title: "No Added Sugar",
+    image: pumpkinBar,
+  },
+];
+
+const BestSellerSection = () => {
   return (
-    <section id="products" className="bg-[#ecdcd0] py-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.p
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: false,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
-          className="
-            uppercase
-            text-xs
-            tracking-[4px]
-            text-[#C97A34]
-          "
-        >
-          Best Sellers
-        </motion.p>
-
-        <motion.h2
-          initial={{
-            opacity: 0,
-            y: 50,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: false,
-            amount: 0.3,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            text-5xl
-            font-bold
-            mt-3
-            text-[#2E1E13]
-          "
-        >
-          Loved by the crunch crowd
-        </motion.h2>
-
+    <section id="products" className="bg-[#F8F2EA] py-16 md:py-20">
+      <div className="w-full px-3 md:px-6">
+        {/* Heading */}
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          whileInView={{
-            opacity: 1,
-          }}
-          viewport={{
-            once: false,
-            amount: 0.2,
-          }}
-          transition={{
-            duration: 0.8,
-          }}
-          className="
-            grid
-            md:grid-cols-3
-            gap-8
-            mt-10
-          "
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 flex items-center justify-center gap-4"
         >
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+          <div className="h-px flex-1 bg-[#c7b299]" />
+
+          <h2
+            className="
+              whitespace-nowrap
+              text-xl
+              font-black
+              uppercase
+              tracking-wide
+              text-[#8B5E3C]
+              md:text-5xl
+            "
+          >
+            Discover Our Collection
+          </h2>
+
+          <div className="h-px flex-1 bg-[#c7b299]" />
         </motion.div>
+
+        {/* Collection Grid */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          {collections.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+              }}
+              className="group flex flex-col"
+            >
+              {/* Fixed-size image container */}
+              <div
+                className="
+                  flex
+                  h-[260px]
+                  items-center
+                  justify-center
+                  overflow-hidden
+                  md:h-[520px]
+                "
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="
+                    w-full
+                    max-h-[320px]
+                    
+                    object-contain
+                    transition-transform
+                    duration-500
+                    group-hover:scale-105
+                  "
+                />
+              </div>
+
+              {/* Fixed-size label */}
+              {/* Fixed-size label */}
+              <div
+                className="
+    mt-1
+    flex
+    h-12
+    items-center
+    justify-center
+    rounded-sm
+    bg-[#E7D7C4]
+    px-3
+    text-center
+    text-xs
+    font-bold
+    uppercase
+    tracking-[1.5px]
+    text-[#5E3D26]
+    transition-colors
+    duration-300
+    group-hover:bg-[#D8C0A5]
+    md:h-14
+    md:text-sm
+  "
+              >
+                {item.title}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

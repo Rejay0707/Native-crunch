@@ -7,6 +7,7 @@ import HeroSection from "../components/hero/HeroSection";
 import ProductTabs from "../components/product/ProductTabs";
 import ProductGrid from "../components/product/ProductGrid";
 import BestSellerSection from "../components/product/BestSellerSection";
+import PromoBanner from "../components/banner/PromoBanner";
 
 import { useHomeContainer } from "../containers/HomeContainer";
 
@@ -28,12 +29,11 @@ const Home = () => {
 
       <BestSellerSection products={bestSellers} />
 
+      <PromoBanner />
+
       <section id="categories" className="bg-[#ecdcd0] py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="uppercase text-xs tracking-[4px] text-[#C97A34]">
-              Our Range
-            </p>
 
             <h2 className="text-4xl font-bold mt-3 text-[#2E1E13]">
               Snacks For Every Craving
