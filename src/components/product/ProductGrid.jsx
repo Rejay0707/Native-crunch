@@ -8,6 +8,7 @@ import "swiper/css";
 import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ products }) => {
+   const showNavigation = products.length > 4;
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -16,8 +17,9 @@ const ProductGrid = ({ products }) => {
       transition={{ duration: 0.6 }}
       className="relative"
     >
-      <button
-        className="
+      {showNavigation && (
+        <button
+          className="
           product-prev
           absolute
           left-0
@@ -30,12 +32,13 @@ const ProductGrid = ({ products }) => {
           bg-white/90
           shadow-md
         "
-      >
-        <ChevronLeft size={18} />
-      </button>
-
-      <button
-        className="
+        >
+          <ChevronLeft size={18} />
+        </button>
+      )}
+      {showNavigation && (
+        <button
+          className="
           product-next
           absolute
           right-0
@@ -48,16 +51,21 @@ const ProductGrid = ({ products }) => {
           bg-white/90
           shadow-md
         "
-      >
-        <ChevronRight size={18} />
-      </button>
+        >
+          <ChevronRight size={18} />
+        </button>
+      )}
 
       <Swiper
         modules={[Navigation]}
-        navigation={{
-          prevEl: ".product-prev",
-          nextEl: ".product-next",
-        }}
+        navigation={
+          showNavigation
+            ? {
+                prevEl: ".product-prev",
+                nextEl: ".product-next",
+              }
+            : false
+        }
         slidesPerGroup={1}
         spaceBetween={24}
         breakpoints={{

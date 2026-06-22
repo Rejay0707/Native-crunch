@@ -8,7 +8,8 @@ import ProductTabs from "../components/product/ProductTabs";
 import ProductGrid from "../components/product/ProductGrid";
 import BestSellerSection from "../components/product/BestSellerSection";
 import PromoBanner from "../components/banner/PromoBanner";
-
+import TestimonialSection from "../components/testimonial/TestimonialSection";
+import WhyNativeCrunch from "../components/brand/WhyNativeCrunch";
 import { useHomeContainer } from "../containers/HomeContainer";
 
 const Home = () => {
@@ -52,6 +53,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <TestimonialSection />
+
+      <WhyNativeCrunch />
 
       <Footer />
     </>

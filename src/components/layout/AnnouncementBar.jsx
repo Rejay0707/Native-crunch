@@ -1,6 +1,6 @@
 const AnnouncementBar = () => {
   return (
-    <div className="overflow-hidden border-b border-[#ece2d7] bg-[#F8F2EA] py-4">
+    <div className="overflow-hidden border-b border-[#ece2d7] bg-[#F8F2EA] py-0.5">
       <div className="animate-announcement whitespace-nowrap">
         <span
           className="
