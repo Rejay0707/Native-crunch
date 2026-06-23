@@ -20,7 +20,7 @@ const Footer = () => {
       transition={{
         duration: 0.8,
       }}
-      className="bg-[#2E1E13] text-white mt-20"
+      className="bg-[#2E1E13] text-white mt-2"
     >
       <div className="max-w-7xl mx-auto px-6 py-20">
         <div className="grid lg:grid-cols-4 gap-12">

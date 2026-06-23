@@ -35,10 +35,22 @@ const Home = () => {
       <section id="categories" className="bg-[#ecdcd0] py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-
             <h2 className="text-4xl font-bold mt-3 text-[#2E1E13]">
               Snacks For Every Craving
             </h2>
+            <p
+              className="
+    mt-3
+    text-sm
+    md:text-lg
+    font-medium
+    tracking-wide
+    text-[#8B5E3C]
+    italic
+  "
+            >
+              Namma tradition, namma taste.
+            </p>
           </div>
 
           <div className="mt-8">

@@ -30,7 +30,7 @@ const collections = [
 
 const BestSellerSection = () => {
   return (
-    <section id="products" className="bg-[#F8F2EA] py-16 md:py-20">
+    <section id="products" className="bg-[#F8F2EA] py-6 md:py-10">
       <div className="w-full px-3 md:px-6">
         {/* Heading */}
         <motion.div
@@ -81,20 +81,20 @@ const BestSellerSection = () => {
                   items-center
                   justify-center
                   overflow-hidden
-                  md:h-[520px]
+                  
                 "
               >
                 <img
                   src={item.image}
                   alt={item.title}
                   className="
-                    w-full
-                    max-h-[320px]
+                    // w-full
+                    h-full
                     
-                    object-contain
+                    // object-contain
                     transition-transform
                     duration-500
-                    group-hover:scale-105
+                    // group-hover:scale-105
                   "
                 />
               </div>
