@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import "swiper/css";
@@ -8,7 +8,7 @@ import "swiper/css";
 import ProductCard from "./ProductCard";
 
 const ProductGrid = ({ products }) => {
-   const showNavigation = products.length > 4;
+  const showNavigation = products.length > 4;
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -57,7 +57,7 @@ const ProductGrid = ({ products }) => {
       )}
 
       <Swiper
-        modules={[Navigation]}
+        modules={[Navigation, Autoplay]}
         navigation={
           showNavigation
             ? {
@@ -66,6 +66,16 @@ const ProductGrid = ({ products }) => {
               }
             : false
         }
+        autoplay={
+          showNavigation
+            ? {
+                delay: 3000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }
+            : false
+        }
+        speed={800}
         slidesPerGroup={1}
         spaceBetween={24}
         breakpoints={{
