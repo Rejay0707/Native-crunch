@@ -1,5 +1,12 @@
 import { motion } from "framer-motion";
 import logo from "../../assets/logo (2).png";
+import { Link } from "react-router-dom";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -91,8 +98,10 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-5">Company</h4>
 
             <ul className="space-y-3 text-gray-300">
-              <li className="hover:text-white cursor-pointer transition">
-                About Us
+              <li>
+                <Link to="/about" className="hover:text-white transition">
+                  About Us
+                </Link>
               </li>
 
               <li className="hover:text-white cursor-pointer transition">
@@ -109,51 +118,47 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Social Media */}
 
-          <div>
-            <h4 className="font-semibold text-lg mb-5">Stay Updated</h4>
+          <div className="mt-6">
+            <h4 className="text-lg font-semibold text-white mb-4">Follow Us</h4>
 
-            <p className="text-gray-300 text-sm mb-4">
-              Subscribe to receive updates on new flavours and special offers.
-            </p>
-
-            <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="
-                  w-full
-                  px-4
-                  py-3
-                  rounded-xl
-                  bg-white
-                  text-[#2E1E13]
-                  placeholder:text-gray-400
-                  border-2
-                  border-transparent
-                  outline-none
-                  focus:border-[#C97A34]
-                  transition-all
-                "
-              />
-
-              <button
-                className="
-                  bg-[#C97A34]
-                  hover:bg-[#b86d2d]
-                  px-6
-                  py-3
-                  rounded-xl
-                  font-semibold
-                  transition-all
-                  hover:scale-[1.02]
-                  active:scale-95
-                  cursor-pointer
-                "
+            <div className="flex gap-4">
+              <a
+                href="https://www.instagram.com/nativecrunch.nc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
               >
-                Subscribe
-              </button>
+                <FaInstagram className="text-white text-lg" />
+              </a>
+
+              <a
+                href="https://www.facebook.com/NativeCrunch2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+              >
+                <FaFacebookF className="text-white text-lg" />
+              </a>
+
+              <a
+                href="https://www.youtube.com/@NativeCrunch-NC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+              >
+                <FaYoutube className="text-white text-lg" />
+              </a>
+
+              <a
+                href="https://x.com/NativeCrunchNC"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+              >
+                <FaXTwitter className="text-white text-lg" />
+              </a>
             </div>
           </div>
         </div>

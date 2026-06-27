@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  ShoppingBag,
-  Search,
-  User,
-  Menu,
-  X,
-} from "lucide-react";
+import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 
 import logo from "../../assets/logo (2).png";
 
@@ -28,29 +22,29 @@ const Navbar = () => {
 
   return (
     <header className="cardboard-bg sticky top-0 z-50 border-b border-[#9a6f4a]">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex h-16 items-center justify-between">
+      <div className=" px-1">
+        <div className="flex h-16 items-center">
           {/* LOGO */}
-          <div className="flex cursor-pointer items-center gap-3">
+          <div className="flex flex-1 items-center gap-3">
             <img
               src={logo}
               alt="Native Crunch"
-              className="h-10 w-auto object-contain"
+              className="h-15 w-auto object-contain"
             />
 
             <div>
-              <h2 className="font-bold tracking-[0.12em] text-[#F8F1E7]">
+              <h2
+                className="text-[34px] leading-none text-[#F8F1E7] tracking-[0.08em]"
+                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              >
                 Native Crunch
               </h2>
-
-              <p className="text-xs text-[#ead9c8]">
-                Real Ingredient Snacks
-              </p>
+              <p className="text-xs text-[#ead9c8]">Real Ingredient Snacks</p>
             </div>
           </div>
 
           {/* DESKTOP MENU */}
-          <nav className="hidden items-center lg:flex">
+          <nav className="hidden flex-1 items-center justify-center lg:flex">
             {/* SHOP */}
             <div className="group relative">
               <button className={navButtonClass}>Shop</button>
@@ -88,9 +82,8 @@ const Navbar = () => {
                 </h3>
 
                 <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
-                  Discover our clean energy snack bars crafted
-                  using palm jaggery, peanuts, and natural
-                  ingredients.
+                  Discover our clean energy snack bars crafted using palm
+                  jaggery, peanuts, and natural ingredients.
                 </p>
               </div>
             </div>
@@ -107,9 +100,9 @@ const Navbar = () => {
                 </h3>
 
                 <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
-                  We create clean, wholesome snacks made with
-                  natural ingredients, traditional recipes, and
-                  honest flavours for modern lifestyles.
+                  We create clean, wholesome snacks made with natural
+                  ingredients, traditional recipes, and honest flavours for
+                  modern lifestyles.
                 </p>
               </div>
             </div>
@@ -126,15 +119,15 @@ const Navbar = () => {
                 </h3>
 
                 <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
-                  Have questions about our products or wholesale
-                  opportunities? We'd love to hear from you.
+                  Have questions about our products or wholesale opportunities?
+                  We'd love to hear from you.
                 </p>
               </div>
             </div>
           </nav>
 
           {/* RIGHT SIDE */}
-          <div className="flex items-center gap-2">
+          <div className="flex flex-1 items-center justify-end gap-2">
             <button
               className="
                 hidden md:flex h-10 w-10 items-center

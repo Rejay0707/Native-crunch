@@ -190,7 +190,7 @@ const HeroSection = () => {
       object-cover
       object-right
       xl:blur-0
-      lg:blur-[3px]
+      lg:blur-[0px]
       2xl:scale-100
       xl:scale-105
       lg:scale-110
@@ -402,27 +402,27 @@ const HeroSection = () => {
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
                     Refined
                     <br />
-                    Sugar
+                    white Sugar
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
-                    Vegan
+                    Protein
                   </h3>
 
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
-                    Friendly
+                    Rich
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
-                    Made
+                    Added
                   </h3>
 
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
-                    In Tamil Nadu
+                    Prebiotic Fiber
                   </p>
                 </div>
               </div>

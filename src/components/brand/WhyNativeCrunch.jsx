@@ -3,7 +3,7 @@ import {
   WheatOff,
   CandyOff,
   Apple,
-  Sprout,
+  Dumbbell,
   HeartHandshake,
 } from "lucide-react";
 
@@ -14,7 +14,7 @@ const features = [
   },
   {
     icon: CandyOff,
-    title: "No Refined Sugar",
+    title: "No Refined white Sugar",
   },
   {
     icon: Apple,
@@ -25,8 +25,8 @@ const features = [
     title: "Added Prebiotic Fiber",
   },
   {
-    icon: Sprout,
-    title: "Plant Based",
+    icon: Dumbbell,
+    title: "Protein Rich",
   },
   {
     icon: HeartHandshake,

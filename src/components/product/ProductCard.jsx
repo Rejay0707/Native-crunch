@@ -3,7 +3,7 @@ import Button from "../common/Button";
 
 const ProductCard = ({ product }) => {
   return (
-    <motion.div
+    <div
       initial={{
         opacity: 0,
         y: 40,
@@ -92,7 +92,7 @@ const ProductCard = ({ product }) => {
           <Button className="px-4 py-2 cursor-pointer">Add</Button>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
