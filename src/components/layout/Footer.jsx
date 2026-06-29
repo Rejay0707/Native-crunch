@@ -8,7 +8,7 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 
-const Footer = () => {
+const Footer = ({ isAboutPage = false }) => {
   return (
     <motion.footer
       id="contact"
@@ -98,11 +98,19 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-5">Company</h4>
 
             <ul className="space-y-3 text-gray-300">
-              <li>
-                <Link to="/about" className="hover:text-white transition">
-                  About Us
-                </Link>
-              </li>
+              {isAboutPage ? (
+                <li>
+                  <Link to="/" className="hover:text-white transition">
+                    Home
+                  </Link>
+                </li>
+              ) : (
+                <li>
+                  <Link to="/about" className="hover:text-white transition">
+                    About Us
+                  </Link>
+                </li>
+              )}
 
               <li className="hover:text-white cursor-pointer transition">
                 Ingredients

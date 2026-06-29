@@ -35,22 +35,55 @@ const ProductCard = ({ product }) => {
       "
     >
       <div className="bg-[#faf7f2] p-5 overflow-hidden">
-        <motion.img
-          src={product.image}
-          alt={product.name}
+        <div
           className="
-            w-full
-            aspect-square
-            object-contain
-          "
-          whileHover={{
-            scale: 1.08,
-            rotate: 2,
-          }}
-          transition={{
-            duration: 0.3,
-          }}
-        />
+      relative
+      w-full
+      aspect-square
+      group
+      cursor-pointer
+    "
+        >
+          {/* Front Image */}
+
+          <img
+            src={product.image}
+            alt={product.name}
+            className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-contain
+        transition-all
+        duration-500
+        ease-in-out
+        opacity-100
+        group-hover:opacity-0
+        group-hover:scale-105
+      "
+          />
+
+          {/* Back Image */}
+
+          <img
+            src={product.backImage}
+            alt={`${product.name} Back`}
+            className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-contain
+        transition-all
+        duration-500
+        ease-in-out
+        opacity-0
+        group-hover:opacity-100
+        group-hover:scale-105
+      "
+          />
+        </div>
       </div>
 
       <div className="p-5">

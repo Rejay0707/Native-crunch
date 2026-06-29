@@ -1,15 +1,27 @@
 import mangoPeanutButterBar from "../assets/products/mango-peanut-butter-bar.jpeg";
+import mangoPeanutButterBarBack from "../assets/products/mango-peanut-butter-bar-back.jpeg";
 import orangePeanutButterBar from "../assets/products/orange-peanut-butter-bar.jpeg";
+import orangePeanutButterBarBack from "../assets/products/orange-peanut-butter-bar-back.jpeg";
 import chocolatePeanutButterBar from "../assets/products/chocolate-peanut-butter-bar.jpeg";
+import chocolatePeanutButterBarBack from "../assets/products/chocolate-peanut-butter-bar-back.jpeg";
 import orangePeanutChikkiBar from "../assets/products/orange-peanut-chikki-bar.jpeg";
+import orangePeanutChikkiBarBack from "../assets/products/orange-peanut-chikki-bar-back.jpeg";
 import palmJaggeryPeanutChikkiBar from "../assets/products/palm-jaggery-peanut-chikki-bar.jpeg";
+import palmJaggeryPeanutChikkiBarBack from "../assets/products/palm-jaggery-peanut-chikki-bar-back.jpeg";
 import countryJaggeryPeanutChikkiBar from "../assets/products/country-jaggery-peanut-chikki-bar.jpeg";
+import countryJaggeryPeanutChikkiBarBack from "../assets/products/country-jaggery-peanut-chikki-bar-back.jpeg";
 import kulfiPeanutChikkiBar from "../assets/products/kulfi-peanut-chikki-bar.jpeg";
+import kulfiPeanutChikkiBarBack from "../assets/products/kulfi-peanut-chikki-bar-back.jpeg";
 import chilliGuavaPeanutChikkiBar from "../assets/products/chilli-guava-peanut-chikki-bar.jpeg";
+import chilliGuavaPeanutChikkiBarBack from "../assets/products/chilli-guava-peanut-chikki-bar-back.jpeg";
 import palmJaggerySesameChikkiBar from "../assets/products/palm-jaggery-sesame-chikki-bar.jpeg";
+import palmJaggerySesameChikkiBarack from "../assets/products/palm-jaggery-sesame-chikki-bar-back.jpeg";
 import palmJaggeryPumpkinBar from "../assets/products/palm-jaggery-pumpkin-bar.jpeg";
+import palmJaggeryPumpkinBarBack from "../assets/products/palm-jaggery-pumpkin-bar-back.jpeg";
 import pumpkinBar from "../assets/products/pumpkin-bar.jpeg";
+import pumpkinBarBack from "../assets/products/pumpkin-bar-back.jpeg";
 import peanutBar from "../assets/products/peanut-bar.jpeg";
+import peanutBarBack from "../assets/products/peanut-bar-back.jpeg";
 
 export const categories = [
   {
@@ -42,6 +54,7 @@ export const products = [
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: mangoPeanutButterBar,
+    backImage: mangoPeanutButterBarBack,
   },
   {
     id: 2,
@@ -50,6 +63,7 @@ export const products = [
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: orangePeanutButterBar,
+    backImage: orangePeanutButterBarBack,
   },
   {
     id: 3,
@@ -58,6 +72,7 @@ export const products = [
     tags: ["Natural Flavours", "Vegan"],
     price: 149,
     image: chocolatePeanutButterBar,
+    backImage: chocolatePeanutButterBarBack,
   },
   {
     id: 4,
@@ -66,6 +81,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: orangePeanutChikkiBar,
+    backImage: orangePeanutChikkiBarBack,
   },
   {
     id: 5,
@@ -74,6 +90,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: palmJaggeryPeanutChikkiBar,
+    backImage: palmJaggeryPeanutChikkiBarBack,
   },
   {
     id: 6,
@@ -82,6 +99,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: countryJaggeryPeanutChikkiBar,
+    backImage: countryJaggeryPeanutChikkiBarBack,
   },
   {
     id: 7,
@@ -90,6 +108,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: kulfiPeanutChikkiBar,
+    backImage: kulfiPeanutChikkiBarBack,
   },
   {
     id: 8,
@@ -98,6 +117,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: chilliGuavaPeanutChikkiBar,
+    backImage: chilliGuavaPeanutChikkiBarBack,
   },
   {
     id: 9,
@@ -106,6 +126,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 129,
     image: palmJaggerySesameChikkiBar,
+    backImage: palmJaggerySesameChikkiBarack,
   },
   {
     id: 10,
@@ -114,6 +135,7 @@ export const products = [
     tags: ["No Refined Sugar", "No Liquid Glucose", "Vegan"],
     price: 139,
     image: palmJaggeryPumpkinBar,
+    backImage: palmJaggeryPumpkinBarBack,
   },
   {
     id: 11,
@@ -122,6 +144,7 @@ export const products = [
     tags: ["No Added Sugar", "Monk Fruit Sweetened", "Vegan"],
     price: 139,
     image: pumpkinBar,
+    backImage: pumpkinBarBack,
   },
   {
     id: 12,
@@ -130,5 +153,6 @@ export const products = [
     tags: ["No Added Sugar", "Monk Fruit Sweetened", "Vegan"],
     price: 119,
     image: peanutBar,
+    backImage: peanutBarBack,
   },
 ];

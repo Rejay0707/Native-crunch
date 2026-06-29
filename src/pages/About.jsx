@@ -21,7 +21,7 @@ const About = () => {
 
       <IngredientsSection ingredients={ingredients} />
 
-      <Footer />
+      <Footer isAboutPage />
     </>
   );
 };

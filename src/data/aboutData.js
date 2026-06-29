@@ -18,7 +18,7 @@ export const ingredients = [
     icon: "🌴",
     image: palmJaggeryPeanutChikkiBar,
     description:
-      "A traditional natural sweetener known for its rich flavour and wholesome goodness, used instead of refined sugar.",
+      "A traditional natural sweetener known for its rich flavour and wholesome goodness, used instead of refined white sugar.",
   },
   {
     id: 3,

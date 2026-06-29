@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 
 import logo from "../../assets/logo (2).png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const navButtonClass =
@@ -39,7 +41,7 @@ const Navbar = () => {
               >
                 Native Crunch
               </h2>
-              <p className="text-xs text-[#ead9c8]">Real Ingredient Snacks</p>
+              {/* <p className="text-xs text-[#ead9c8]">Real Ingredient Snacks</p> */}
             </div>
           </div>
 
@@ -92,7 +94,12 @@ const Navbar = () => {
 
             {/* ABOUT US */}
             <div className="group relative">
-              <button className={navButtonClass}>About Us</button>
+              <button
+                onClick={() => navigate("/about")}
+                className={navButtonClass}
+              >
+                About Us
+              </button>
 
               <div className={dropdownClass}>
                 <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 font-semibold text-black">
