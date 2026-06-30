@@ -3,7 +3,7 @@ import aboutImage from "../../assets/about/about.png";
 
 const AboutHero = () => {
   return (
-    <section className="bg-[#F8F2EA] py-24">
+    <section className="bg-[#F8F2EA] py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}

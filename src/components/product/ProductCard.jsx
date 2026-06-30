@@ -1,28 +1,11 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
 import Button from "../common/Button";
 
 const ProductCard = ({ product }) => {
+  const [showBack, setShowBack] = useState(false);
+
   return (
     <div
-      initial={{
-        opacity: 0,
-        y: 40,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      viewport={{
-        once: false,
-        amount: 0.2,
-      }}
-      transition={{
-        duration: 0.6,
-      }}
-      whileHover={{
-        y: -8,
-        scale: 1.02,
-      }}
       className="
         bg-white
         rounded-3xl
@@ -34,59 +17,58 @@ const ProductCard = ({ product }) => {
         duration-300
       "
     >
-      <div className="bg-[#faf7f2] p-5 overflow-hidden">
+      <div className="bg-[#faf7f2] p-3 md:p-5 overflow-hidden">
         <div
+          onClick={() => setShowBack(!showBack)}
           className="
-      relative
-      w-full
-      aspect-square
-      group
-      cursor-pointer
-    "
+    relative
+    w-full
+    h-[180px]
+    sm:h-[220px]
+    md:aspect-square
+    group
+    cursor-pointer
+  "
         >
-          {/* Front Image */}
-
+          {/* FRONT */}
           <img
             src={product.image}
             alt={product.name}
-            className="
-        absolute
-        inset-0
-        w-full
-        h-full
-        object-contain
-        transition-all
-        duration-500
-        ease-in-out
-        opacity-100
-        group-hover:opacity-0
-        group-hover:scale-105
-      "
+            className={`
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-contain
+              transition-all
+              duration-500
+              ${showBack ? "opacity-0" : "opacity-100 group-hover:opacity-0"}
+            `}
           />
 
-          {/* Back Image */}
-
+          {/* BACK */}
           <img
             src={product.backImage}
             alt={`${product.name} Back`}
-            className="
-        absolute
-        inset-0
-        w-full
-        h-full
-        object-contain
-        transition-all
-        duration-500
-        ease-in-out
-        opacity-0
-        group-hover:opacity-100
-        group-hover:scale-105
-      "
+            className={`
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-contain
+              transition-all
+              duration-500
+              ${showBack ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+            `}
           />
         </div>
+
+        <p className="mt-3 text-center text-xs text-gray-500 md:hidden">
+          Tap image to view back
+        </p>
       </div>
 
-      <div className="p-5">
+      <div className="p-4 md:p-5">
         <div className="flex flex-wrap gap-2 mb-3">
           {product.tags.slice(0, 2).map((tag) => (
             <span
@@ -111,13 +93,13 @@ const ProductCard = ({ product }) => {
             text-[#2E1E13]
             font-semibold
             text-base
-            min-h-[52px]
+            min-h-[40px] md:min-h-[52px]
           "
         >
           {product.name}
         </h3>
 
-        <div className="flex items-center justify-between mt-5">
+        <div className="flex items-center justify-between mt-3 md:mt-5">
           <span className="text-lg font-bold text-[#2E1E13]">
             ₹{product.price}
           </span>

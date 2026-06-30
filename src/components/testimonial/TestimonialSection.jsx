@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaStar } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const testimonials = [
   {
@@ -66,13 +67,13 @@ const secondRow = testimonials.slice(4);
 const TestimonialCard = ({ item }) => (
   <div
     className="
-      w-[320px]
+      w-[240px] sm:w-[260px] md:w-[320px]
       shrink-0
       rounded-2xl
       border
       border-[#E7D7C4]
       bg-white
-      p-6
+      p-4 md:p-6
       shadow-sm
     "
   >
@@ -82,21 +83,33 @@ const TestimonialCard = ({ item }) => (
       ))}
     </div>
 
-    <p className="mb-6 min-h-[110px] text-[15px] leading-7 text-[#5E3D26]">
+    <p className="mb-6 min-h-[90px] md:min-h-[110px] text-[15px] leading-7 text-[#5E3D26]">
       "{item.review}"
     </p>
 
     <div className="border-t border-[#F1E5D8] pt-4">
       <h3 className="font-bold text-[#2E1E13]">{item.name}</h3>
-
       <p className="mt-1 text-sm text-[#8B6B52]">{item.location}</p>
     </div>
   </div>
 );
 
 const TestimonialSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkSize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkSize();
+    window.addEventListener("resize", checkSize);
+
+    return () => window.removeEventListener("resize", checkSize);
+  }, []);
+
   return (
-    <section className="overflow-hidden bg-[#F8F2EA] py-16 md:py-20">
+    <section className="overflow-hidden bg-[#F8F2EA] py-12 md:py-20">
       <div className="w-full px-3 md:px-6">
         {/* Heading */}
         <motion.div
@@ -108,17 +121,7 @@ const TestimonialSection = () => {
         >
           <div className="h-px flex-1 bg-[#c7b299]" />
 
-          <h2
-            className="
-              whitespace-nowrap
-              text-xl
-              font-black
-              uppercase
-              tracking-wide
-              text-[#8B5E3C]
-              md:text-5xl
-            "
-          >
+          <h2 className="text-lg md:text-5xl font-black uppercase tracking-wide text-[#8B5E3C] whitespace-nowrap">
             What Our Customers Say
           </h2>
 
@@ -128,10 +131,12 @@ const TestimonialSection = () => {
         {/* First Row */}
         <div className="mb-6 overflow-hidden">
           <motion.div
-            className="flex gap-6"
-            animate={{ x: ["0%", "-50%"] }}
+            className="flex gap-4 md:gap-6"
+            animate={{
+              x: isMobile ? ["0%", "-60%"] : ["0%", "-50%"],
+            }}
             transition={{
-              duration: 30,
+              duration: isMobile ? 22 : 35,
               repeat: Infinity,
               ease: "linear",
             }}
@@ -145,10 +150,12 @@ const TestimonialSection = () => {
         {/* Second Row */}
         <div className="overflow-hidden">
           <motion.div
-            className="flex gap-6"
-            animate={{ x: ["-50%", "0%"] }}
+            className="flex gap-4 md:gap-6"
+            animate={{
+              x: isMobile ? ["-60%", "0%"] : ["-50%", "0%"],
+            }}
             transition={{
-              duration: 35,
+              duration: isMobile ? 22 : 35,
               repeat: Infinity,
               ease: "linear",
             }}

@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navButtonClass =
-    "cursor-pointer px-5 py-5 font-medium text-[#F8F1E7] transition-colors duration-200 hover:text-white";
+    "cursor-pointer px-5 py-5 text-base font-medium text-[#F8F1E7] transition-colors duration-200 hover:text-white";
 
   const dropdownClass = `
     absolute left-0 top-full mt-1 w-80
@@ -36,7 +36,7 @@ const Navbar = () => {
 
             <div>
               <h2
-                className="text-[34px] leading-none text-[#F8F1E7] tracking-[0.08em]"
+                className="text-[24px] sm:text-[28px] lg:text-[32px] leading-none text-[#F8F1E7] tracking-[0.08em]"
                 style={{ fontFamily: "'Bebas Neue', sans-serif" }}
               >
                 Native Crunch
@@ -52,7 +52,7 @@ const Navbar = () => {
               <button className={navButtonClass}>Shop</button>
 
               <div className={`${dropdownClass} w-72`}>
-                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 font-semibold text-black">
+                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   By Category
                 </h3>
 
@@ -79,11 +79,11 @@ const Navbar = () => {
               <button className={navButtonClass}>Products</button>
 
               <div className={dropdownClass}>
-                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 font-semibold text-black">
+                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   Featured Products
                 </h3>
 
-                <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
+                <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
                   Discover our clean energy snack bars crafted using palm
                   jaggery, peanuts, and natural ingredients.
                 </p>
@@ -102,11 +102,11 @@ const Navbar = () => {
               </button>
 
               <div className={dropdownClass}>
-                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 font-semibold text-black">
+                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   About Native Crunch
                 </h3>
 
-                <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
+                <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
                   We create clean, wholesome snacks made with natural
                   ingredients, traditional recipes, and honest flavours for
                   modern lifestyles.
@@ -121,11 +121,11 @@ const Navbar = () => {
               <button className={navButtonClass}>Contact</button>
 
               <div className={dropdownClass}>
-                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 font-semibold text-black">
+                <h3 className="cursor-pointer border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   Get In Touch
                 </h3>
 
-                <p className="mt-4 text-sm leading-6 text-[#4a4a4a]">
+                <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
                   Have questions about our products or wholesale opportunities?
                   We'd love to hear from you.
                 </p>
@@ -195,7 +195,13 @@ const Navbar = () => {
                 Products
               </button>
 
-              <button className="cursor-pointer text-left font-medium text-[#F8F1E7]">
+              <button
+                onClick={() => {
+                  navigate("/about");
+                  setIsOpen(false);
+                }}
+                className="cursor-pointer text-left font-medium text-[#F8F1E7]"
+              >
                 About Us
               </button>
 

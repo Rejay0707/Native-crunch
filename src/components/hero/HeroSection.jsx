@@ -242,13 +242,15 @@ const HeroSection = () => {
       {/* Content */}
       <div
         className="
-          relative
-          z-20
-          flex
-          items-center
-          min-h-screen
-          pb-20
-        "
+    relative
+    z-20
+    flex
+    items-center
+    min-h-screen
+    pt-12
+    pb-20
+    lg:pt-0
+  "
       >
         <div
           className="
@@ -291,12 +293,12 @@ const HeroSection = () => {
                 font-semibold
                 text-white
                 leading-[0.92]
-                text-[52px]
-                sm:text-[60px]
-                md:text-[72px]
-                lg:text-[64px]
-                xl:text-[88px]
-                2xl:text-[96px]
+                text-[42px]
+sm:text-[50px]
+md:text-[64px]
+lg:text-[64px]
+xl:text-[88px]
+2xl:text-[96px]
               "
             >
               Handcrafted

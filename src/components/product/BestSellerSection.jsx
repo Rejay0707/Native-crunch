@@ -180,12 +180,15 @@ const BestSellerSection = () => {
                       src={item.image}
                       alt={item.title}
                       className="
-                        h-[350px]
-                        object-contain
-                        transition-transform
-                        duration-500
-                        group-hover:scale-105
-                      "
+  h-[240px]
+  sm:h-[280px]
+  md:h-[320px]
+  lg:h-[350px]
+  object-contain
+  transition-transform
+  duration-500
+  group-hover:scale-105
+"
                     />
                   </div>
                 </motion.div>
