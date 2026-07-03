@@ -9,34 +9,31 @@ const PromoBanner = () => {
   return (
     <section className="py-16 bg-[#F8F1E7]">
       <div
-        onClick={() => navigate("/palm-jaggery")}
+        onClick={() => navigate("/customization")}
         className="
-          relative
-          max-w-auto
-          mx-auto
-          px-6
-          cursor-pointer
-          group
-        "
+    relative
+    w-full
+    cursor-pointer
+    group
+  "
       >
         {/* Banner Image */}
         <img
-        src={bannerImage}
-        alt="Native Crunch Banner"
-        className="
+          src={bannerImage}
+          alt="Native Crunch Banner"
+          className="
           block
           w-full
           h-[50vh]
           md:h-[95vh]
         "
-      />
+        />
 
         {/* Dark Overlay */}
         <div
           className="
             absolute
             inset-0
-            rounded-3xl
             bg-black/35
             group-hover:bg-black/45
             transition
@@ -57,18 +54,18 @@ const PromoBanner = () => {
         >
           <div className="max-w-xl text-white">
             <p className="uppercase tracking-[4px] text-sm text-[#FFD27D] mb-3">
-              Featured Collection
+              Personalized Snacks
             </p>
 
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Discover Our
+              Create Your
               <br />
-              Palm Jaggery Collection
+              Custom Snack Box
             </h2>
 
             <p className="mt-5 text-white/90 text-base md:text-lg leading-relaxed">
-              Traditional sweetness crafted with palm jaggery,
-              wholesome ingredients, and no refined sugar.
+              Personalize your snack selection with your favourite flavours and
+              handcrafted combinations, made just the way you like them.
             </p>
 
             <button
@@ -86,10 +83,10 @@ const PromoBanner = () => {
                 transition-all
                 duration-300
                 group-hover:translate-x-1
+                cursor-pointer
               "
             >
-              Explore Collection
-
+              Customize Now
               <ArrowRight size={18} />
             </button>
           </div>

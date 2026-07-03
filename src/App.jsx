@@ -3,7 +3,7 @@ import ScrollToTop from "./components/common/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import PalmJaggery from "./pages/PalmJaggery";
+import Customization from "./pages/Customization";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/palm-jaggery" element={<PalmJaggery />} />
+          <Route path="/customization" element={<Customization />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -29,7 +29,7 @@ const AnnouncementBar = () => {
       className="
         text-[#2E1E13]
         text-base
-        lg:text-[22px]
+        lg:text-[18px]
         font-semibold
         tracking-wide
       "

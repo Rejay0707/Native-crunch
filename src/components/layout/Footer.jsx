@@ -40,18 +40,6 @@ const Footer = ({ isAboutPage = false }) => {
               Plant-powered snacks made with real ingredients, natural flavours
               and no refined sugar.
             </p>
-
-            <div className="flex gap-3 md:gap-4 mt-4 md:mt-6 text-lg md:text-xl">
-              <span className="cursor-pointer hover:scale-110 transition">
-                📷
-              </span>
-              <span className="cursor-pointer hover:scale-110 transition">
-                🐦
-              </span>
-              <span className="cursor-pointer hover:scale-110 transition">
-                ✉️
-              </span>
-            </div>
           </div>
 
           {/* Shop */}

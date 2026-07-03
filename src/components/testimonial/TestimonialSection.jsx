@@ -1,6 +1,180 @@
-import { motion } from "framer-motion";
-import { FaStar } from "react-icons/fa";
-import { useEffect, useState } from "react";
+// import { motion } from "framer-motion";
+// import { FaStar } from "react-icons/fa";
+// import { useEffect, useState } from "react";
+
+// const testimonials = [
+//   {
+//     id: 1,
+//     name: "Ananya R",
+//     location: "Chennai",
+//     review:
+//       "The Peanut Butter Bars are incredibly fresh and satisfying. The natural ingredients and balanced sweetness make them my go-to snack every day.",
+//   },
+//   {
+//     id: 2,
+//     name: "Rahul M",
+//     location: "Bengaluru",
+//     review:
+//       "I love that these bars use palm jaggery instead of refined sugar. The taste is authentic, wholesome, and perfect for a quick energy boost.",
+//   },
+//   {
+//     id: 3,
+//     name: "Priya S",
+//     location: "Coimbatore",
+//     review:
+//       "The Pumpkin Bars exceeded my expectations. Clean ingredients, great texture, and convenient packaging make them ideal for travel.",
+//   },
+//   {
+//     id: 4,
+//     name: "Arjun K",
+//     location: "Madurai",
+//     review:
+//       "Perfect for my post-workout snack. The ingredients are clean, and the bars keep me full for hours.",
+//   },
+//   {
+//     id: 5,
+//     name: "Divya P",
+//     location: "Hyderabad",
+//     review:
+//       "The taste feels homemade and authentic. It's refreshing to find snacks without unnecessary additives.",
+//   },
+//   {
+//     id: 6,
+//     name: "Karthik V",
+//     location: "Kochi",
+//     review:
+//       "My kids love these bars, and I love the nutritional value. A perfect healthy snack option.",
+//   },
+//   {
+//     id: 7,
+//     name: "Sneha N",
+//     location: "Mumbai",
+//     review:
+//       "The Palm Jaggery range has become a staple in my pantry. Great flavour and excellent quality.",
+//   },
+//   {
+//     id: 8,
+//     name: "Vikram S",
+//     location: "Pune",
+//     review:
+//       "Convenient, tasty, and made with natural ingredients. Exactly what I was looking for.",
+//   },
+// ];
+
+// const firstRow = testimonials.slice(0, 4);
+// const secondRow = testimonials.slice(4);
+
+// const TestimonialCard = ({ item }) => (
+//   <div
+//     className="
+//       w-[240px] sm:w-[260px] md:w-[320px]
+//       shrink-0
+//       rounded-2xl
+//       border
+//       border-[#E7D7C4]
+//       bg-white
+//       p-4 md:p-6
+//       shadow-sm
+//     "
+//   >
+//     <div className="mb-4 flex gap-1 text-[#D4A373]">
+//       {[...Array(5)].map((_, i) => (
+//         <FaStar key={i} size={16} />
+//       ))}
+//     </div>
+
+//     <p className="mb-6 min-h-[90px] md:min-h-[110px] text-[15px] leading-7 text-[#5E3D26]">
+//       "{item.review}"
+//     </p>
+
+//     <div className="border-t border-[#F1E5D8] pt-4">
+//       <h3 className="font-bold text-[#2E1E13]">{item.name}</h3>
+//       <p className="mt-1 text-sm text-[#8B6B52]">{item.location}</p>
+//     </div>
+//   </div>
+// );
+
+// const TestimonialSection = () => {
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   useEffect(() => {
+//     const checkSize = () => {
+//       setIsMobile(window.innerWidth < 768);
+//     };
+
+//     checkSize();
+//     window.addEventListener("resize", checkSize);
+
+//     return () => window.removeEventListener("resize", checkSize);
+//   }, []);
+
+//   return (
+//     <section className="overflow-hidden bg-[#F8F2EA] py-12 md:py-20">
+//       <div className="w-full px-3 md:px-6">
+//         {/* Heading */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true, amount: 0.3 }}
+//           transition={{ duration: 0.7 }}
+//           className="mb-12 flex items-center justify-center gap-4"
+//         >
+//           <div className="h-px flex-1 bg-[#c7b299]" />
+
+//           <h2 className="text-lg md:text-5xl font-black uppercase tracking-wide text-[#8B5E3C] whitespace-nowrap">
+//             What Our Customers Say
+//           </h2>
+
+//           <div className="h-px flex-1 bg-[#c7b299]" />
+//         </motion.div>
+
+//         {/* First Row */}
+//         <div className="mb-6 overflow-hidden">
+//           <motion.div
+//             className="flex gap-4 md:gap-6"
+//             animate={{
+//               x: isMobile ? ["0%", "-60%"] : ["0%", "-50%"],
+//             }}
+//             transition={{
+//               duration: isMobile ? 22 : 35,
+//               repeat: Infinity,
+//               ease: "linear",
+//             }}
+//           >
+//             {[...firstRow, ...firstRow].map((item, index) => (
+//               <TestimonialCard key={`${item.id}-${index}`} item={item} />
+//             ))}
+//           </motion.div>
+//         </div>
+
+//         {/* Second Row */}
+//         <div className="overflow-hidden">
+//           <motion.div
+//             className="flex gap-4 md:gap-6"
+//             animate={{
+//               x: isMobile ? ["-60%", "0%"] : ["-50%", "0%"],
+//             }}
+//             transition={{
+//               duration: isMobile ? 22 : 35,
+//               repeat: Infinity,
+//               ease: "linear",
+//             }}
+//           >
+//             {[...secondRow, ...secondRow].map((item, index) => (
+//               <TestimonialCard key={`${item.id}-${index}`} item={item} />
+//             ))}
+//           </motion.div>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default TestimonialSection;
+
+import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { FaStar, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
 
 const testimonials = [
   {
@@ -61,19 +235,20 @@ const testimonials = [
   },
 ];
 
-const firstRow = testimonials.slice(0, 4);
-const secondRow = testimonials.slice(4);
+const duplicatedTestimonials = [...testimonials, ...testimonials];
 
 const TestimonialCard = ({ item }) => (
   <div
     className="
-      w-[240px] sm:w-[260px] md:w-[320px]
+      w-[280px]
+      md:w-[320px]
       shrink-0
       rounded-2xl
       border
       border-[#E7D7C4]
       bg-white
-      p-4 md:p-6
+      p-5
+      md:p-6
       shadow-sm
     "
   >
@@ -83,85 +258,169 @@ const TestimonialCard = ({ item }) => (
       ))}
     </div>
 
-    <p className="mb-6 min-h-[90px] md:min-h-[110px] text-[15px] leading-7 text-[#5E3D26]">
+    <p className="mb-6 text-[15px] leading-7 text-[#5E3D26]">
       "{item.review}"
     </p>
 
     <div className="border-t border-[#F1E5D8] pt-4">
-      <h3 className="font-bold text-[#2E1E13]">{item.name}</h3>
-      <p className="mt-1 text-sm text-[#8B6B52]">{item.location}</p>
+      <h3 className="font-bold text-[#2E1E13]">
+        {item.name}
+      </h3>
+
+      <p className="mt-1 text-sm text-[#8B6B52]">
+        {item.location}
+      </p>
     </div>
   </div>
 );
 
 const TestimonialSection = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const x = useMotionValue(0);
+
+  const sliderRef = useRef(null);
+
+  const [direction, setDirection] = useState(-1);
+
+  const [speed, setSpeed] = useState(0.6);
+
+  const totalWidth = useRef(0);
 
   useEffect(() => {
-    const checkSize = () => {
-      setIsMobile(window.innerWidth < 768);
+    if (sliderRef.current) {
+      totalWidth.current = sliderRef.current.scrollWidth / 2;
+    }
+
+    const handleResize = () => {
+      if (sliderRef.current) {
+        totalWidth.current = sliderRef.current.scrollWidth / 2;
+      }
     };
 
-    checkSize();
-    window.addEventListener("resize", checkSize);
+    window.addEventListener("resize", handleResize);
 
-    return () => window.removeEventListener("resize", checkSize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  useAnimationFrame(() => {
+    if (!totalWidth.current) return;
+
+    let current = x.get();
+
+    current += direction * speed;
+
+    if (direction === -1 && Math.abs(current) >= totalWidth.current) {
+      current = 0;
+    }
+
+    if (direction === 1 && current >= 0) {
+      current = -totalWidth.current;
+    }
+
+    x.set(current);
+  });
+
+  const changeDirection = (dir) => {
+    setDirection(dir);
+
+    setSpeed(1.6);
+
+    setTimeout(() => {
+      setSpeed(0.6);
+    }, 1500);
+  };
 
   return (
     <section className="overflow-hidden bg-[#F8F2EA] py-12 md:py-20">
-      <div className="w-full px-3 md:px-6">
+      <div className="w-full px-4 md:px-6">
         {/* Heading */}
+
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="mb-12 flex items-center justify-center gap-4"
         >
           <div className="h-px flex-1 bg-[#c7b299]" />
 
-          <h2 className="text-lg md:text-5xl font-black uppercase tracking-wide text-[#8B5E3C] whitespace-nowrap">
+          <h2 className="text-xl md:text-5xl font-black uppercase tracking-wide text-[#8B5E3C] whitespace-nowrap">
             What Our Customers Say
           </h2>
 
           <div className="h-px flex-1 bg-[#c7b299]" />
         </motion.div>
 
-        {/* First Row */}
-        <div className="mb-6 overflow-hidden">
-          <motion.div
-            className="flex gap-4 md:gap-6"
-            animate={{
-              x: isMobile ? ["0%", "-60%"] : ["0%", "-50%"],
-            }}
-            transition={{
-              duration: isMobile ? 22 : 35,
-              repeat: Infinity,
-              ease: "linear",
-            }}
-          >
-            {[...firstRow, ...firstRow].map((item, index) => (
-              <TestimonialCard key={`${item.id}-${index}`} item={item} />
-            ))}
-          </motion.div>
-        </div>
+        {/* Slider */}
 
-        {/* Second Row */}
-        <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-4 md:gap-6"
-            animate={{
-              x: isMobile ? ["-60%", "0%"] : ["-50%", "0%"],
-            }}
-            transition={{
-              duration: isMobile ? 22 : 35,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+        <div className="relative overflow-hidden">
+          {/* Left */}
+
+          <button
+            onClick={() => changeDirection(-1)}
+            className="
+              absolute
+              left-2
+              md:left-4
+              top-1/2
+              -translate-y-1/2
+              z-20
+              h-10
+              w-10
+              md:h-12
+              md:w-12
+              rounded-full
+              bg-white
+              shadow-lg
+              hover:bg-[#F3E8DB]
+              transition
+              flex
+              items-center
+              justify-center
+              cursor-pointer
+            "
           >
-            {[...secondRow, ...secondRow].map((item, index) => (
-              <TestimonialCard key={`${item.id}-${index}`} item={item} />
+            <FaChevronLeft />
+          </button>
+
+          {/* Right */}
+
+          <button
+            onClick={() => changeDirection(1)}
+            className="
+              absolute
+              right-2
+              md:right-4
+              top-1/2
+              -translate-y-1/2
+              z-20
+              h-10
+              w-10
+              md:h-12
+              md:w-12
+              rounded-full
+              bg-white
+              shadow-lg
+              hover:bg-[#F3E8DB]
+              transition
+              flex
+              items-center
+              justify-center
+              cursor-pointer
+            "
+          >
+            <FaChevronRight />
+          </button>
+
+          <motion.div
+            ref={sliderRef}
+            style={{ x }}
+            className="flex gap-5 md:gap-6 py-2"
+          >
+            {duplicatedTestimonials.map((item, index) => (
+              <TestimonialCard
+                key={`${item.id}-${index}`}
+                item={item}
+              />
             ))}
           </motion.div>
         </div>

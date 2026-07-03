@@ -168,7 +168,7 @@
 
 // export default HeroSection;
 
-import heroProduct from "../../assets/hero/native-crunch-hero-bg.png";
+import heroProduct from "../../assets/hero/native-crunch-hero-bg1.png";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
