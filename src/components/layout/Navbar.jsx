@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
+import { useCart } from "../../context/CartContext";
 import logo from "../../assets/logo (2).png";
 
 const Navbar = () => {
@@ -8,6 +9,9 @@ const Navbar = () => {
   const location = useLocation();
   const isAboutPage = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
+
+  const { cart, setIsCartOpen } = useCart();
+  // const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const navButtonClass =
     "cursor-pointer px-5 py-5 text-base font-medium text-[#F8F1E7] transition-colors duration-200 hover:text-white";
@@ -154,8 +158,46 @@ const Navbar = () => {
               <User size={18} />
             </button>
 
-            <button className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-white/15 text-[#F8F1E7] hover:bg-white/25">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="
+    relative
+    flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-[#d8b897]/40
+    bg-white/15
+    text-[#F8F1E7]
+    hover:bg-white/25
+  "
+            >
               <ShoppingBag size={18} />
+
+              {cart.length > 0 && (
+                <span
+                  className="
+        absolute
+        -top-2
+        -right-2
+        flex
+        h-5
+        w-5
+        items-center
+        justify-center
+        rounded-full
+        bg-[#C97A34]
+        text-[10px]
+        font-bold
+        text-white
+      "
+                >
+                  {cart.reduce((total, item) => total + item.quantity, 0)}
+                </span>
+              )}
             </button>
 
             <button

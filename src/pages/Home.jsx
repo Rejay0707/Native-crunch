@@ -2,6 +2,7 @@ import AnnouncementBar from "../components/layout/AnnouncementBar";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
+
 import HeroSection from "../components/hero/HeroSection";
 
 import ProductTabs from "../components/product/ProductTabs";
@@ -10,21 +11,31 @@ import BestSellerSection from "../components/product/BestSellerSection";
 import PromoBanner from "../components/banner/PromoBanner";
 import TestimonialSection from "../components/testimonial/TestimonialSection";
 import WhyNativeCrunch from "../components/brand/WhyNativeCrunch";
+import { useCart } from "../context/CartContext";
 import { useHomeContainer } from "../containers/HomeContainer";
 
 const Home = () => {
+
+  const { addToCart, message } = useCart();
+
   const {
-    selectedCategory,
-    setSelectedCategory,
-    filteredProducts,
-    bestSellers,
-  } = useHomeContainer();
+  selectedCategory,
+  setSelectedCategory,
+  filteredProducts,
+  bestSellers,
+} = useHomeContainer();
 
   return (
     <>
       <AnnouncementBar />
 
       <Navbar />
+
+      {message && (
+        <div className="fixed top-24 right-6 z-50 rounded-lg bg-green-600 px-5 py-3 text-white shadow-xl">
+          {message}
+        </div>
+      )}
 
       <HeroSection />
 
@@ -61,7 +72,7 @@ const Home = () => {
           </div>
 
           <div className="mt-12">
-            <ProductGrid products={filteredProducts} />
+            <ProductGrid products={filteredProducts} onAddToCart={addToCart} />
           </div>
         </div>
       </section>

@@ -2,8 +2,7 @@ import { useMemo, useState } from "react";
 import { products } from "../data/products";
 
 export const useHomeContainer = () => {
-  const [selectedCategory, setSelectedCategory] =
-    useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const filteredProducts = useMemo(() => {
     if (selectedCategory === "all") {
@@ -11,8 +10,7 @@ export const useHomeContainer = () => {
     }
 
     return products.filter(
-      (product) =>
-        product.category === selectedCategory
+      (product) => product.category === selectedCategory
     );
   }, [selectedCategory]);
 

@@ -1,8 +1,13 @@
 import { useState } from "react";
 import Button from "../common/Button";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, onAddToCart }) => {
   const [showBack, setShowBack] = useState(false);
+  const navigate = useNavigate();
+  // Default to 50g if available
+  const defaultVariant =
+    product.variants.find((v) => v.weight === "50g") || product.variants[0];
 
   return (
     <div
@@ -19,7 +24,7 @@ const ProductCard = ({ product }) => {
     >
       <div className="bg-[#faf7f2] p-3 md:p-5 overflow-hidden">
         <div
-          onClick={() => setShowBack(!showBack)}
+          onClick={() => navigate(`/product/${product.id}`)}
           className="
     relative
     w-full
@@ -69,6 +74,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="p-4 md:p-5">
+        {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-3">
           {product.tags.slice(0, 2).map((tag) => (
             <span
@@ -88,23 +94,45 @@ const ProductCard = ({ product }) => {
           ))}
         </div>
 
+        {/* Name */}
         <h3
+          onClick={() => navigate(`/product/${product.id}`)}
           className="
-            text-[#2E1E13]
-            font-semibold
-            text-base
-            min-h-[40px] md:min-h-[52px]
-          "
+    text-[#2E1E13]
+    font-semibold
+    text-base
+    min-h-[40px]
+    md:min-h-[52px]
+    cursor-pointer
+    hover:text-[#C97A34]
+  "
         >
           {product.name}
         </h3>
 
+        {/* Default Weight */}
+        <p className="mt-2 text-sm text-gray-500">
+          Weight: <span className="font-medium">{defaultVariant.weight}</span>
+        </p>
+
+        {/* Price + Add */}
         <div className="flex items-center justify-between mt-3 md:mt-5">
           <span className="text-lg font-bold text-[#2E1E13]">
-            ₹{product.price}
+            ₹{defaultVariant.price}
           </span>
 
-          <Button className="px-4 py-2 cursor-pointer">Add</Button>
+          <Button
+            className="px-4 py-2 cursor-pointer"
+            onClick={() =>
+              onAddToCart &&
+              onAddToCart({
+                ...product,
+                selectedVariant: defaultVariant,
+              })
+            }
+          >
+            Add
+          </Button>
         </div>
       </div>
     </div>

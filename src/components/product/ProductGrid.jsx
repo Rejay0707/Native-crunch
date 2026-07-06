@@ -7,7 +7,7 @@ import "swiper/css";
 
 import ProductCard from "./ProductCard";
 
-const ProductGrid = ({ products }) => {
+const ProductGrid = ({ products, onAddToCart }) => {
   const showNavigation = products.length > 4;
   return (
     <motion.div
@@ -92,7 +92,7 @@ const ProductGrid = ({ products }) => {
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <ProductCard product={product} />
+            <ProductCard product={product} onAddToCart={onAddToCart} />
           </SwiperSlide>
         ))}
       </Swiper>

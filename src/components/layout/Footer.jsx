@@ -9,14 +9,9 @@ import {
 
 const Footer = ({ isAboutPage = false }) => {
   return (
-    <footer
-      id="contact"
-      className="bg-[#2E1E13] text-white mt-2"
-    >
+    <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
-
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3">
@@ -27,18 +22,17 @@ const Footer = ({ isAboutPage = false }) => {
               />
 
               <div>
-                <h3 className="font-bold text-lg md:text-xl">
-                  Native Crunch
-                </h3>
+                <h3 className="font-bold text-lg md:text-xl">Native Crunch</h3>
                 <p className="text-xs md:text-sm text-gray-300">
-                  Honest Snacking
+                  Snack in Native Way
                 </p>
               </div>
             </div>
 
             <p className="mt-4 md:mt-5 text-sm md:text-base text-gray-300 leading-6 md:leading-7">
-              Plant-powered snacks made with real ingredients, natural flavours
-              and no refined sugar.
+              Inspired by traditional recipes, crafted with carefully selected
+              ingredients and made for today's lifestyle. Every bite brings
+              together authentic taste, quality and convenience
             </p>
           </div>
 
@@ -141,14 +135,12 @@ const Footer = ({ isAboutPage = false }) => {
               </a>
             </div>
           </div>
-
         </div>
 
         {/* Bottom */}
         <div className="border-t border-[#4a3427] mt-10 md:mt-14 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm">
           © 2025 Native Crunch. All Rights Reserved.
         </div>
-
       </div>
     </footer>
   );

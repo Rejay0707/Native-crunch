@@ -72,18 +72,25 @@ const IngredientsSection = ({ ingredients }) => {
 
               <div
                 className="
-                  h-20
-                  w-20
-                  rounded-full
-                  bg-[#F5E7DA]
-                  flex
-                  items-center
-                  justify-center
-                  text-5xl
-                  mx-auto
-                "
+    h-24
+    w-24
+    rounded-full
+    bg-[#F5E7DA]
+    flex
+    items-center
+    justify-center
+    mx-auto
+  "
               >
-                {ingredient.icon}
+                <img
+                  src={ingredient.image}
+                  alt={ingredient.title}
+                  className="
+      w-14
+      h-14
+      object-contain
+    "
+                />
               </div>
 
               {/* Title */}
