@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 import logo from "../../assets/logo (2).png";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isAboutPage = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
 
   const navButtonClass =
@@ -25,12 +27,8 @@ const Navbar = () => {
     <header className="cardboard-bg sticky top-0 z-50 border-b border-[#9a6f4a]">
       <div className="px-3">
         <div className="flex h-16 items-center">
-
           {/* LOGO + BRAND (HOME LINK) */}
-          <Link
-            to="/"
-            className="flex flex-1 items-center gap-3 group"
-          >
+          <Link to="/" className="flex flex-1 items-center gap-3 group">
             <img
               src={logo}
               alt="Native Crunch"
@@ -44,25 +42,36 @@ const Navbar = () => {
               >
                 Native Crunch
               </h2>
-
             </div>
           </Link>
 
           {/* DESKTOP MENU */}
           <nav className="hidden flex-1 items-center justify-center lg:flex">
+            {/* HOME */}
+            <button onClick={() => navigate("/")} className={navButtonClass}>
+              Home
+            </button>
+
+            <span className="text-[#ead9c8]">|</span>
+
+            {/* SHOP */}
             <div className="group relative">
               <button className={navButtonClass}>Shop</button>
+
               <div className={`${dropdownClass} w-72`}>
                 <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   By Category
                 </h3>
+
                 <ul className="mt-4 space-y-3">
                   <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
                     Peanut Butter Bars
                   </li>
+
                   <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
                     Peanut Chikki Bars
                   </li>
+
                   <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
                     Specialty Bars
                   </li>
@@ -72,48 +81,61 @@ const Navbar = () => {
 
             <span className="text-[#ead9c8]">|</span>
 
+            {/* PRODUCTS */}
             <div className="group relative">
               <button className={navButtonClass}>Products</button>
+
               <div className={dropdownClass}>
                 <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   Featured Products
                 </h3>
+
                 <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
-                  Discover our clean energy snack bars crafted using palm jaggery,
-                  peanuts, and natural ingredients.
+                  Discover our clean energy snack bars crafted using palm
+                  jaggery, peanuts, and natural ingredients.
                 </p>
               </div>
             </div>
 
+            {!isAboutPage && (
+              <>
+                <span className="text-[#ead9c8]">|</span>
+
+                {/* ABOUT */}
+                <div className="group relative">
+                  <button
+                    onClick={() => navigate("/about")}
+                    className={navButtonClass}
+                  >
+                    About Us
+                  </button>
+
+                  <div className={dropdownClass}>
+                    <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
+                      About Native Crunch
+                    </h3>
+
+                    <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
+                      We create clean, wholesome snacks made with natural
+                      ingredients, traditional recipes, and honest flavours for
+                      modern lifestyles.
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
+
             <span className="text-[#ead9c8]">|</span>
 
-            <div className="group relative">
-              <button
-                onClick={() => navigate("/about")}
-                className={navButtonClass}
-              >
-                About Us
-              </button>
-
-              <div className={dropdownClass}>
-                <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
-                  About Native Crunch
-                </h3>
-                <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
-                  We create clean, wholesome snacks made with natural ingredients,
-                  traditional recipes, and honest flavours for modern lifestyles.
-                </p>
-              </div>
-            </div>
-
-            <span className="text-[#ead9c8]">|</span>
-
+            {/* CONTACT */}
             <div className="group relative">
               <button className={navButtonClass}>Contact</button>
+
               <div className={dropdownClass}>
                 <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
                   Get In Touch
                 </h3>
+
                 <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
                   Have questions about our products or wholesale opportunities?
                   We'd love to hear from you.
@@ -124,7 +146,6 @@ const Navbar = () => {
 
           {/* RIGHT SIDE */}
           <div className="flex flex-1 items-center justify-end gap-2">
-
             <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-white/15 text-[#F8F1E7] hover:bg-white/25">
               <Search size={18} />
             </button>
@@ -143,7 +164,6 @@ const Navbar = () => {
             >
               {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
-
           </div>
         </div>
 
@@ -151,22 +171,31 @@ const Navbar = () => {
         {isOpen && (
           <div className="border-t border-[#c79d74]/40 py-5 lg:hidden">
             <div className="flex flex-col gap-4">
-              <button onClick={() => navigate("/")} className="text-left text-[#F8F1E7]">
-                Home
-              </button>
-
-              <button className="text-left text-[#F8F1E7]">Shop</button>
-              <button className="text-left text-[#F8F1E7]">Products</button>
-
               <button
                 onClick={() => {
-                  navigate("/about");
+                  navigate("/");
                   setIsOpen(false);
                 }}
                 className="text-left text-[#F8F1E7]"
               >
-                About Us
+                Home
               </button>
+
+              <button className="text-left text-[#F8F1E7]">Shop</button>
+
+              <button className="text-left text-[#F8F1E7]">Products</button>
+
+              {!isAboutPage && (
+                <button
+                  onClick={() => {
+                    navigate("/about");
+                    setIsOpen(false);
+                  }}
+                  className="text-left text-[#F8F1E7]"
+                >
+                  About Us
+                </button>
+              )}
 
               <button className="text-left text-[#F8F1E7]">Contact</button>
             </div>
