@@ -10,7 +10,7 @@ const Navbar = () => {
   const isAboutPage = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
 
-  const { cart, setIsCartOpen } = useCart();
+  const { cart } = useCart();
   // const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const navButtonClass =
@@ -159,7 +159,7 @@ const Navbar = () => {
             </button>
 
             <button
-              onClick={() => setIsCartOpen(true)}
+              onClick={() => navigate("/cart")}
               className="
     relative
     flex

@@ -7,11 +7,14 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { CartProvider } from "./context/CartContext";
+import { CheckoutProvider } from "./context/CheckoutContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CartProvider>
-      <App />
+      <CheckoutProvider>
+        <App />
+      </CheckoutProvider>
     </CartProvider>
 
     <ToastContainer
@@ -22,5 +25,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       pauseOnHover
       theme="light"
     />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
