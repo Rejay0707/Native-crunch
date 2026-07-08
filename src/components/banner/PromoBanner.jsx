@@ -58,35 +58,36 @@ const PromoBanner = () => {
             </p>
 
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Create Your
+              Create a
               <br />
-              Custom Snack Box
+              Personalized Gift Box
             </h2>
 
             <p className="mt-5 text-white/90 text-base md:text-lg leading-relaxed">
-              Personalize your snack selection with your favourite flavours and
-              handcrafted combinations, made just the way you like them.
+              Choose your favourite snack bars, select the quantity and
+              variants, personalize the gift box with your own photo, and send a
+              thoughtful gift to your loved ones or corporate clients.
             </p>
 
             <button
               className="
-                mt-8
-                inline-flex
-                items-center
-                gap-2
-                bg-[#C97A34]
-                hover:bg-[#b86d2d]
-                px-7
-                py-3
-                rounded-full
-                font-medium
-                transition-all
-                duration-300
-                group-hover:translate-x-1
-                cursor-pointer
-              "
+    mt-8
+    inline-flex
+    items-center
+    gap-2
+    bg-[#C97A34]
+    hover:bg-[#b86d2d]
+    px-7
+    py-3
+    rounded-full
+    font-medium
+    transition-all
+    duration-300
+    group-hover:translate-x-1
+    cursor-pointer
+  "
             >
-              Customize Now
+              Build Your Gift Box
               <ArrowRight size={18} />
             </button>
           </div>
