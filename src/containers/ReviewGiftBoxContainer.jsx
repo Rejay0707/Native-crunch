@@ -3,6 +3,7 @@ import Footer from "../components/layout/Footer";
 
 import ReviewGiftBoxHero from "../components/reviewGiftBox/ReviewGiftBoxHero";
 import ReviewSummary from "../components/reviewGiftBox/ReviewSummary";
+import StepNavigation from "../components/common/StepNavigation";
 
 const ReviewGiftBoxContainer = () => {
   return (
@@ -14,6 +15,13 @@ const ReviewGiftBoxContainer = () => {
           <ReviewGiftBoxHero />
 
           <ReviewSummary />
+
+          <StepNavigation
+            backPath="/customization"
+            nextPath="/customization/recipient-details"
+            backLabel="Choose More Products"
+            nextLabel="Recipient Details"
+          />
         </div>
       </section>
 

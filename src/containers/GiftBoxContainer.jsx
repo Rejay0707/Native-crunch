@@ -3,8 +3,18 @@ import Footer from "../components/layout/Footer";
 
 import GiftBoxHero from "../components/giftBox/GiftBoxHero";
 import SelectedGiftBox from "../components/giftBox/SelectedGiftBox";
+import StepNavigation from "../components/common/StepNavigation";
+import { useCustomization } from "../context/CustomizationProvider";
 
 const GiftBoxContainer = () => {
+  const {
+    selectedProducts,
+    increaseQty,
+    decreaseQty,
+    removeProduct,
+    changeVariant,
+  } = useCustomization();
+
   return (
     <>
       <Navbar />
@@ -13,7 +23,21 @@ const GiftBoxContainer = () => {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <GiftBoxHero />
 
-          <SelectedGiftBox />
+          <SelectedGiftBox
+            selectedProducts={selectedProducts}
+            increaseQty={increaseQty}
+            decreaseQty={decreaseQty}
+            removeProduct={removeProduct}
+            changeVariant={changeVariant}
+          />
+
+          <StepNavigation
+            backPath="/customization"
+            nextPath="/customization/recipient-details"
+            backLabel="Choose More Products"
+            nextLabel="Recipient Details"
+          />
+
         </div>
       </section>
 

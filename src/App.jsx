@@ -10,6 +10,7 @@ import Customization from "./pages/Customization";
 import GiftBox from "./pages/GiftBox";
 import RecipientDetails from "./pages/RecipientDetails";
 import ReviewGiftBox from "./pages/ReviewGiftBox";
+import { CustomizationProvider } from "./context/CustomizationProvider";
 
 function App() {
   return (
@@ -19,21 +20,23 @@ function App() {
 
       {/* IMPORTANT: ensures proper layout height handling */}
       <div className="min-h-screen flex flex-col">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/success" element={<Success />} />
-          <Route path="/customization" element={<Customization />} />
-          <Route path="/customization/gift-box" element={<GiftBox />} />
-          <Route
-            path="/customization/recipient-details"
-            element={<RecipientDetails />}
-          />
-          <Route path="/customization/review" element={<ReviewGiftBox />} />
-        </Routes>
+        <CustomizationProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/success" element={<Success />} />
+            <Route path="/customization" element={<Customization />} />
+            <Route path="/customization/gift-box" element={<GiftBox />} />
+            <Route
+              path="/customization/recipient-details"
+              element={<RecipientDetails />}
+            />
+            <Route path="/customization/review" element={<ReviewGiftBox />} />
+          </Routes>
+        </CustomizationProvider>
       </div>
     </BrowserRouter>
   );

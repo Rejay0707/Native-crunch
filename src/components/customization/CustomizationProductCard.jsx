@@ -1,6 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { ShoppingBag } from "lucide-react";
 
 const CustomizationProductCard = ({ product, addProduct }) => {
+  const navigate=useNavigate();
   return (
     <div
       className="
@@ -90,6 +92,7 @@ const CustomizationProductCard = ({ product, addProduct }) => {
           onClick={() => {
             console.log("Clicked", product);
             addProduct(product);
+            navigate("/customization/gift-box")
           }}
           className="
     mt-5
