@@ -13,8 +13,8 @@ export const CartProvider = ({ children }) => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-  localStorage.setItem("nativeCrunchCart", JSON.stringify(cart));
-}, [cart]);
+    localStorage.setItem("nativeCrunchCart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product) => {
     const defaultVariant =
@@ -52,11 +52,29 @@ export const CartProvider = ({ children }) => {
     }, 2500);
   };
 
+  const addGiftBoxToCart = (giftBox) => {
+    setCart((prev) => [
+      ...prev,
+      {
+        id: Date.now(),
+        type: "gift-box",
+        ...giftBox,
+      },
+    ]);
+
+    setMessage("🎁 Personalized Gift Box added to cart!");
+
+    setTimeout(() => {
+      setMessage("");
+    }, 2500);
+  };
+
   return (
     <CartContext.Provider
       value={{
         cart,
         addToCart,
+        addGiftBoxToCart,
         message,
         setCart,
         isCartOpen,

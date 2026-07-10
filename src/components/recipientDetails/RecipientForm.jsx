@@ -1,19 +1,14 @@
 import { User, Gift, MessageSquare } from "lucide-react";
+import RecipientPhotoUpload from "./RecipientPhotoUpload";
 
-const RecipientForm = ({
-  recipient,
-  setRecipient,
-  errors,
-}) => {
+const RecipientForm = ({ recipient, setRecipient, errors }) => {
   return (
     <div className="rounded-[32px] bg-white p-8 shadow-lg">
       <h2 className="text-3xl font-bold text-[#2E1E13]">
         Recipient Information
       </h2>
 
-      <p className="mt-2 text-[#5A4637]">
-        Tell us who this gift is for.
-      </p>
+      <p className="mt-2 text-[#5A4637]">Tell us who this gift is for.</p>
 
       {/* Recipient Name */}
 
@@ -42,9 +37,7 @@ const RecipientForm = ({
         />
 
         {errors?.name && (
-          <p className="mt-2 text-sm text-red-500">
-            {errors.name}
-          </p>
+          <p className="mt-2 text-sm text-red-500">{errors.name}</p>
         )}
       </div>
 
@@ -83,9 +76,7 @@ const RecipientForm = ({
         </select>
 
         {errors?.occasion && (
-          <p className="mt-2 text-sm text-red-500">
-            {errors.occasion}
-          </p>
+          <p className="mt-2 text-sm text-red-500">{errors.occasion}</p>
         )}
       </div>
 
@@ -95,9 +86,7 @@ const RecipientForm = ({
         <label className="mb-2 flex items-center gap-2 font-semibold text-[#2E1E13]">
           <MessageSquare size={18} />
           Gift Message
-          <span className="text-sm font-normal text-gray-400">
-            (Optional)
-          </span>
+          <span className="text-sm font-normal text-gray-400">(Optional)</span>
         </label>
 
         <textarea
@@ -113,6 +102,10 @@ const RecipientForm = ({
           className="w-full resize-none rounded-2xl border border-[#E6D9CB] bg-[#FCFAF8] px-5 py-4 outline-none transition focus:border-[#C97A34]"
         />
       </div>
+
+      {/* Photo Upload */}
+
+      <RecipientPhotoUpload recipient={recipient} setRecipient={setRecipient} />
     </div>
   );
 };

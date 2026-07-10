@@ -35,7 +35,7 @@ const GiftBoxContainer = () => {
             backPath="/customization"
             nextPath="/customization/recipient-details"
             backLabel="Choose More Products"
-            nextLabel="Recipient Details"
+            nextLabel="Add Recipient Details"
           />
 
         </div>
