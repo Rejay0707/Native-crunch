@@ -247,10 +247,9 @@ const HeroSection = () => {
     flex
     items-center
     min-h-screen
-    pt-24
+    pt-10
     pb-20
-    lg:pt-28
-    xl:pt-32
+    lg:pt-12
   "
       >
         <div
