@@ -60,7 +60,7 @@ const Home = () => {
     italic
   "
             >
-              Namma tradition, namma taste.
+              NAMMA TRADITION, NAMMA TASTE.
             </p>
           </div>
 

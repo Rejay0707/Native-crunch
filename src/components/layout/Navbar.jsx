@@ -86,20 +86,7 @@ const Navbar = () => {
             <span className="text-[#ead9c8]">|</span>
 
             {/* PRODUCTS */}
-            <div className="group relative">
-              <button className={navButtonClass}>Products</button>
-
-              <div className={dropdownClass}>
-                <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
-                  Featured Products
-                </h3>
-
-                <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
-                  Discover our clean energy snack bars crafted using palm
-                  jaggery, peanuts, and natural ingredients.
-                </p>
-              </div>
-            </div>
+            <button onClick={()=>navigate('/customization')} className={navButtonClass}>Customization</button>
 
             {!isAboutPage && (
               <>
@@ -225,7 +212,7 @@ const Navbar = () => {
 
               <button className="text-left text-[#F8F1E7]">Shop</button>
 
-              <button className="text-left text-[#F8F1E7]">Products</button>
+              <button onClick={()=>{navigate('/customization');setIsOpen(false)}} className="text-left text-[#F8F1E7]">Customization</button>
 
               {!isAboutPage && (
                 <button
