@@ -59,7 +59,7 @@ const Navbar = () => {
             <span className="text-[#ead9c8]">|</span>
 
             {/* SHOP */}
-            <div className="group relative">
+            <div onClick={()=>navigate('/shop')} className="group relative">
               <button className={navButtonClass}>Shop</button>
 
               <div className={`${dropdownClass} w-72`}>
@@ -68,16 +68,19 @@ const Navbar = () => {
                 </h3>
 
                 <ul className="mt-4 space-y-3">
-                  <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
-                    Peanut Butter Bars
-                  </li>
-
-                  <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                  <li onClick={()=>navigate('/shop?category=peanut-chikki')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
                     Peanut Chikki Bars
                   </li>
+                  <li onClick={()=>navigate('/shop?category=palm-jaggery')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                    Palm Jaggery Chikki Bar
+                  </li>
 
-                  <li className="cursor-pointer text-black hover:text-[#8B5E3C]">
-                    Specialty Bars
+                  <li onClick={()=>navigate('/shop?category=no-added-sugar')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                    No Added Sugar
+                  </li>
+
+                  <li onClick={()=>navigate('/shop?category=peanut-butter')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                    Peanut Butter Bars
                   </li>
                 </ul>
               </div>
@@ -86,7 +89,12 @@ const Navbar = () => {
             <span className="text-[#ead9c8]">|</span>
 
             {/* PRODUCTS */}
-            <button onClick={()=>navigate('/customization')} className={navButtonClass}>Customization</button>
+            <button
+              onClick={() => navigate("/customization")}
+              className={navButtonClass}
+            >
+              Customization
+            </button>
 
             {!isAboutPage && (
               <>
@@ -210,9 +218,17 @@ const Navbar = () => {
                 Home
               </button>
 
-              <button className="text-left text-[#F8F1E7]">Shop</button>
+              <button onClick={()=>navigate('/shop')} className="text-left text-[#F8F1E7]">Shop</button>
 
-              <button onClick={()=>{navigate('/customization');setIsOpen(false)}} className="text-left text-[#F8F1E7]">Customization</button>
+              <button
+                onClick={() => {
+                  navigate("/customization");
+                  setIsOpen(false);
+                }}
+                className="text-left text-[#F8F1E7]"
+              >
+                Customization
+              </button>
 
               {!isAboutPage && (
                 <button
