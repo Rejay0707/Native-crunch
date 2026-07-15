@@ -154,7 +154,7 @@ const ProductCard = ({ product }) => {
             ) : (
               <div className="flex items-center gap-3 rounded-xl bg-[#F8F2EA] px-3 py-2">
                 <button
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold cursor-pointer"
                   onClick={() =>
                     decreaseQuantity(product.id, defaultVariant.weight)
                   }
@@ -165,7 +165,7 @@ const ProductCard = ({ product }) => {
                 <span className="font-semibold text-[#2E1E13]">{quantity}</span>
 
                 <button
-                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold"
+                  className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold cursor-pointer"
                   onClick={() => {
                     addToCart({
                       ...product,

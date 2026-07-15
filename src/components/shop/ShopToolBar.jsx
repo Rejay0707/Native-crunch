@@ -35,7 +35,7 @@ const ShopToolbar = ({
             <button
               key={category.id}
               onClick={() => onCategoryChange(category.id)}
-              className={`rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
+              className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-300 ${
                 selectedCategory === category.id
                   ? "bg-[#8B5E3C] text-white shadow-lg"
                   : "border border-[#E7D8CA] bg-white text-[#2E1E13] hover:border-[#8B5E3C] hover:text-[#8B5E3C]"

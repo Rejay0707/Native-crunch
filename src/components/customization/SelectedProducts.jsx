@@ -69,7 +69,7 @@ const SelectedProducts = ({
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => decreaseQty(item.id, item.weight)}
-                      className="rounded-full border p-2 hover:bg-[#C97A34] hover:text-white"
+                      className="rounded-full border p-2 hover:bg-[#C97A34] hover:text-white cursor-pointer"
                     >
                       <Minus size={16} />
                     </button>
@@ -80,7 +80,7 @@ const SelectedProducts = ({
 
                     <button
                       onClick={() => increaseQty(item.id, item.weight)}
-                      className="rounded-full border p-2 hover:bg-[#C97A34] hover:text-white"
+                      className="rounded-full border p-2 hover:bg-[#C97A34] hover:text-white cursor-pointer"
                     >
                       <Plus size={16} />
                     </button>
@@ -99,7 +99,7 @@ const SelectedProducts = ({
 
                 <button
                   onClick={() => removeProduct(item.id, item.weight)}
-                  className="flex items-center gap-2 rounded-full border border-red-200 px-5 py-2 text-red-500 hover:bg-red-50"
+                  className="flex items-center gap-2 rounded-full border border-red-200 px-5 py-2 text-red-500 hover:bg-red-50 cursor-pointer"
                 >
                   <Trash2 size={18} />
                   Remove

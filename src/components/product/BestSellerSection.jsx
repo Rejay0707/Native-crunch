@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -39,6 +40,7 @@ const collections = [
 ];
 
 const BestSellerSection = () => {
+  const navigate=useNavigate()
   return (
     <section id="products" className="bg-[#F8F2EA] py-6 md:py-10">
       <div className="w-full px-3 md:px-6">
@@ -142,6 +144,7 @@ const BestSellerSection = () => {
                 >
                   {/* Category Name Above Image */}
                   <div
+                  onClick={()=>navigate('/shop')}
                     className="
                       mb-3
                       flex
@@ -162,6 +165,7 @@ const BestSellerSection = () => {
                       group-hover:bg-[#D8C0A5]
                       md:h-14
                       md:text-sm
+                      cursor-pointer
                     "
                   >
                     {item.title}
@@ -177,6 +181,7 @@ const BestSellerSection = () => {
                     "
                   >
                     <img
+                    onClick={()=>navigate('/shop')}
                       src={item.image}
                       alt={item.title}
                       className="
@@ -188,6 +193,7 @@ const BestSellerSection = () => {
   transition-transform
   duration-500
   group-hover:scale-105
+  cursor-pointer
 "
                     />
                   </div>

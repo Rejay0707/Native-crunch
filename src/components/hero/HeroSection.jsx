@@ -172,7 +172,7 @@ xl:text-[88px]
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-10">
-              <button
+              <button onClick={()=>navigate('/shop')}
                 className="
                   bg-[#C97A34]
                   hover:bg-[#b66e2f]
@@ -186,6 +186,7 @@ xl:text-[88px]
                   transition-all
                   duration-300
                   hover:scale-105
+                  cursor-pointer
                 "
               >
                 Explore Collection
