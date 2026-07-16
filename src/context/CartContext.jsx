@@ -46,6 +46,16 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const increaseQuantity = (productId, weight) => {
+  setCart((prev) =>
+    prev.map((item) =>
+      item.id === productId && item.weight === weight
+        ? { ...item, quantity: item.quantity + 1 }
+        : item
+    )
+  );
+};
+
   const decreaseQuantity = (productId, weight) => {
     setCart((prev) =>
       prev
@@ -81,6 +91,7 @@ export const CartProvider = ({ children }) => {
         cart,
         addToCart,
         decreaseQuantity,
+        increaseQuantity,
         addGiftBoxToCart,
         message,
         setCart,

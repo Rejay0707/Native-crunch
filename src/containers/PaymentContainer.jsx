@@ -33,6 +33,7 @@ const PaymentContainer = () => {
             <PaymentSummary
               cart={cart}
               total={total}
+              shippingDetails={shippingDetails}
             />
           </div>
 

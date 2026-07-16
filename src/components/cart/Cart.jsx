@@ -8,6 +8,7 @@ const Cart = ({
   decreaseQty,
   removeItem,
   onCheckout,
+  onShopMore,
 }) => {
   return (
     <div className="rounded-3xl bg-white shadow-lg">
@@ -110,6 +111,25 @@ const Cart = ({
           <span>Total</span>
           <span>₹{total}</span>
         </div>
+
+        <button
+          onClick={onShopMore}
+          className="
+      mb-3
+      w-full
+      rounded-full
+      border
+      border-[#C97A34]
+      py-3
+      font-semibold
+      text-[#C97A34]
+      transition
+      hover:bg-[#F8F2EA]
+      cursor-pointer
+    "
+        >
+          ← Shop More
+        </button>
 
         <button
           disabled={cart.length === 0}

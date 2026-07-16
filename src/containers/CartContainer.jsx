@@ -97,6 +97,7 @@ const CartContainer = () => {
       decreaseQty={decreaseQty}
       removeItem={removeItem}
       onCheckout={() => navigate("/checkout")}
+      onShopMore={() => navigate("/shop")}
     />
   );
 };

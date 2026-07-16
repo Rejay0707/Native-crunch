@@ -145,11 +145,11 @@ const Navbar = () => {
 
           {/* RIGHT SIDE */}
           <div className="flex flex-1 items-center justify-end gap-2">
-            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-white/15 text-[#F8F1E7] hover:bg-white/25">
+            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-[#5C4033] text-[#F8F1E7] hover:bg-white/25">
               <Search size={18} />
             </button>
 
-            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-white/15 text-[#F8F1E7] hover:bg-white/25">
+            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-[#5C4033] text-[#F8F1E7] hover:bg-white/25">
               <User size={18} />
             </button>
 
@@ -164,8 +164,8 @@ const Navbar = () => {
     justify-center
     rounded-full
     border
-    border-[#d8b897]/40
-    bg-white/15
+    border-[#5C4033]/40
+    bg-[#5C4033]
     text-[#F8F1E7]
     hover:bg-white/25
   "

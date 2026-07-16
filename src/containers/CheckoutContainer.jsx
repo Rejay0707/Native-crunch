@@ -10,7 +10,7 @@ import { useCheckout } from "../context/CheckoutContext";
 
 const CheckoutContainer = () => {
   const navigate = useNavigate();
-  const { cart } = useCart();
+  const { cart, increaseQuantity, decreaseQuantity } = useCart();
   const { setShippingDetails } = useCheckout();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -32,7 +32,7 @@ const CheckoutContainer = () => {
   });
 
   const onSubmit = (data) => {
-     setShippingDetails(data);
+    setShippingDetails(data);
     // Later we'll save this in context
     navigate("/payment");
   };
@@ -52,7 +52,12 @@ const CheckoutContainer = () => {
             />
           </div>
 
-          <OrderSummary cart={cart} total={total} />
+          <OrderSummary
+            cart={cart}
+            total={total}
+            increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+          />
         </div>
       </section>
 
