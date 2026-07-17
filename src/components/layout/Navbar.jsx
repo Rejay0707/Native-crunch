@@ -40,12 +40,18 @@ const Navbar = () => {
             />
 
             <div className="flex flex-col leading-tight">
-              <h2
-                className="text-[22px] sm:text-[26px] lg:text-[30px] font-semibold tracking-[0.06em] text-[#F8F1E7]"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
+              <pre
+                className="leading-none whitespace-pre text-[#231709]"
+                style={{
+                  fontFamily: "Consolas, 'Courier New', monospace",
+                  fontSize: "10px",
+                  margin: 0,
+                }}
               >
-                Native Crunch
-              </h2>
+                {`╔╗╔ ┌─┐┌┬┐┬┬  ┬┌─┐   ╔═╗┬─┐┬ ┬┌┐┌┌─┐┬ ┬
+║║║ ├─┤ │ │└┐┌┘├┤    ║  ├┬┘│ │││││  ├─┤
+╝╚╝ ┴ ┴ ┴ ┴ └┘ └─┘   ╚═╝┴└─└─┘┘└┘└─┘┴ ┴`}
+              </pre>
             </div>
           </Link>
 
@@ -59,7 +65,7 @@ const Navbar = () => {
             <span className="text-[#ead9c8]">|</span>
 
             {/* SHOP */}
-            <div onClick={()=>navigate('/shop')} className="group relative">
+            <div onClick={() => navigate("/shop")} className="group relative">
               <button className={navButtonClass}>Shop</button>
 
               <div className={`${dropdownClass} w-72`}>
@@ -68,18 +74,30 @@ const Navbar = () => {
                 </h3>
 
                 <ul className="mt-4 space-y-3">
-                  <li onClick={()=>navigate('/shop?category=peanut-chikki')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                  <li
+                    onClick={() => navigate("/shop?category=peanut-chikki")}
+                    className="cursor-pointer text-black hover:text-[#8B5E3C]"
+                  >
                     Peanut Chikki Bars
                   </li>
-                  <li onClick={()=>navigate('/shop?category=palm-jaggery')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                  <li
+                    onClick={() => navigate("/shop?category=palm-jaggery")}
+                    className="cursor-pointer text-black hover:text-[#8B5E3C]"
+                  >
                     Palm Jaggery Chikki Bar
                   </li>
 
-                  <li onClick={()=>navigate('/shop?category=no-added-sugar')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                  <li
+                    onClick={() => navigate("/shop?category=no-added-sugar")}
+                    className="cursor-pointer text-black hover:text-[#8B5E3C]"
+                  >
                     No Added Sugar
                   </li>
 
-                  <li onClick={()=>navigate('/shop?category=peanut-butter')} className="cursor-pointer text-black hover:text-[#8B5E3C]">
+                  <li
+                    onClick={() => navigate("/shop?category=peanut-butter")}
+                    className="cursor-pointer text-black hover:text-[#8B5E3C]"
+                  >
                     Peanut Butter Bars
                   </li>
                 </ul>
@@ -218,7 +236,12 @@ const Navbar = () => {
                 Home
               </button>
 
-              <button onClick={()=>navigate('/shop')} className="text-left text-[#F8F1E7]">Shop</button>
+              <button
+                onClick={() => navigate("/shop")}
+                className="text-left text-[#F8F1E7]"
+              >
+                Shop
+              </button>
 
               <button
                 onClick={() => {
