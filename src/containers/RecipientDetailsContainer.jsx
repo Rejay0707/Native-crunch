@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCustomization } from "../context/CustomizationProvider";
-
+import GiftBoxPreview from "../components/recipientDetails/GiftBoxPreview";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
@@ -44,11 +44,15 @@ const RecipientDetailsContainer = () => {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <RecipientHero />
 
-          <RecipientForm
-            recipient={recipient}
-            setRecipient={setRecipient}
-            errors={errors}
-          />
+          <div className="mt-12 grid gap-10 lg:grid-cols-2 items-start">
+            <RecipientForm
+              recipient={recipient}
+              setRecipient={setRecipient}
+              errors={errors}
+            />
+
+            <GiftBoxPreview />
+          </div>
 
           <StepNavigation
             backPath="/customization/gift-box"
