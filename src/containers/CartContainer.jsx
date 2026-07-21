@@ -82,11 +82,23 @@ const CartContainer = () => {
 
   const removeItem = (id, weight) => {
     setCart((prev) =>
-      prev.filter((item) => !(item.id === id && item.weight === weight)),
+      prev.filter((item) => {
+        if (item.type === "customGiftBox") {
+          return item.id !== id;
+        }
+
+        return !(item.id === id && item.weight === weight);
+      }),
     );
   };
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    if (item.type === "customGiftBox") {
+      return sum + item.total;
+    }
+
+    return sum + item.price * item.quantity;
+  }, 0);
 
   return (
     <Cart

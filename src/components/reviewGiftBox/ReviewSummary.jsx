@@ -1,5 +1,5 @@
 import { useCustomization } from "../../context/CustomizationProvider";
-import GiftPreviewCard from "./GiftPreviewCard";
+import GiftBoxPreview from "../recipientDetails/GiftBoxPreview";
 
 const ReviewSummary = () => {
   const { selectedProducts, recipient } = useCustomization();
@@ -76,17 +76,19 @@ const ReviewSummary = () => {
         )}
       </div>
 
-      {/* Gift Preview */}
+      {/* Product Cover Preview */}
 
       <div className="rounded-[32px] bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold text-[#2E1E13]">Gift Card Preview</h2>
+        <h2 className="text-2xl font-bold text-[#2E1E13]">
+          Personalized Product Cover
+        </h2>
 
         <p className="mt-2 text-[#5A4637]">
-          This is how your personalized gift card will look.
+          This is exactly how your personalized product cover will be printed.
         </p>
 
-        <div className="mt-8">
-          <GiftPreviewCard recipient={recipient} />
+        <div className="mt-10 flex justify-center">
+          <GiftBoxPreview />
         </div>
       </div>
 

@@ -105,6 +105,16 @@ export const CustomizationProvider = ({ children }) => {
       );
     });
   };
+  const clearCustomization = () => {
+    setSelectedProducts([]);
+
+    setRecipient({
+      name: "",
+      occasion: "",
+      message: "",
+      photo: null,
+    });
+  };
 
   return (
     <CustomizationContext.Provider
@@ -118,6 +128,8 @@ export const CustomizationProvider = ({ children }) => {
 
         recipient,
         setRecipient,
+
+        clearCustomization,
       }}
     >
       {children}

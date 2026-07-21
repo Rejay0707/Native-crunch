@@ -1,11 +1,47 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
-
+import { useNavigate } from "react-router-dom";
+import { useCustomization } from "../context/CustomizationProvider";
+import { useCart } from "../context/CartContext";
 import ReviewGiftBoxHero from "../components/reviewGiftBox/ReviewGiftBoxHero";
 import ReviewSummary from "../components/reviewGiftBox/ReviewSummary";
 // import StepNavigation from "../components/common/StepNavigation";
 
 const ReviewGiftBoxContainer = () => {
+  const navigate = useNavigate();
+
+  const { selectedProducts, recipient, clearCustomization } =
+    useCustomization();
+
+  const { addCustomizedGiftBox } = useCart();
+
+  const total = selectedProducts.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  const handleAddGiftBox = () => {
+    addCustomizedGiftBox({
+      id: `giftbox-${Date.now()}`,
+
+      type: "customGiftBox",
+
+      name: "Customized Gift Box",
+
+      quantity: 1,
+
+      total,
+
+      products: selectedProducts,
+
+      recipient,
+    });
+
+    clearCustomization();
+
+    navigate("/cart");
+  };
+
   return (
     <>
       <Navbar />
@@ -24,8 +60,11 @@ const ReviewGiftBoxContainer = () => {
               ← Back
             </button>
 
-            <button className="rounded-full bg-[#C97A34] px-10 py-4 font-semibold text-white shadow-lg hover:bg-[#B86D2D] transition cursor-pointer">
-              🎁 Add Personalized Gift Box to Cart
+            <button
+              onClick={handleAddGiftBox}
+              className="rounded-full bg-[#C97A34] px-10 py-4 font-semibold text-white shadow-lg hover:bg-[#B86D2D] transition cursor-pointer"
+            >
+              🎁 Add Customized Gift Box to Cart
             </button>
           </div>
         </div>

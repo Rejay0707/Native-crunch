@@ -6,12 +6,11 @@ const ReviewGiftBoxHero = () => {
       </p>
 
       <h1 className="mt-4 text-4xl font-bold text-[#2E1E13]">
-        Review Your Gift Box
+        Review Your Personalized Order
       </h1>
 
       <p className="mt-4 max-w-2xl text-[#5A4637]">
-        Review your selected products, recipient details, and gift message
-        before placing your personalized order.
+        Review your selected products, recipient details, and personalized product cover before adding your gift box to the cart.
       </p>
     </section>
   );

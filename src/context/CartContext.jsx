@@ -46,6 +46,10 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const addCustomizedGiftBox = (giftBox) => {
+  setCart((prev) => [...prev, giftBox]);
+};
+
   const increaseQuantity = (productId, weight) => {
   setCart((prev) =>
     prev.map((item) =>
@@ -90,6 +94,7 @@ export const CartProvider = ({ children }) => {
       value={{
         cart,
         addToCart,
+        addCustomizedGiftBox,
         decreaseQuantity,
         increaseQuantity,
         addGiftBoxToCart,

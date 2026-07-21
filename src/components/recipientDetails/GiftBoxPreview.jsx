@@ -5,10 +5,8 @@ const GiftBoxPreview = () => {
 
   return (
     <div className="sticky top-28">
-
       <div className="rounded-[34px] border border-[#E9DED2] bg-white p-8 shadow-2xl">
-
-        <h3 className="text-center text-sm font-semibold tracking-[0.35em] text-[#8A5A32] uppercase">
+        <h3 className="text-center text-sm font-semibold uppercase tracking-[0.35em] text-[#8A5A32]">
           Live Preview
         </h3>
 
@@ -17,23 +15,20 @@ const GiftBoxPreview = () => {
         </p>
 
         <div className="mt-8 flex justify-center">
-
           <div
             className="
-            relative
-            h-[650px]
-            w-[430px]
-            overflow-hidden
-            rounded-xl
-            border
-            border-[#C9A57C]
-            bg-[#DFC29A]
-            shadow-[0_30px_70px_rgba(0,0,0,0.25)]
-          "
+              relative
+              h-[500px]
+              w-[380px]
+              overflow-hidden
+              rounded-2xl
+              border
+              border-[#C9A57C]
+              bg-[#DFC29A]
+              shadow-[0_25px_60px_rgba(0,0,0,0.22)]
+            "
           >
-
-            {/* Kraft paper texture */}
-
+            {/* Kraft Texture */}
             <div
               className="
                 absolute
@@ -44,169 +39,116 @@ const GiftBoxPreview = () => {
               "
             />
 
-            {/* Light center */}
-
+            {/* Background */}
             <div
               className="
                 absolute
                 inset-0
                 bg-gradient-to-b
-                from-[#E7CDA9]
+                from-[#E8D1AE]
                 via-[#DFC29A]
-                to-[#D2AE83]
+                to-[#D3AF84]
               "
             />
 
-            {/* Edge Shadow */}
+            {/* Inner Shadow */}
+            <div className="absolute inset-0 rounded-2xl shadow-[inset_0_0_45px_rgba(0,0,0,0.12)]" />
 
-            <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_50px_rgba(0,0,0,0.12)]" />
+            <div className="relative z-10 flex h-full flex-col p-8">
+              {/* Top */}
+              <div className="flex items-start justify-between">
+                {/* Logo */}
+                <div>
+                  <h1
+                    className="text-[42px] leading-none tracking-[0.05em] text-[#472614]"
+                    style={{
+                      fontFamily: "'Bebas Neue', sans-serif",
+                    }}
+                  >
+                    NATIVE
+                  </h1>
 
-            {/* CONTENT */}
+                  <h1
+                    className="-mt-2 text-[42px] leading-none tracking-[0.05em] text-[#472614]"
+                    style={{
+                      fontFamily: "'Bebas Neue', sans-serif",
+                    }}
+                  >
+                    CRUNCH
+                  </h1>
 
-            <div className="relative z-10 flex h-full flex-col items-center px-10">
-
-              {/* Logo */}
-
-              <div className="mt-12 text-center">
-
-                <h1
-                  className="text-[58px] leading-none tracking-[0.04em] text-[#4A2813]"
-                  style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
-                  }}
-                >
-                  NATIVE
-                </h1>
-
-                <h1
-                  className="-mt-3 text-[58px] leading-none tracking-[0.04em] text-[#4A2813]"
-                  style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
-                  }}
-                >
-                  CRUNCH
-                </h1>
-
-                <p className="mt-4 text-xs uppercase tracking-[0.35em] text-[#7A5635]">
-                  Premium Personalized Gift
-                </p>
-
-              </div>
-
-              {/* Divider */}
-
-              <div className="mt-6 h-px w-24 bg-[#A7784F]" />
-
-              {/* Photo */}
-
-              <div className="mt-8">
-
-                <div className="relative">
-
-                  <div className="absolute inset-0 rounded-full blur-xl bg-white/30" />
-
-                  <div className="relative h-44 w-44 overflow-hidden rounded-full border-[6px] border-white shadow-2xl">
-
-                    {recipient.photo ? (
-                      <img
-                        src={recipient.photo}
-                        alt=""
-                        className="h-full w-full object-cover"
-                      />
-                    ) : (
-                      <div className="flex h-full items-center justify-center bg-[#CFA67D] text-white">
-                        Photo
-                      </div>
-                    )}
-
-                  </div>
-
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-[#7A5635]">
+                    Personalized Edition
+                  </p>
                 </div>
 
+                {/* Photo */}
+                {recipient.photo && (
+                  <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-xl">
+                    <img
+                      src={recipient.photo}
+                      alt={recipient.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
               </div>
-
-              {/* Name */}
-
-              <h2
-                className="mt-8 text-center text-[34px] font-bold uppercase text-[#3A200F]"
-                style={{
-                  fontFamily: "'Playfair Display', serif",
-                }}
-              >
-                {recipient.name || "Recipient Name"}
-              </h2>
-
-              {/* Occasion */}
-
-              <p
-                className="mt-2 text-[34px] text-[#8A5A32]"
-                style={{
-                  fontFamily: "'Great Vibes', cursive",
-                }}
-              >
-                {recipient.occasion || "Occasion"}
-              </p>
 
               {/* Divider */}
+              <div className="mt-8 h-px w-full bg-[#B48559]" />
 
-              <div className="mt-6 flex w-full items-center gap-4">
-
-                <div className="h-px flex-1 bg-[#A7784F]" />
-
-                <span className="text-[#8A5A32] text-xl">
-                  ♥
-                </span>
-
-                <div className="h-px flex-1 bg-[#A7784F]" />
-
-              </div>
-
-              {/* Message */}
-
-              <div className="mt-8 w-full px-4">
-
-                <p
-                  className="text-center text-[18px] leading-9 italic text-[#3D281B]"
+              {/* Name */}
+              <div className="mt-8">
+                <h2
+                  className="text-[30px] font-bold uppercase text-[#3A200F]"
                   style={{
                     fontFamily: "'Playfair Display', serif",
                   }}
                 >
-                  {recipient.message
-                    ? `"${recipient.message}"`
-                    : `"Your heartfelt message will appear here."`}
-                </p>
-
-              </div>
-
-              {/* Bottom */}
-
-              <div className="mt-auto mb-10 flex flex-col items-center">
-
-                <div className="h-px w-40 bg-[#A7784F]" />
-
-                <p className="mt-5 text-xs uppercase tracking-[0.4em] text-[#6D4728]">
-                  Crafted with ❤
-                </p>
+                  {recipient.name || "Recipient Name"}
+                </h2>
 
                 <p
-                  className="mt-2 text-[24px] text-[#4A2813]"
+                  className="mt-2 text-[28px] text-[#8A5A32]"
                   style={{
-                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontFamily: "'Great Vibes', cursive",
                   }}
                 >
-                  Native Crunch
+                  {recipient.occasion || "Occasion"}
                 </p>
-
               </div>
 
+              {/* Heart Divider */}
+              <div className="mt-6 flex items-center gap-4">
+                <div className="h-px flex-1 bg-[#B48559]" />
+
+                <span className="text-xl text-[#8A5A32]">
+                  ♥
+                </span>
+
+                <div className="h-px flex-1 bg-[#B48559]" />
+              </div>
+
+              {/* Message */}
+              {recipient.message && (
+                <div className="mt-6">
+                  <p
+                    className="text-[17px] italic leading-8 text-[#3D281B]"
+                    style={{
+                      fontFamily: "'Playfair Display', serif",
+                    }}
+                  >
+                    "{recipient.message}"
+                  </p>
+                </div>
+              )}
+
+              {/* Empty space like real packaging */}
+              <div className="flex-1" />
             </div>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
   );
 };
