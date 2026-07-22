@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ShopHero from "../components/shop/ShopHero";
-import ShopToolbar from "../components/shop/ShopToolbar";
+import ShopToolBar from "../components/shop/ShopToolBar";
 import ShopProductGrid from "../components/shop/ShopProductGrid";
 import { useCart } from "../context/CartContext";
 import { products, categories } from "../data/products";
@@ -46,7 +46,7 @@ const ShopContainer = () => {
       <ShopHero />
 
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <ShopToolbar
+        <ShopToolBar
           categories={categories}
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
