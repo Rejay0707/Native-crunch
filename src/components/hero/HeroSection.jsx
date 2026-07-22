@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
-
   const navigate = useNavigate();
 
   return (
@@ -172,7 +171,8 @@ xl:text-[88px]
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4 mt-10">
-              <button onClick={()=>navigate('/shop')}
+              <button
+                onClick={() => navigate("/shop")}
                 className="
                   bg-[#C97A34]
                   hover:bg-[#b66e2f]
@@ -193,7 +193,7 @@ xl:text-[88px]
               </button>
 
               <button
-              onClick={()=>navigate('about')}
+                onClick={() => navigate("about")}
                 className="
                   border
                   border-white/30
@@ -220,28 +220,38 @@ xl:text-[88px]
             </div>
             {/* Feature Stats */}
             <div className="mt-16">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 max-w-5xl">
                 <div>
                   <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
-                    100%
+                    Natural
                   </h3>
 
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
-                    Natural
-                    <br />
-                    Ingredients
+                    Flavours
                   </p>
                 </div>
 
                 <div>
                   <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
-                    0%
+                    No
                   </h3>
 
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
-                    Refined
+                    Preservatives
                     <br />
-                    white Sugar
+                    Added
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                    No
+                  </h3>
+
+                  <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
+                    Liquid
+                    <br />
+                    Glucose
                   </p>
                 </div>
 
@@ -261,7 +271,9 @@ xl:text-[88px]
                   </h3>
 
                   <p className="mt-2 text-white/60 text-xs uppercase tracking-[2px] leading-5">
-                    Prebiotic Fiber
+                    Prebiotic
+                    <br />
+                    Fiber
                   </p>
                 </div>
               </div>

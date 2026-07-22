@@ -12,6 +12,7 @@ import GiftBox from "./pages/GiftBox";
 import RecipientDetails from "./pages/RecipientDetails";
 import ReviewGiftBox from "./pages/ReviewGiftBox";
 import { CustomizationProvider } from "./context/CustomizationProvider";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<Checkout />} />
             <Route path="/payment" element={<Payment />} />
