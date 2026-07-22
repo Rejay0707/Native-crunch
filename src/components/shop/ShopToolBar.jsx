@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 
-const ShopToolbar = ({
+const ShopToolBar = ({
   categories,
   selectedCategory,
   onCategoryChange,
@@ -70,4 +70,4 @@ const ShopToolbar = ({
   );
 };
 
-export default ShopToolbar;
+export default ShopToolBar;
