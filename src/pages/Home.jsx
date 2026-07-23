@@ -2,12 +2,11 @@ import AnnouncementBar from "../components/layout/AnnouncementBar";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
-
 import HeroSection from "../components/hero/HeroSection";
 
 import ProductTabs from "../components/product/ProductTabs";
 import ProductGrid from "../components/product/ProductGrid";
-import BestSellerSection from "../components/product/BestSellerSection";
+// import BestSellerSection from "../components/product/BestSellerSection";
 import PromoBanner from "../components/banner/PromoBanner";
 import TestimonialSection from "../components/testimonial/TestimonialSection";
 import WhyNativeCrunch from "../components/brand/WhyNativeCrunch";
@@ -15,15 +14,14 @@ import { useCart } from "../context/CartContext";
 import { useHomeContainer } from "../containers/HomeContainer";
 
 const Home = () => {
-
   const { addToCart, message } = useCart();
 
   const {
-  selectedCategory,
-  setSelectedCategory,
-  filteredProducts,
-  bestSellers,
-} = useHomeContainer();
+    selectedCategory,
+    setSelectedCategory,
+    filteredProducts,
+    bestSellers,
+  } = useHomeContainer();
 
   return (
     <>
@@ -39,15 +37,23 @@ const Home = () => {
 
       <HeroSection />
 
-      <BestSellerSection products={bestSellers} />
-
-      <PromoBanner />
+      {/* <BestSellerSection products={bestSellers} /> */}
 
       <section id="categories" className="bg-[#ecdcd0] py-20">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="w-full px-4 xl:px-8">
           <div className="text-center">
-            <h2 className="text-4xl font-bold mt-3 text-[#2E1E13]">
-              Snacks For Every Craving
+            <h2
+              className="
+              whitespace-nowrap
+              text-xl
+              font-black
+              uppercase
+              tracking-wide
+              text-[#8B5E3C]
+              md:text-5xl
+            "
+            >
+              Discover Our Collection
             </h2>
             <p
               className="
@@ -76,6 +82,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <PromoBanner />
 
       <TestimonialSection />
 

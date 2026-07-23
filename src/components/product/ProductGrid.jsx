@@ -77,7 +77,7 @@ const ProductGrid = ({ products, onAddToCart }) => {
         }
         speed={800}
         slidesPerGroup={1}
-        spaceBetween={24}
+        spaceBetween={8}
         breakpoints={{
           0: {
             slidesPerView: 1,
@@ -86,6 +86,9 @@ const ProductGrid = ({ products, onAddToCart }) => {
             slidesPerView: 2,
           },
           1024: {
+            slidesPerView: 3,
+          },
+          1440: {
             slidesPerView: 4,
           },
         }}

@@ -127,11 +127,11 @@ const HeroSection = () => {
                 text-white
                 leading-[0.92]
                 text-[42px]
-sm:text-[50px]
-md:text-[64px]
-lg:text-[64px]
-xl:text-[88px]
-2xl:text-[96px]
+sm:text-[40px]
+md:text-[54px]
+lg:text-[54px]
+xl:text-[78px]
+2xl:text-[86px]
               "
             >
               Handcrafted

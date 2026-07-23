@@ -20,7 +20,7 @@ const ProductCard = ({ product }) => {
   const quantity = cartItem?.quantity || 0;
 
   return (
-    <div className="relative pb-16">
+    <div className="relative pb-16 ">
       <div
         className="
         bg-white
@@ -37,29 +37,34 @@ const ProductCard = ({ product }) => {
           <div
             onClick={() => navigate(`/product/${product.id}`)}
             className="
-    relative
-    w-full
-    h-[180px]
-    sm:h-[220px]
-    md:aspect-square
-    group
-    cursor-pointer
-  "
+  relative
+  flex
+  items-center
+  justify-center
+  w-full
+  h-[260px]
+  sm:h-[300px]
+  md:h-[320px]
+  lg:h-[340px]
+  group
+  cursor-pointer
+"
           >
             {/* FRONT */}
             <img
               src={product.image}
               alt={product.name}
               className={`
-              absolute
-              inset-0
-              w-full
-              h-full
-              object-contain
-              transition-all
-              duration-500
-              ${showBack ? "opacity-0" : "opacity-100 group-hover:opacity-0"}
-            `}
+    absolute
+    inset-0
+    w-[95%]
+    h-[95%]
+    mx-auto
+    object-contain
+    transition-all
+    duration-500
+    ${showBack ? "opacity-0" : "opacity-100 group-hover:opacity-0"}
+  `}
             />
 
             {/* BACK */}
@@ -67,15 +72,15 @@ const ProductCard = ({ product }) => {
               src={product.backImage}
               alt={`${product.name} Back`}
               className={`
-              absolute
-              inset-0
-              w-full
-              h-full
-              object-contain
-              transition-all
-              duration-500
-              ${showBack ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
-            `}
+  absolute
+  inset-0
+  w-full
+  h-full
+  object-contain
+  transition-all
+  duration-500
+  ${showBack ? "opacity-100" : "opacity-0 group-hover:opacity-100"}
+`}
             />
           </div>
 
