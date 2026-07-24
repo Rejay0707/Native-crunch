@@ -1,4 +1,5 @@
 import { useCustomization } from "../../context/CustomizationProvider";
+import logo from "../../assets/logo (2).png";
 
 const GiftBoxPreview = () => {
   const { recipient } = useCustomization();
@@ -58,33 +59,42 @@ const GiftBoxPreview = () => {
               {/* Top */}
               <div className="flex items-start justify-between">
                 {/* Logo */}
-                <div>
-                  <h1
-                    className="text-[42px] leading-none tracking-[0.05em] text-[#472614]"
-                    style={{
-                      fontFamily: "'Bebas Neue', sans-serif",
-                    }}
-                  >
-                    NATIVE
-                  </h1>
+                {/* Logo */}
+                <div className="flex items-start gap-3">
+                  <img
+                    src={logo}
+                    alt="Native Crunch Logo"
+                    className="h-12 w-12 object-contain"
+                  />
 
-                  <h1
-                    className="-mt-2 text-[42px] leading-none tracking-[0.05em] text-[#472614]"
-                    style={{
-                      fontFamily: "'Bebas Neue', sans-serif",
-                    }}
-                  >
-                    CRUNCH
-                  </h1>
+                  <div>
+                    <h1
+                      className="text-[34px] leading-none tracking-[0.05em] text-[#472614]"
+                      style={{
+                        fontFamily: "'Bebas Neue', sans-serif",
+                      }}
+                    >
+                      NATIVE
+                    </h1>
 
-                  <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-[#7A5635]">
-                    Personalized Edition
-                  </p>
+                    <h1
+                      className="-mt-2 text-[34px] leading-none tracking-[0.05em] text-[#472614]"
+                      style={{
+                        fontFamily: "'Bebas Neue', sans-serif",
+                      }}
+                    >
+                      CRUNCH
+                    </h1>
+
+                    <p className="mt-2 text-[10px] uppercase tracking-[0.3em] text-[#7A5635]">
+                      Personalized Edition
+                    </p>
+                  </div>
                 </div>
 
                 {/* Photo */}
                 {recipient.photo && (
-                  <div className="h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-xl">
+                  <div className="-mt-0 ml-6 h-28 w-28 overflow-hidden rounded-full border-4 border-white shadow-xl">
                     <img
                       src={recipient.photo}
                       alt={recipient.name}
@@ -122,9 +132,7 @@ const GiftBoxPreview = () => {
               <div className="mt-6 flex items-center gap-4">
                 <div className="h-px flex-1 bg-[#B48559]" />
 
-                <span className="text-xl text-[#8A5A32]">
-                  ♥
-                </span>
+                <span className="text-xl text-[#8A5A32]">♥</span>
 
                 <div className="h-px flex-1 bg-[#B48559]" />
               </div>
