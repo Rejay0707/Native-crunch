@@ -146,7 +146,12 @@ const Navbar = () => {
 
             {/* CONTACT */}
             <div className="group relative">
-              <button className={navButtonClass}>Contact</button>
+              <button
+                onClick={() => navigate("/contact")}
+                className={navButtonClass}
+              >
+                Contact
+              </button>
 
               <div className={dropdownClass}>
                 <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
@@ -154,7 +159,7 @@ const Navbar = () => {
                 </h3>
 
                 <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
-                  Have questions about our products or wholesale opportunities?
+                  Have questions about our products, bulk orders, or gift boxes?
                   We'd love to hear from you.
                 </p>
               </div>
@@ -265,7 +270,15 @@ const Navbar = () => {
                 </button>
               )}
 
-              <button className="text-left text-[#F8F1E7]">Contact</button>
+              <button
+                onClick={() => {
+                  navigate("/contact");
+                  setIsOpen(false);
+                }}
+                className="text-left text-[#F8F1E7]"
+              >
+                Contact
+              </button>
             </div>
           </div>
         )}

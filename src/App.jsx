@@ -13,6 +13,7 @@ import RecipientDetails from "./pages/RecipientDetails";
 import ReviewGiftBox from "./pages/ReviewGiftBox";
 import { CustomizationProvider } from "./context/CustomizationProvider";
 import ProductDetails from "./pages/ProductDetails";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
               element={<RecipientDetails />}
             />
             <Route path="/customization/review" element={<ReviewGiftBox />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </CustomizationProvider>
       </div>
