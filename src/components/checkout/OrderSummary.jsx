@@ -2,8 +2,9 @@ import { Minus, Plus } from "lucide-react";
 
 const OrderSummary = ({
   cart,
+  subtotal,
+  shippingCharge,
   total,
-  onProceedToPayment,
   increaseQuantity,
   decreaseQuantity,
 }) => {
@@ -78,7 +79,23 @@ const OrderSummary = ({
 
       <div className="flex justify-between">
         <span>Subtotal</span>
+        <span>₹{subtotal}</span>
+      </div>
 
+      <div className="mt-3 flex justify-between">
+        <span>Shipping</span>
+
+        {shippingCharge === 0 ? (
+          <span className="font-semibold text-green-600">FREE</span>
+        ) : (
+          <span>₹50</span>
+        )}
+      </div>
+
+      <hr className="my-6" />
+
+      <div className="flex justify-between text-xl font-bold">
+        <span>Total</span>
         <span>₹{total}</span>
       </div>
 
@@ -87,6 +104,13 @@ const OrderSummary = ({
 
         <span className="text-green-600">FREE</span>
       </div>
+
+      {shippingCharge > 0 && (
+        <p className="mt-3 rounded-lg bg-[#FFF4E8] p-3 text-sm text-[#8B5E3C]">
+          Add <strong>₹{500 - subtotal}</strong> more to get
+          <strong> FREE shipping.</strong>
+        </p>
+      )}
 
       <hr className="my-6" />
 

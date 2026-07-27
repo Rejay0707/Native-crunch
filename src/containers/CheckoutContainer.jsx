@@ -12,7 +12,14 @@ const CheckoutContainer = () => {
   const navigate = useNavigate();
   const { cart, increaseQuantity, decreaseQuantity } = useCart();
   const { setShippingDetails } = useCheckout();
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  const shippingCharge = subtotal >= 500 ? 0 : 50;
+
+  const total = subtotal + shippingCharge;
 
   const {
     register,
@@ -54,6 +61,8 @@ const CheckoutContainer = () => {
 
           <OrderSummary
             cart={cart}
+            subtotal={subtotal}
+            shippingCharge={shippingCharge}
             total={total}
             increaseQuantity={increaseQuantity}
             decreaseQuantity={decreaseQuantity}
