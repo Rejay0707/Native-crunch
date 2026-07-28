@@ -10,11 +10,12 @@ const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const { cart, addToCart, decreaseQuantity } = useCart();
   // Default to 50g if available
-  const defaultVariant =
-    product.variants.find((v) => v.weight === "50g") || product.variants[0];
+  const [selectedVariant, setSelectedVariant] = useState(
+    product.variants.find((v) => v.weight === "50g") || product.variants[0],
+  );
 
   const cartItem = cart.find(
-    (item) => item.id === product.id && item.weight === defaultVariant.weight,
+    (item) => item.id === product.id && item.weight === selectedVariant.weight,
   );
 
   const quantity = cartItem?.quantity || 0;
@@ -127,15 +128,27 @@ const ProductCard = ({ product }) => {
           </h3>
 
           {/* Default Weight */}
-          <p className="mt-2 text-sm text-gray-500">
-            Weight: <span className="font-medium">{defaultVariant.weight}</span>
-          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {product.variants.map((variant) => (
+              <button
+                key={variant.weight}
+                onClick={() => setSelectedVariant(variant)}
+                className={`rounded-lg border px-3 py-1 text-xs font-medium transition cursor-pointer ${
+                  selectedVariant.weight === variant.weight
+                    ? "border-[#C97A34] bg-[#C97A34] text-white"
+                    : "border-[#E7D8CA] bg-white text-[#2E1E13] hover:border-[#C97A34]"
+                }`}
+              >
+                {variant.weight}
+              </button>
+            ))}
+          </div>
 
           {/* Price + Add */}
           {/* Price + Cart Action */}
           <div className="mt-3 md:mt-5 flex items-center justify-between">
             <span className="text-lg font-bold text-[#2E1E13]">
-              ₹{defaultVariant.price}
+              ₹{selectedVariant.price}
             </span>
 
             {quantity === 0 ? (
@@ -144,7 +157,7 @@ const ProductCard = ({ product }) => {
                 onClick={() => {
                   addToCart({
                     ...product,
-                    selectedVariant: defaultVariant,
+                    selectedVariant,
                   });
 
                   setShowMessage(true);
@@ -161,7 +174,7 @@ const ProductCard = ({ product }) => {
                 <button
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-lg font-bold cursor-pointer"
                   onClick={() =>
-                    decreaseQuantity(product.id, defaultVariant.weight)
+                    decreaseQuantity(product.id, selectedVariant.weight)
                   }
                 >
                   -
@@ -174,7 +187,7 @@ const ProductCard = ({ product }) => {
                   onClick={() => {
                     addToCart({
                       ...product,
-                      selectedVariant: defaultVariant,
+                      selectedVariant,
                     });
                   }}
                 >

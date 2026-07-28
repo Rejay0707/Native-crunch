@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 import { useCart } from "../../context/CartContext";
-import logo from "../../assets/logo (2).png";
+import logo from "../../assets/logo3 (2).png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -39,19 +39,30 @@ const Navbar = () => {
               className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
 
-            <div className="flex flex-col leading-tight">
-              <pre
-                className="leading-none whitespace-pre text-[#231709]"
+            <div
+              className="flex flex-col"
+              style={{
+                lineHeight: "1.05",
+              }}
+            >
+              <span
+                className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#F8F1E7]"
                 style={{
-                  fontFamily: "Consolas, 'Courier New', monospace",
-                  fontSize: "10px",
-                  margin: 0,
+                  fontFamily: "'Bebas Neue', sans-serif",
                 }}
               >
-                {`╔╗╔ ┌─┐┌┬┐┬┬  ┬┌─┐   ╔═╗┬─┐┬ ┬┌┐┌┌─┐┬ ┬
-║║║ ├─┤ │ │└┐┌┘├┤    ║  ├┬┘│ │││││  ├─┤
-╝╚╝ ┴ ┴ ┴ ┴ └┘ └─┘   ╚═╝┴└─└─┘┘└┘└─┘┴ ┴`}
-              </pre>
+                NATIVE
+              </span>
+
+              <span
+                className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#F8F1E7]"
+                style={{
+                  fontFamily: "'Bebas Neue', sans-serif",
+                  marginTop: "-3px",
+                }}
+              >
+                CRUNCH
+              </span>
             </div>
           </Link>
 
@@ -198,20 +209,24 @@ const Navbar = () => {
               {cart.length > 0 && (
                 <span
                   className="
-        absolute
-        -top-2
-        -right-2
-        flex
-        h-5
-        w-5
-        items-center
-        justify-center
-        rounded-full
-        bg-[#C97A34]
-        text-[10px]
-        font-bold
-        text-white
-      "
+    absolute
+    -top-2
+    -right-2
+    flex
+    h-5
+    min-w-[22px]
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-[#C97A34]
+    bg-white
+    px-1
+    text-[10px]
+    font-bold
+    text-[#C97A34]
+    shadow-sm
+  "
                 >
                   {cart.reduce((total, item) => total + item.quantity, 0)}
                 </span>

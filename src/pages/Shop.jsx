@@ -1,12 +1,17 @@
-import React from 'react'
-import ShopContainer from '../containers/ShopContainer'
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
+import ShopContainer from "../containers/ShopContainer";
 
 const Shop = () => {
   return (
-    <div>
-        <ShopContainer />
-    </div>
-  )
-}
+    <>
+      <Navbar />
 
-export default Shop
+      <ShopContainer />
+
+      <Footer />
+    </>
+  );
+};
+
+export default Shop;

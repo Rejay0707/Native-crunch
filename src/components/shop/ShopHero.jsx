@@ -8,7 +8,7 @@ const ShopHero = () => {
     <section className="bg-[#F8F2EA] border-b border-[#E8DCCF]">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
         {/* Breadcrumb */}
-        <div className="mb-6 flex items-center gap-2 text-sm text-[#8B5E3C]">
+        {/* <div className="mb-6 flex items-center gap-2 text-sm text-[#8B5E3C]">
           <button
             onClick={() => navigate("/")}
             className="transition hover:text-[#6D472C] cursor-pointer"
@@ -19,7 +19,7 @@ const ShopHero = () => {
           <ChevronRight size={16} />
 
           <span className="font-medium text-[#2E1E13]">Shop</span>
-        </div>
+        </div> */}
 
         {/* Heading */}
         <h1 className="text-4xl font-bold text-[#2E1E13] md:text-5xl">
