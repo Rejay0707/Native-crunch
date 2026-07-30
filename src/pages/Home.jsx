@@ -2,7 +2,7 @@ import AnnouncementBar from "../components/layout/AnnouncementBar";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
-import HeroSection from "../components/hero/HeroSection";
+import HeroSlider from "../components/hero/HeroSlider";
 
 import ProductTabs from "../components/product/ProductTabs";
 import ProductGrid from "../components/product/ProductGrid";
@@ -35,7 +35,8 @@ const Home = () => {
         </div>
       )}
 
-      <HeroSection />
+      
+      <HeroSlider />
 
       {/* <BestSellerSection products={bestSellers} /> */}
 

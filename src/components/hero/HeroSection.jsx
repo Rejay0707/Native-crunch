@@ -1,10 +1,11 @@
 import heroProduct from "../../assets/hero/native-crunch-hero-bg1.png";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
   const navigate = useNavigate();
+
 
   return (
     <section
