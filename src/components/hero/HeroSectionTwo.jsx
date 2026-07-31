@@ -1,13 +1,20 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import heroImage from "../../assets/hero1.png"
+import heroImage from "../../assets/hero1.png";
 
 const HeroSectionTwo = () => {
   const navigate = useNavigate();
 
   return (
-    <section  id="hero-two" className="relative overflow-hidden ">
+    <section
+      className="
+    relative
+    h-full
+    overflow-hidden
+    
+  "
+    >
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#C97A34]/10 blur-[120px]" />
@@ -23,7 +30,6 @@ const HeroSectionTwo = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-
             <h2
               className="
                 mt-6
@@ -37,10 +43,7 @@ const HeroSectionTwo = () => {
             >
               Meet the Heart
               <br />
-              Behind{" "}
-              <span className="text-[#C97A34]">
-                Native Crunch
-              </span>
+              Behind <span className="text-[#C97A34]">Native Crunch</span>
             </h2>
 
             <h3
@@ -52,8 +55,8 @@ const HeroSectionTwo = () => {
                 text-[#5A4B3E]
               "
             >
-              Every bar tells a story of tradition,
-              quality, and honest ingredients.
+              Every bar tells a story of tradition, quality, and honest
+              ingredients.
             </h3>
 
             <p
@@ -65,14 +68,13 @@ const HeroSectionTwo = () => {
                 text-[#6F6256]
               "
             >
-              At Native Crunch, we believe the finest snacks start with
-              real ingredients and timeless traditions. Every bar is
-              carefully handcrafted using premium peanuts, natural
-              sweeteners, and authentic flavours to deliver a perfect
-              balance of taste, nutrition, and quality. Made with honesty
-              and care, our products bring the goodness of traditional
-              recipes to modern lifestyles—creating wholesome moments for
-              every family.
+              At Native Crunch, we believe the finest snacks start with real
+              ingredients and timeless traditions. Every bar is carefully
+              handcrafted using premium peanuts, natural sweeteners, and
+              authentic flavours to deliver a perfect balance of taste,
+              nutrition, and quality. Made with honesty and care, our products
+              bring the goodness of traditional recipes to modern
+              lifestyles—creating wholesome moments for every family.
             </p>
 
             {/* Features */}
@@ -86,9 +88,7 @@ const HeroSectionTwo = () => {
                 <div key={item} className="flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full bg-[#C97A34]" />
 
-                  <span className="font-medium text-[#2E1E13]">
-                    {item}
-                  </span>
+                  <span className="font-medium text-[#2E1E13]">{item}</span>
                 </div>
               ))}
             </div>

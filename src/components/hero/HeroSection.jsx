@@ -6,12 +6,15 @@ import { useNavigate } from "react-router-dom";
 const HeroSection = () => {
   const navigate = useNavigate();
 
-
   return (
     <section
-      id="home"
-      className="relative min-h-screen overflow-hidden bg-[#120905]"
-    >
+  className="
+    relative
+    h-full
+    overflow-hidden
+    bg-[#120905]
+  "
+>
       {/* Desktop Background Image */}
       {/* Desktop / Laptop Background */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden">
@@ -80,10 +83,15 @@ const HeroSection = () => {
     z-20
     flex
     items-center
-    min-h-screen
-    pt-10
-    pb-20
+
+    min-h-[850px]
+    lg:min-h-screen
+
+    pt-24
+    pb-24
+
     lg:pt-12
+    lg:pb-12
   "
       >
         <div
