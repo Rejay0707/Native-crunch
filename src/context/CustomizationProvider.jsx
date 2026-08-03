@@ -5,6 +5,7 @@ import CustomizationContext from "./CustomizationContext";
 
 export const CustomizationProvider = ({ children }) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [customizationType, setCustomizationType] = useState("");
   const [recipient, setRecipient] = useState({
     name: "",
     occasion: "",
@@ -128,6 +129,9 @@ export const CustomizationProvider = ({ children }) => {
 
         recipient,
         setRecipient,
+
+        customizationType,
+        setCustomizationType,
 
         clearCustomization,
       }}
