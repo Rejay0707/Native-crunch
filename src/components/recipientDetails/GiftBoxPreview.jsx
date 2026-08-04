@@ -171,18 +171,18 @@ const GiftBoxPreview = () => {
 
   return (
     <div
-      className="
+  className="
     sticky
     top-28
     w-full
-    w-[340px]
-    sm:w-[420px]
-    md:w-[560px]
-    lg:w-[700px]
+    max-w-[340px]
+    sm:max-w-[420px]
+    md:max-w-[560px]
+    lg:max-w-[700px]
     xl:w-[760px]
     mx-auto
   "
-    >
+>
       <div className="rounded-[34px] border border-[#E9DED2] bg-white p-6 lg:p-8 shadow-2xl">
         <h3 className="text-center text-sm font-semibold uppercase tracking-[0.35em] text-[#8A5A32]">
           Live Preview
@@ -369,7 +369,7 @@ const GiftBoxPreview = () => {
                     <h2
                       className="
                         uppercase
-                        text-[20px]
+                        text-[15px]
                         sm:text-[28px]
                         md:text-[34px]
                         lg:text-[40px]
