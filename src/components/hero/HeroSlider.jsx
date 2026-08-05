@@ -67,13 +67,13 @@ const HeroSlider = () => {
       justify-center
       rounded-full
 
-      bg-white/15
+      bg-[#C97A34]
       backdrop-blur-md
       border
       border-white/20
 
       text-white
-      hover:bg-[#C97A34]
+      hover:bg-[#b96d2d]
       transition-all
       duration-300
       cursor-pointer
@@ -110,13 +110,13 @@ const HeroSlider = () => {
       justify-center
       rounded-full
 
-      bg-white/15
+      bg-[#C97A34]
       backdrop-blur-md
       border
       border-white/20
 
       text-white
-      hover:bg-[#C97A34]
+      hover:bg-[#b96d2d]
       transition-all
       duration-300
       cursor-pointer

@@ -171,7 +171,7 @@ const GiftBoxPreview = () => {
 
   return (
     <div
-  className="
+      className="
     sticky
     top-28
     w-full
@@ -182,7 +182,7 @@ const GiftBoxPreview = () => {
     xl:w-[760px]
     mx-auto
   "
->
+    >
       <div className="rounded-[34px] border border-[#E9DED2] bg-white p-6 lg:p-8 shadow-2xl">
         <h3 className="text-center text-sm font-semibold uppercase tracking-[0.35em] text-[#8A5A32]">
           Live Preview
@@ -264,10 +264,10 @@ const GiftBoxPreview = () => {
                       fontSize:
                         window.innerWidth >= 1024
                           ? (recipient.occasion || "").length > 15
-                            ? "38px"
+                            ? "28px"
                             : (recipient.occasion || "").length > 10
-                              ? "44px"
-                              : "52px"
+                              ? "30px"
+                              : "40px"
                           : undefined,
                     }}
                   >
@@ -280,27 +280,32 @@ const GiftBoxPreview = () => {
 
               {/* ================= BODY ================= */}
 
-              <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex flex-1 items-start justify-between gap-4 lg:gap-8">
+              <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex flex-1 items-start  gap-4 lg:gap-8">
                 {/* ================= PHOTO ================= */}
 
                 <div
                   className="
-                    h-[190px]
-                    w-[120px]
-                    sm:h-[250px]
-                    sm:w-[150px]
-                    md:h-[300px]
-                    md:w-[190px]
-                    lg:h-[340px]
-                    lg:w-[250px]
-                    overflow-hidden
-                    rounded-[18px]
-                    border-[4px]
-                    lg:border-[5px]
-                    border-[#f07a20]
-                    bg-[#d5b18a]
-                    flex-shrink-0
-                  "
+  overflow-hidden
+  rounded-[18px]
+  border-[4px]
+  lg:border-[5px]
+  border-[#f07a20]
+  bg-[#d5b18a]
+
+  h-[190px]
+  w-[120px]
+
+  sm:h-[250px]
+  sm:w-[150px]
+
+  md:h-[300px]
+  md:w-[180px]
+
+  lg:h-[340px]
+  lg:w-[clamp(180px,32%,250px)]
+
+  flex-shrink
+"
                 >
                   {recipient.photo ? (
                     <img
@@ -319,17 +324,15 @@ const GiftBoxPreview = () => {
 
                 <div
                   className="
-                    flex
-                    w-[150px]
-                    sm:w-[180px]
-                    md:w-[200px]
-                    lg:w-[250px]
-                    flex-col
-                    items-center
-                    justify-center
-                    text-center
-                    self-center
-                  "
+    flex-1
+    min-w-0
+    flex
+    flex-col
+    items-center
+    justify-center
+    text-center
+    self-center
+  "
                 >
                   <p
                     className="
@@ -370,7 +373,7 @@ const GiftBoxPreview = () => {
                       className="
                         uppercase
                         text-[15px]
-                        sm:text-[28px]
+                        sm:text-[20px]
                         md:text-[34px]
                         lg:text-[40px]
                         truncate
