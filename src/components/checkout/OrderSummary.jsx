@@ -10,7 +10,9 @@ const OrderSummary = ({
 }) => {
   return (
     <div className="sticky top-28 rounded-3xl bg-white p-6 shadow-lg">
-      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">Order Summary</h2>
+      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">
+        Order Summary
+      </h2>
 
       <div className="space-y-5">
         {cart.map((item) => (
@@ -48,7 +50,9 @@ const OrderSummary = ({
               </div>
             </div>
 
-            <p className="font-semibold">₹{item.price * item.quantity}</p>
+            <p className="font-semibold">
+              ₹{item.price * item.quantity}
+            </p>
           </div>
         ))}
       </div>
@@ -77,36 +81,26 @@ const OrderSummary = ({
 
       <hr className="my-6" />
 
+      {/* Subtotal */}
       <div className="flex justify-between">
         <span>Subtotal</span>
         <span>₹{subtotal}</span>
       </div>
 
+      {/* Shipping */}
       <div className="mt-3 flex justify-between">
         <span>Shipping</span>
 
         {shippingCharge === 0 ? (
           <span className="font-semibold text-green-600">FREE</span>
         ) : (
-          <span>₹50</span>
+          <span>₹{shippingCharge}</span>
         )}
       </div>
 
-      <hr className="my-6" />
-
-      <div className="flex justify-between text-xl font-bold">
-        <span>Total</span>
-        <span>₹{total}</span>
-      </div>
-
-      <div className="mt-3 flex justify-between">
-        <span>Shipping</span>
-
-        <span className="text-green-600">FREE</span>
-      </div>
-
+      {/* Free Shipping Message */}
       {shippingCharge > 0 && (
-        <p className="mt-3 rounded-lg bg-[#FFF4E8] p-3 text-sm text-[#8B5E3C]">
+        <p className="mt-4 rounded-lg bg-[#FFF4E8] p-3 text-sm text-[#8B5E3C]">
           Add <strong>₹{500 - subtotal}</strong> more to get
           <strong> FREE shipping.</strong>
         </p>
@@ -114,9 +108,9 @@ const OrderSummary = ({
 
       <hr className="my-6" />
 
+      {/* Total */}
       <div className="flex justify-between text-xl font-bold">
         <span>Total</span>
-
         <span>₹{total}</span>
       </div>
 
@@ -125,20 +119,19 @@ const OrderSummary = ({
         form="checkout-form"
         disabled={cart.length === 0}
         className="
-    mt-8
-    w-full
-    rounded-full
-    bg-[#C97A34]
-    py-4
-    font-semibold
-    text-white
-    transition
-    hover:bg-[#b56d2f]
-
-    disabled:bg-gray-300
-    disabled:cursor-not-allowed
-    cursor-pointer
-  "
+          mt-8
+          w-full
+          rounded-full
+          bg-[#C97A34]
+          py-4
+          font-semibold
+          text-white
+          transition
+          hover:bg-[#b56d2f]
+          disabled:cursor-not-allowed
+          disabled:bg-gray-300
+          cursor-pointer
+        "
       >
         Proceed to Payment
       </button>

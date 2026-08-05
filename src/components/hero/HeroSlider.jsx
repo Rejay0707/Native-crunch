@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -10,14 +10,23 @@ const HeroSlider = () => {
 
   const slides = [<HeroSection key={0} />, <HeroSectionTwo key={1} />];
 
+  // Auto Slide
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % slides.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   return (
     <section
       className="
-    relative
-    min-h-screen
-    lg:h-screen
-    overflow-hidden
-  "
+        relative
+        min-h-screen
+        lg:h-screen
+        overflow-hidden
+      "
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -43,88 +52,20 @@ const HeroSlider = () => {
       {/* Previous */}
       {activeSlide > 0 && (
         <button
-          onClick={() => setActiveSlide(0)}
-          className="
-      absolute
-      left-3
-      sm:left-5
-      lg:left-8
-
-      top-[42%]
-      sm:top-1/2
-      -translate-y-1/2
-
-      z-50
-      flex
-      h-10
-      w-10
-      sm:h-12
-      sm:w-12
-      lg:h-14
-      lg:w-14
-
-      items-center
-      justify-center
-      rounded-full
-
-      bg-[#C97A34]
-      backdrop-blur-md
-      border
-      border-white/20
-
-      text-white
-      hover:bg-[#b96d2d]
-      transition-all
-      duration-300
-      cursor-pointer
-    "
+          onClick={() => setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+          className="absolute left-3 sm:left-5 lg:left-8 top-[42%] sm:top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-[#C97A34] border border-white/20 text-white hover:bg-[#b96d2d] transition-all duration-300"
         >
           <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7" />
         </button>
       )}
 
       {/* Next */}
-      {activeSlide < slides.length - 1 && (
-        <button
-          onClick={() => setActiveSlide(1)}
-          className="
-      absolute
-      right-3
-      sm:right-5
-      lg:right-8
-
-      top-[42%]
-      sm:top-1/2
-      -translate-y-1/2
-
-      z-50
-      flex
-      h-10
-      w-10
-      sm:h-12
-      sm:w-12
-      lg:h-14
-      lg:w-14
-
-      items-center
-      justify-center
-      rounded-full
-
-      bg-[#C97A34]
-      backdrop-blur-md
-      border
-      border-white/20
-
-      text-white
-      hover:bg-[#b96d2d]
-      transition-all
-      duration-300
-      cursor-pointer
-    "
-        >
-          <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7" />
-        </button>
-      )}
+      <button
+        onClick={() => setActiveSlide((prev) => (prev + 1) % slides.length)}
+        className="absolute right-3 sm:right-5 lg:right-8 top-[42%] sm:top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-[#C97A34] border border-white/20 text-white hover:bg-[#b96d2d] transition-all duration-300"
+      >
+        <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7" />
+      </button>
     </section>
   );
 };

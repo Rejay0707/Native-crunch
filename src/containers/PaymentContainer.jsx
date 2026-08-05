@@ -11,10 +11,17 @@ const PaymentContainer = () => {
   const { cart } = useCart();
   const { shippingDetails } = useCheckout();
 
-  const total = cart.reduce(
+  // Calculate subtotal
+  const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  // Free shipping above ₹500
+  const shippingCharge = subtotal >= 500 ? 0 : 50;
+
+  // Final amount
+  const total = subtotal + shippingCharge;
 
   return (
     <>
@@ -32,6 +39,8 @@ const PaymentContainer = () => {
           <div>
             <PaymentSummary
               cart={cart}
+              subtotal={subtotal}
+              shippingCharge={shippingCharge}
               total={total}
               shippingDetails={shippingDetails}
             />

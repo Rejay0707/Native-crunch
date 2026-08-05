@@ -15,7 +15,7 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "hello@nativecrunch.com",
+    description: "info@nativecrunch.com",
   },
   {
     icon: Clock,
