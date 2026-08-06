@@ -9,7 +9,7 @@ const ProductInfo = ({
   onIncrease,
   onDecrease,
   onAddToCart,
-  onShopMore,
+  onBuyNow,
   showMessage,
 }) => {
   const totalPrice = selectedVariant.price * quantity;
@@ -129,7 +129,7 @@ const ProductInfo = ({
         </button>
 
         <button
-          onClick={onShopMore}
+          onClick={onBuyNow}
           className="
             rounded-xl
             border
@@ -145,7 +145,7 @@ const ProductInfo = ({
             cursor-pointer
           "
         >
-          Shop More
+          Buy Now
         </button>
       </div>
       {showMessage && (

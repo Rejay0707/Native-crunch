@@ -5,12 +5,12 @@ const contactCards = [
   {
     icon: MapPin,
     title: "Our Location",
-    description: "Coimbatore, Tamil Nadu, India",
+    description: "SAM'S FOOD INDUSTRIES, 4/383-D, Indl. Kammangalam, Dharmapuri-635 111, Tamil Nadu, India.",
   },
   {
     icon: Phone,
     title: "Call Us",
-    description: "+91 98765 43210",
+    description: "+91 70103 00199",
   },
   {
     icon: Mail,

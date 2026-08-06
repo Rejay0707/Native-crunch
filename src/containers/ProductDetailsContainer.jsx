@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, Navigate, useNavigate, Link } from "react-router-dom";
-
+import { useParams, Navigate, useNavigate } from "react-router-dom";
+import Navbar from "../components/layout/Navbar";
+import Footer from "../components/layout/Footer";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
 
@@ -60,36 +61,16 @@ const ProductDetailsContainer = () => {
     }, 2500);
   };
 
-  const handleShopMore = () => {
-    navigate("/shop");
-  };
+  const handleBuyNow = () => {
+  handleAddToCart();
+  navigate("/cart");
+};
 
   return (
+    <>
+    <Navbar />
     <section className="min-h-screen bg-[#F8F2EA] py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <div className="mb-10 flex flex-wrap items-center gap-2 text-sm">
-          <Link
-            to="/"
-            className="text-[#6A5B4E] transition hover:text-[#C97A34]"
-          >
-            Home
-          </Link>
-
-          <span className="text-[#9A8B7B]">/</span>
-
-          <Link
-            to="/shop"
-            className="text-[#6A5B4E] transition hover:text-[#C97A34]"
-          >
-            Shop
-          </Link>
-
-          <span className="text-[#9A8B7B]">/</span>
-
-          <span className="font-semibold text-[#2E1E13]">{product.name}</span>
-        </div>
-
         {/* Product Section */}
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <ProductGallery images={images} />
@@ -102,12 +83,14 @@ const ProductDetailsContainer = () => {
             onIncrease={handleIncrease}
             onDecrease={handleDecrease}
             onAddToCart={handleAddToCart}
-            onShopMore={handleShopMore}
+            onShopMore={handleBuyNow}
             showMessage={showMessage}
           />
         </div>
       </div>
     </section>
+    <Footer />
+    </>
   );
 };
 

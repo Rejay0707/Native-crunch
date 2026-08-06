@@ -183,7 +183,25 @@ const Navbar = () => {
               <Search size={18} />
             </button>
 
-            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-[#5C4033] text-[#F8F1E7] hover:bg-white/25">
+            <button
+              onClick={() => navigate("/login")}
+              className="
+    hidden
+    md:flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-[#d8b897]/40
+    bg-[#5C4033]
+    text-[#F8F1E7]
+    transition
+    hover:bg-white/25
+    cursor-pointer
+  "
+            >
               <User size={18} />
             </button>
 
