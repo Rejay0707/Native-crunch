@@ -28,7 +28,7 @@ const Navbar = () => {
   `;
 
   return (
-    <header className="cardboard-bg sticky top-0 z-50 border-b border-[#9a6f4a]">
+    <header className="cardboard-bg sticky top-0 z-100 border-b border-[#9a6f4a]">
       <div className="px-3">
         <div className="flex h-16 items-center">
           {/* LOGO + BRAND (HOME LINK) */}
