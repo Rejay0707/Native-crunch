@@ -26,11 +26,7 @@ const PaymentMethods = ({ shippingDetails }) => {
       title: "Net Banking",
       icon: <Building2 size={20} />,
     },
-    {
-      id: "cod",
-      title: "Cash On Delivery",
-      icon: <Banknote size={20} />,
-    },
+    
   ];
 
   return (
