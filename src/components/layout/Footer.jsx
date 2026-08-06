@@ -13,7 +13,9 @@ const Footer = ({ isAboutPage = false }) => {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
+          
           <div className="col-span-2 lg:col-span-1">
+            <Link to="/" className="flex flex-1 items-center gap-3 group">
             <div className="flex items-center gap-3">
               <img
                 src={logo}
@@ -28,6 +30,7 @@ const Footer = ({ isAboutPage = false }) => {
                 </p>
               </div>
             </div>
+            </Link>
 
             <p className="mt-4 md:mt-5 text-sm md:text-base text-gray-300 leading-6 md:leading-7">
               Inspired by traditional recipes, crafted with carefully selected
@@ -39,21 +42,31 @@ const Footer = ({ isAboutPage = false }) => {
           {/* Shop */}
           <div>
             <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+              <Link to='/shop'>
               Shop
+              </Link>
             </h4>
 
             <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
-              <li className="hover:text-white transition cursor-pointer">
+              <li >
+                <Link to='/shop' className="hover:text-white transition cursor-pointer">
                 All Bars
+                </Link>
               </li>
-              <li className="hover:text-white transition cursor-pointer">
+              <li >
+                <Link to='/shop' className="hover:text-white transition cursor-pointer">
                 Peanut Butter Bars
+                </Link>
               </li>
               <li className="hover:text-white transition cursor-pointer">
+                <Link to='/shop' className="hover:text-white transition cursor-pointer">
                 Peanut Chikki Bars
+                </Link>
               </li>
               <li className="hover:text-white transition cursor-pointer">
+                <Link to='/shop' className="hover:text-white transition cursor-pointer">
                 Specialty Bars
+                </Link>
               </li>
             </ul>
           </div>
@@ -79,14 +92,20 @@ const Footer = ({ isAboutPage = false }) => {
                 </li>
               )}
 
-              <li className="hover:text-white cursor-pointer transition">
+              <li >
+                <Link to='/about' className="hover:text-white cursor-pointer transition">
                 Ingredients
+                </Link>
               </li>
-              <li className="hover:text-white cursor-pointer transition">
+              <li >
+                <Link to="/contact" className="hover:text-white cursor-pointer transition">
                 FAQs
+                </Link>
               </li>
-              <li className="hover:text-white cursor-pointer transition">
+              <li >
+                <Link to="/contact" className="hover:text-white cursor-pointer transition">
                 Contact
+                </Link>
               </li>
             </ul>
           </div>
