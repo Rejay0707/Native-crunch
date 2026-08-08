@@ -7,29 +7,31 @@ import {
   FaXTwitter,
 } from "react-icons/fa6";
 
-const Footer = ({ isAboutPage = false }) => {
+const Footer = () => {
   return (
     <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
           {/* Brand */}
-          
+
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="flex flex-1 items-center gap-3 group">
-            <div className="flex items-center gap-3">
-              <img
-                src={logo}
-                alt="Native Crunch Logo"
-                className="h-10 md:h-12 w-auto object-contain"
-              />
+              <div className="flex items-center gap-3">
+                <img
+                  src={logo}
+                  alt="Native Crunch Logo"
+                  className="h-10 md:h-12 w-auto object-contain"
+                />
 
-              <div>
-                <h3 className="font-bold text-lg md:text-xl">Native Crunch</h3>
-                <p className="text-xs md:text-sm text-gray-300">
-                  Snack in Native Way
-                </p>
+                <div>
+                  <h3 className="font-bold text-lg md:text-xl">
+                    Native Crunch
+                  </h3>
+                  <p className="text-xs md:text-sm text-gray-300">
+                    Snack in Native Way
+                  </p>
+                </div>
               </div>
-            </div>
             </Link>
 
             <p className="mt-4 md:mt-5 text-sm md:text-base text-gray-300 leading-6 md:leading-7">
@@ -42,35 +44,46 @@ const Footer = ({ isAboutPage = false }) => {
           {/* Shop */}
           <div>
             <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
-              <Link to='/shop'>
-              Shop
-              </Link>
+              <Link to="/shop">Shop</Link>
             </h4>
 
             <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
-              <li >
-                <Link to='/shop' className="hover:text-white transition cursor-pointer">
-                All Bars
+              <li>
+                <Link
+                  to="/shop"
+                  className="hover:text-white transition cursor-pointer"
+                >
+                  All Bars
                 </Link>
               </li>
-              <li >
-                <Link to='/shop' className="hover:text-white transition cursor-pointer">
-                Peanut Butter Bars
+              <li>
+                <Link
+                  to="/shop"
+                  className="hover:text-white transition cursor-pointer"
+                >
+                  Peanut Butter Bars
                 </Link>
               </li>
               <li className="hover:text-white transition cursor-pointer">
-                <Link to='/shop' className="hover:text-white transition cursor-pointer">
-                Peanut Chikki Bars
+                <Link
+                  to="/shop"
+                  className="hover:text-white transition cursor-pointer"
+                >
+                  Peanut Chikki Bars
                 </Link>
               </li>
               <li className="hover:text-white transition cursor-pointer">
-                <Link to='/shop' className="hover:text-white transition cursor-pointer">
-                Specialty Bars
+                <Link
+                  to="/shop"
+                  className="hover:text-white transition cursor-pointer"
+                >
+                  Specialty Bars
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Company */}
           {/* Company */}
           <div>
             <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
@@ -78,33 +91,36 @@ const Footer = ({ isAboutPage = false }) => {
             </h4>
 
             <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
-              {isAboutPage ? (
-                <li>
-                  <Link to="/" className="hover:text-white transition">
-                    Home
-                  </Link>
-                </li>
-              ) : (
-                <li>
-                  <Link to="/about" className="hover:text-white transition">
-                    About Us
-                  </Link>
-                </li>
-              )}
+              <li>
+                <Link to="/about" className="hover:text-white transition">
+                  About Us
+                </Link>
+              </li>
 
-              <li >
-                <Link to='/about' className="hover:text-white cursor-pointer transition">
-                Ingredients
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-white cursor-pointer transition"
+                >
+                  Ingredients
                 </Link>
               </li>
-              <li >
-                <Link to="/contact" className="hover:text-white cursor-pointer transition">
-                FAQs
+
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-white cursor-pointer transition"
+                >
+                  FAQs
                 </Link>
               </li>
-              <li >
-                <Link to="/contact" className="hover:text-white cursor-pointer transition">
-                Contact
+
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-white cursor-pointer transition"
+                >
+                  Contact
                 </Link>
               </li>
             </ul>

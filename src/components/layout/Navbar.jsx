@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
-import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
+import { useNavigate, Link } from "react-router-dom";
+import { ShoppingBag, Search, User, Package, Menu, X } from "lucide-react";
 import { useCart } from "../../context/CartContext";
+import { useOrders } from "../../context/OrderContext";
 import logo from "../../assets/logo3 (2).png";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const isAboutPage = location.pathname === "/about";
+  // const location = useLocation();
+  // const isAboutPage = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
 
   const { cart } = useCart();
+  const { orders } = useOrders();
   // const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   const navButtonClass =
@@ -125,33 +127,44 @@ const Navbar = () => {
               Customization
             </button>
 
-            {!isAboutPage && (
-              <>
-                <span className="text-[#ead9c8]">|</span>
+            <>
+              {orders.length > 0 && (
+                <>
+                  <span className="text-[#ead9c8]">|</span>
 
-                {/* ABOUT */}
-                <div className="group relative">
                   <button
-                    onClick={() => navigate("/about")}
+                    onClick={() => navigate("/orders")}
                     className={navButtonClass}
                   >
-                    About Us
+                    Orders
                   </button>
+                </>
+              )}
 
-                  <div className={dropdownClass}>
-                    <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
-                      About Native Crunch
-                    </h3>
+              <span className="text-[#ead9c8]">|</span>
 
-                    <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
-                      We create clean, wholesome snacks made with natural
-                      ingredients, traditional recipes, and honest flavours for
-                      modern lifestyles.
-                    </p>
-                  </div>
+              {/* ABOUT */}
+              <div className="group relative">
+                <button
+                  onClick={() => navigate("/about")}
+                  className={navButtonClass}
+                >
+                  About Us
+                </button>
+
+                <div className={dropdownClass}>
+                  <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
+                    About Native Crunch
+                  </h3>
+
+                  <p className="mt-4 text-base leading-7 text-[#4a4a4a]">
+                    We create clean, wholesome snacks made with natural
+                    ingredients, traditional recipes, and honest flavours for
+                    modern lifestyles.
+                  </p>
                 </div>
-              </>
-            )}
+              </div>
+            </>
 
             <span className="text-[#ead9c8]">|</span>
 
@@ -203,6 +216,29 @@ const Navbar = () => {
   "
             >
               <User size={18} />
+            </button>
+
+            <button
+              onClick={() => navigate("/orders")}
+              title="My Orders"
+              className="
+    hidden
+    md:flex
+    h-10
+    w-10
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-[#d8b897]/40
+    bg-[#5C4033]
+    text-[#F8F1E7]
+    transition
+    hover:bg-white/25
+    cursor-pointer
+  "
+            >
+              <Package size={18} />
             </button>
 
             <button
@@ -291,17 +327,27 @@ const Navbar = () => {
                 Customization
               </button>
 
-              {!isAboutPage && (
+              {orders.length > 0 && (
                 <button
                   onClick={() => {
-                    navigate("/about");
+                    navigate("/orders");
                     setIsOpen(false);
                   }}
                   className="text-left text-[#F8F1E7]"
                 >
-                  About Us
+                  Orders
                 </button>
               )}
+
+              <button
+                onClick={() => {
+                  navigate("/about");
+                  setIsOpen(false);
+                }}
+                className="text-left text-[#F8F1E7]"
+              >
+                About Us
+              </button>
 
               <button
                 onClick={() => {

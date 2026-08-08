@@ -16,6 +16,8 @@ import ReviewGiftBox from "./pages/ReviewGiftBox";
 import { CustomizationProvider } from "./context/CustomizationProvider";
 import ProductDetails from "./pages/ProductDetails";
 import Contact from "./pages/Contact";
+import { OrderProvider } from "./context/OrderContext";
+import Orders from "./pages/Orders";
 
 function App() {
   return (
@@ -26,26 +28,30 @@ function App() {
       {/* IMPORTANT: ensures proper layout height handling */}
       <div className="min-h-screen flex flex-col">
         <CustomizationProvider>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/product/:id" element={<ProductDetails />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/payment" element={<Payment />} />
-            <Route path="/success" element={<Success />} />
-            <Route path="/customization" element={<Customization />} />
-            <Route path="/customization/gift-box" element={<GiftBox />} />
-            <Route
-              path="/customization/recipient-details"
-              element={<RecipientDetails />}
-            />
-            <Route path="/customization/review" element={<ReviewGiftBox />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <OrderProvider>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/product/:id" element={<ProductDetails />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/orders/:orderId" element={<Orders />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/payment" element={<Payment />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/customization" element={<Customization />} />
+              <Route path="/customization/gift-box" element={<GiftBox />} />
+              <Route
+                path="/customization/recipient-details"
+                element={<RecipientDetails />}
+              />
+              <Route path="/customization/review" element={<ReviewGiftBox />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </OrderProvider>
         </CustomizationProvider>
       </div>
     </BrowserRouter>
