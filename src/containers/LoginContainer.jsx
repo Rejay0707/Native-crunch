@@ -11,19 +11,16 @@ const LoginContainer = () => {
 
     // Backend login API will go here later.
     // For now just redirect to home.
-
     navigate("/");
   };
 
   return (
-    <>
-      <AuthLayout
-        title="Welcome Back"
-        subtitle="Sign in to continue shopping with Native Crunch."
-      >
-        <LoginForm onSubmit={handleLogin} />
-      </AuthLayout>
-    </>
+    <AuthLayout
+      title="Welcome Back"
+      subtitle="Sign in to continue shopping with Native Crunch."
+    >
+      <LoginForm onSubmit={handleLogin} />
+    </AuthLayout>
   );
 };
 

@@ -1,56 +1,49 @@
 import { motion } from "framer-motion";
 import logo from "../../assets/logo3 (2).png";
-import heroImage from "../../assets/hero/native-crunch-hero-bg1.png";
 
 const AuthLayout = ({ title, subtitle, children }) => {
   return (
-    <section className="min-h-screen bg-[#F8F2EA]">
-      <div className="mx-auto grid min-h-screen max-w-7xl lg:grid-cols-2">
-        {/* LEFT SIDE */}
+    <section className="min-h-screen bg-[#F8F2EA] px-4 py-8 sm:px-6">
+      <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="hidden flex-col justify-center bg-[#2E1E13] p-16 lg:flex"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-[620px]"
         >
-          <img
-            src={logo}
-            alt="Native Crunch"
-            className="mb-10 w-44 object-contain"
-          />
+          {/* Login Card */}
+          <div className="rounded-2xl border border-[#E8DED3] bg-white px-6 py-8 shadow-[0_12px_40px_rgba(46,30,19,0.10)] sm:px-10 sm:py-10">
+            
+            {/* Logo */}
+            <div className="mb-8 flex justify-center">
+              <img
+                src={logo}
+                alt="Native Crunch"
+                className="h-24 w-auto object-contain"
+              />
+            </div>
 
-          <h1 className="text-5xl font-bold leading-tight text-white">
-            Welcome to
-            <span className="block text-[#C97A34]">Native Crunch</span>
-          </h1>
+            {/* Heading */}
+            <div className="text-center">
+              <h1 className="text-3xl font-bold tracking-tight text-[#2E1E13] sm:text-4xl">
+                {title}
+              </h1>
 
-          <p className="mt-6 max-w-lg text-lg leading-8 text-white/80">
-            Discover handcrafted peanut bars, palm jaggery snacks, and wholesome
-            treats made using traditional recipes and premium natural
-            ingredients.
-          </p>
+              <p className="mt-2 text-sm leading-6 text-[#6A5B4E]">
+                {subtitle}
+              </p>
+            </div>
 
-          <img
-            src={heroImage}
-            alt="Native Crunch"
-            className="mt-14 w-full object-contain"
-          />
-        </motion.div>
-
-        {/* RIGHT SIDE */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          className="flex items-center justify-center p-6 lg:p-16"
-        >
-          <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-xl lg:p-10">
-            <h2 className="text-4xl font-bold text-[#2E1E13]">{title}</h2>
-
-            <p className="mt-3 text-[#6A5B4E]">{subtitle}</p>
-
-            <div className="mt-8">{children}</div>
+            {/* Form */}
+            <div className="mt-8">
+              {children}
+            </div>
           </div>
+
+          {/* Small branding below card */}
+          <p className="mt-6 text-center text-xs text-[#8A796B]">
+            © {new Date().getFullYear()} Native Crunch. All rights reserved.
+          </p>
         </motion.div>
       </div>
     </section>
