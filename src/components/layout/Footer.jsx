@@ -126,48 +126,74 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Social + Contact */}
           <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4">
+            <h4 className="mb-4 text-base font-semibold md:text-lg">
               Follow Us
             </h4>
 
+            {/* Social Icons */}
             <div className="flex gap-3 md:gap-4">
               <a
                 href="https://www.instagram.com/nativecrunch.nc"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
-                <FaInstagram className="text-white text-sm md:text-lg" />
+                <FaInstagram className="text-sm text-white md:text-lg" />
               </a>
 
               <a
                 href="https://www.facebook.com/NativeCrunch2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
-                <FaFacebookF className="text-white text-sm md:text-lg" />
+                <FaFacebookF className="text-sm text-white md:text-lg" />
               </a>
 
               <a
                 href="https://www.youtube.com/@NativeCrunch-NC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
-                <FaYoutube className="text-white text-sm md:text-lg" />
+                <FaYoutube className="text-sm text-white md:text-lg" />
               </a>
 
               <a
                 href="https://x.com/NativeCrunchNC"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="h-9 w-9 md:h-10 md:w-10 rounded-full bg-[#C97A34] flex items-center justify-center hover:scale-110 transition"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
-                <FaXTwitter className="text-white text-sm md:text-lg" />
+                <FaXTwitter className="text-sm text-white md:text-lg" />
               </a>
+            </div>
+
+            {/* Contact Us */}
+            <div className="mt-6">
+              <h4 className="mb-3 text-base font-semibold md:text-lg">
+                Contact Us
+              </h4>
+
+              <div className="space-y-2 text-sm text-gray-300 md:text-base">
+                <a
+                  href="mailto:info@nativecrunch.com"
+                  className="block transition hover:text-white"
+                >
+                  info@nativecrunch.com
+                </a>
+
+                <a
+                  href="https://wa.me/917010300199"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition hover:text-white"
+                >
+                  +91 70103 00199
+                </a>
+              </div>
             </div>
           </div>
         </div>

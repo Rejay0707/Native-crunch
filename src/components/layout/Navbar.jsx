@@ -183,105 +183,130 @@ const Navbar = () => {
           </nav>
 
           {/* RIGHT SIDE */}
+          {/* RIGHT SIDE */}
           <div className="flex flex-1 items-center justify-end gap-2">
-            <button className="hidden md:flex h-10 w-10 items-center justify-center rounded-full border border-[#d8b897]/40 bg-[#5C4033] text-[#F8F1E7] hover:bg-white/25">
+            {/* Search - Desktop only */}
+            <button
+              className="
+      hidden
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#d8b897]/40
+      bg-[#5C4033]
+      text-[#F8F1E7]
+      transition
+      hover:bg-white/25
+      md:flex
+    "
+            >
               <Search size={18} />
             </button>
 
+            {/* User - Desktop + Mobile */}
             <button
               onClick={() => navigate("/login")}
+              title="Login"
               className="
-    hidden
-    md:flex
-    h-10
-    w-10
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-[#d8b897]/40
-    bg-[#5C4033]
-    text-[#F8F1E7]
-    transition
-    hover:bg-white/25
-    cursor-pointer
-  "
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#d8b897]/40
+      bg-[#5C4033]
+      text-[#F8F1E7]
+      transition
+      hover:bg-white/25
+      cursor-pointer
+    "
             >
               <User size={18} />
             </button>
 
+            {/* Orders - Desktop only */}
             <button
               onClick={() => navigate("/orders")}
               title="My Orders"
               className="
-    hidden
-    md:flex
-    h-10
-    w-10
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-[#d8b897]/40
-    bg-[#5C4033]
-    text-[#F8F1E7]
-    transition
-    hover:bg-white/25
-    cursor-pointer
-  "
+      hidden
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#d8b897]/40
+      bg-[#5C4033]
+      text-[#F8F1E7]
+      transition
+      hover:bg-white/25
+      cursor-pointer
+      md:flex
+    "
             >
               <Package size={18} />
             </button>
 
+            {/* Cart - Desktop + Mobile */}
             <button
               onClick={() => navigate("/cart")}
+              title="Cart"
               className="
-    relative
-    flex
-    h-10
-    w-10
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-[#5C4033]/40
-    bg-[#5C4033]
-    text-[#F8F1E7]
-    hover:bg-white/25
-  "
+      relative
+      flex
+      h-10
+      w-10
+      items-center
+      justify-center
+      rounded-full
+      border
+      border-[#5C4033]/40
+      bg-[#5C4033]
+      text-[#F8F1E7]
+      transition
+      hover:bg-white/25
+      cursor-pointer
+    "
             >
               <ShoppingBag size={18} />
 
               {cart.length > 0 && (
                 <span
                   className="
-    absolute
-    -top-2
-    -right-2
-    flex
-    h-5
-    min-w-[22px]
-    items-center
-    justify-center
-    rounded-full
-    border
-    border-[#C97A34]
-    bg-white
-    px-1
-    text-[10px]
-    font-bold
-    text-[#C97A34]
-    shadow-sm
-  "
+          absolute
+          -right-2
+          -top-2
+          flex
+          h-5
+          min-w-[22px]
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#C97A34]
+          bg-white
+          px-1
+          text-[10px]
+          font-bold
+          text-[#C97A34]
+          shadow-sm
+        "
                 >
                   {cart.reduce((total, item) => total + item.quantity, 0)}
                 </span>
               )}
             </button>
 
+            {/* Mobile Menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-[#F8F1E7]"
+              className="cursor-pointer text-[#F8F1E7] lg:hidden"
             >
               {isOpen ? <X size={26} /> : <Menu size={26} />}
             </button>
