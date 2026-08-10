@@ -1,59 +1,65 @@
-const QuantitySelector = ({ quantity, onIncrease, onDecrease }) => {
+const QuantitySelector = ({
+  quantity,
+  onIncrease,
+  onDecrease,
+  onQuantityChange,
+}) => {
   return (
-    <div className="mt-8">
-      <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-[#2E1E13]">
-        Quantity
-      </h3>
+    <div
+      style={{
+        position: "relative",
+        // zIndex: 999999,
+        background: "yellow",
+        padding: "20px",
+        width: "fit-content",
+      }}
+    >
+      <p>Quantity</p>
 
       <div
-        className="
-          flex
-          w-fit
-          items-center
-          gap-5
-          rounded-2xl
-          bg-white
-          border
-          border-[#E7D8CA]
-          px-5
-          py-3
-        "
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+        }}
       >
         <button
-          onClick={onDecrease}
-          disabled={quantity === 1}
-          className="
-            flex
-            h-8
-            w-8
-            items-center
-            justify-center
-            rounded-full
-            bg-[#F8F2EA]
-            text-xl
-            cursor-pointer
-          "
+          type="button"
+          onClick={() => {
+            console.log("MINUS CLICKED");
+            onDecrease();
+          }}
         >
-          -
+          −
         </button>
 
-        <span className="min-w-5 text-center font-semibold text-[#2E1E13]">
-          {quantity}
-        </span>
+        <input
+          type="text"
+          value={quantity}
+          onChange={(e) => {
+            console.log("INPUT CHANGED:", e.target.value);
+            onQuantityChange(e.target.value);
+          }}
+          onClick={() => {
+            console.log("INPUT CLICKED");
+          }}
+          style={{
+            width: "60px",
+            height: "40px",
+            border: "3px solid red",
+            textAlign: "center",
+            color: "black",
+            background: "white",
+            cursor: "text",
+          }}
+        />
 
         <button
-          onClick={onIncrease}
-          className="
-            flex
-            h-8
-            w-8
-            items-center
-            justify-center
-            rounded-full
-            bg-[#F8F2EA]
-            text-xl
-            cursor-pointer
-          "
+          type="button"
+          onClick={() => {
+            console.log("PLUS CLICKED");
+            onIncrease();
+          }}
         >
           +
         </button>

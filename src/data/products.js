@@ -41,10 +41,6 @@ export const categories = [
     label: "All Products",
   },
   {
-    id: "peanut-butter",
-    label: "Peanut Butter Bar",
-  },
-  {
     id: "peanut-chikki",
     label: "Peanut Chikki Bar",
   },
@@ -55,6 +51,10 @@ export const categories = [
   {
     id: "no-added-sugar",
     label: "No Added Sugar",
+  },
+  {
+    id: "peanut-butter",
+    label: "Peanut Butter Bar",
   },
 ];
 

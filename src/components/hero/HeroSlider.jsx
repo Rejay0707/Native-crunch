@@ -31,6 +31,7 @@ const HeroSlider = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeSlide}
+          className="h-full"
           initial={{
             x: activeSlide === 0 ? -150 : 150,
             opacity: 0,

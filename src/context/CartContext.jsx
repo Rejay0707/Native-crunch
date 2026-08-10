@@ -16,20 +16,28 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("nativeCrunchCart", JSON.stringify(cart));
   }, [cart]);
 
-  const addToCart = (product) => {
-    const defaultVariant =
-      product.variants.find((v) => v.weight === "50g") || product.variants[0];
+  const addToCart = (product, quantity = 1) => {
+    const selectedVariant =
+      product.selectedVariant ||
+      product.variants.find((v) => v.weight === "50g") ||
+      product.variants.find((v) => v.weight === "40g") ||
+      product.variants[0];
+
+    const quantityToAdd = Math.max(1, Number(quantity) || 1);
 
     setCart((prev) => {
       const existing = prev.find(
         (item) =>
-          item.id === product.id && item.weight === defaultVariant.weight,
+          item.id === product.id && item.weight === selectedVariant.weight,
       );
 
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id && item.weight === defaultVariant.weight
-            ? { ...item, quantity: item.quantity + 1 }
+          item.id === product.id && item.weight === selectedVariant.weight
+            ? {
+                ...item,
+                quantity: item.quantity + quantityToAdd,
+              }
             : item,
         );
       }
@@ -38,27 +46,39 @@ export const CartProvider = ({ children }) => {
         ...prev,
         {
           ...product,
-          weight: defaultVariant.weight,
-          price: defaultVariant.price,
-          quantity: 1,
+          weight: selectedVariant.weight,
+          price: selectedVariant.price,
+          quantity: quantityToAdd,
         },
       ];
     });
   };
 
+  const setQuantity = (productId, weight, quantity) => {
+    const newQuantity = Math.max(1, Number(quantity) || 1);
+
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === productId && item.weight === weight
+          ? { ...item, quantity: newQuantity }
+          : item,
+      ),
+    );
+  };
+
   const addCustomizedGiftBox = (giftBox) => {
-  setCart((prev) => [...prev, giftBox]);
-};
+    setCart((prev) => [...prev, giftBox]);
+  };
 
   const increaseQuantity = (productId, weight) => {
-  setCart((prev) =>
-    prev.map((item) =>
-      item.id === productId && item.weight === weight
-        ? { ...item, quantity: item.quantity + 1 }
-        : item
-    )
-  );
-};
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === productId && item.weight === weight
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    );
+  };
 
   const decreaseQuantity = (productId, weight) => {
     setCart((prev) =>
@@ -98,6 +118,7 @@ export const CartProvider = ({ children }) => {
         decreaseQuantity,
         increaseQuantity,
         addGiftBoxToCart,
+        setQuantity,
         message,
         setCart,
         isCartOpen,

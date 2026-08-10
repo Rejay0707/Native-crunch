@@ -4,7 +4,6 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { products } from "../data/products";
 import { useCart } from "../context/CartContext";
-
 import ProductGallery from "../components/product/ProductGallery";
 import ProductInfo from "../components/product/ProductInfo";
 
@@ -20,7 +19,7 @@ const ProductDetailsContainer = () => {
     product?.variants?.[0] || null,
   );
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setProductQuantity] = useState(1);
   const [showMessage, setShowMessage] = useState(false);
 
   if (!product) {
@@ -39,20 +38,25 @@ const ProductDetailsContainer = () => {
   ];
 
   const handleIncrease = () => {
-    setQuantity((prev) => prev + 1);
+    setProductQuantity((prev) => Number(prev || 0) + 1);
   };
 
   const handleDecrease = () => {
-    setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+    setProductQuantity((prev) => (Number(prev) > 1 ? Number(prev) - 1 : 1));
+  };
+
+  const handleQuantityChange = (value) => {
+    setProductQuantity(value);
   };
 
   const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addToCart({
+    addToCart(
+      {
         ...product,
         selectedVariant,
-      });
-    }
+      },
+      Number(quantity) || 1,
+    );
 
     setShowMessage(true);
 
@@ -62,34 +66,35 @@ const ProductDetailsContainer = () => {
   };
 
   const handleBuyNow = () => {
-  handleAddToCart();
-  navigate("/cart");
-};
+    handleAddToCart();
+    navigate("/cart");
+  };
 
   return (
     <>
-    <Navbar />
-    <section className="min-h-screen bg-[#F8F2EA] py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Product Section */}
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-          <ProductGallery images={images} />
+      <Navbar />
+      <section className="min-h-screen bg-[#F8F2EA] py-20 lg:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Product Section */}
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <ProductGallery images={images} />
 
-          <ProductInfo
-            product={product}
-            selectedVariant={selectedVariant}
-            onVariantChange={setSelectedVariant}
-            quantity={quantity}
-            onIncrease={handleIncrease}
-            onDecrease={handleDecrease}
-            onAddToCart={handleAddToCart}
-            onShopMore={handleBuyNow}
-            showMessage={showMessage}
-          />
+            <ProductInfo
+              product={product}
+              selectedVariant={selectedVariant}
+              onVariantChange={setSelectedVariant}
+              quantity={quantity}
+              onIncrease={handleIncrease}
+              onDecrease={handleDecrease}
+              onQuantityChange={handleQuantityChange}
+              onAddToCart={handleAddToCart}
+              onBuyNow={handleBuyNow}
+              showMessage={showMessage}
+            />
+          </div>
         </div>
-      </div>
-    </section>
-    <Footer />
+      </section>
+      <Footer />
     </>
   );
 };

@@ -8,6 +8,7 @@ const ProductInfo = ({
   quantity,
   onIncrease,
   onDecrease,
+  onQuantityChange,
   onAddToCart,
   onBuyNow,
   showMessage,
@@ -17,6 +18,12 @@ const ProductInfo = ({
   return (
     <div className="flex flex-col justify-center">
       {/* Tags */}
+      <div
+        onClick={() => console.log("PRODUCT INFO CLICKED")}
+        // className="relative z-[9999] bg-red-200 p-4"
+      >
+        CLICK TEST
+      </div>
       <div className="flex flex-wrap gap-3">
         {product.tags.map((tag) => (
           <span
@@ -105,6 +112,7 @@ const ProductInfo = ({
         quantity={quantity}
         onIncrease={onIncrease}
         onDecrease={onDecrease}
+        onQuantityChange={onQuantityChange}
       />
 
       {/* Buttons */}

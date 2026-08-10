@@ -41,29 +41,21 @@ const Navbar = () => {
               className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
 
+            {/* LOGO + BRAND (HOME LINK) */}
+
             <div
-              className="flex flex-col"
+              className="flex items-center"
               style={{
-                lineHeight: "1.05",
+                lineHeight: "1",
               }}
             >
               <span
-                className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#F8F1E7]"
+                className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#2E1E13]"
                 style={{
                   fontFamily: "'Bebas Neue', sans-serif",
                 }}
               >
-                NATIVE
-              </span>
-
-              <span
-                className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#F8F1E7]"
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  marginTop: "-3px",
-                }}
-              >
-                CRUNCH
+                NATIVE CRUNCH
               </span>
             </div>
           </Link>

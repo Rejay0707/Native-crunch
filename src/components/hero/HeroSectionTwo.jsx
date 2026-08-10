@@ -9,11 +9,11 @@ const HeroSectionTwo = () => {
   return (
     <section
       className="
-    relative
-    h-full
-    overflow-hidden
-    
-  "
+        relative
+        h-full
+        overflow-hidden
+        bg-[#F8F2EA]   /* ← ADDED */
+      "
     >
       {/* Background */}
       <div className="absolute inset-0">
@@ -87,7 +87,6 @@ const HeroSectionTwo = () => {
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
                   <div className="h-3 w-3 rounded-full bg-[#C97A34]" />
-
                   <span className="font-medium text-[#2E1E13]">{item}</span>
                 </div>
               ))}
