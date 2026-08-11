@@ -18,18 +18,21 @@ export const OrderProvider = ({ children }) => {
 
   // Create a new order
   const createOrder = ({
-    cart,
-    shippingDetails,
-    subtotal,
-    shippingCharge,
-    total,
-  }) => {
+  cart,
+  shippingDetails,
+  subtotal,
+  shippingCharge,
+  total,
+  paymentMethod,
+}) => {
     const order = {
       id: `NC${Date.now()}`,
 
       orderDate: new Date().toISOString(),
 
       status: "Order Placed",
+
+      paymentMethod,
 
       items: cart.map((item) => ({
         id: item.id,

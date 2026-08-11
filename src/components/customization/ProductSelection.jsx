@@ -1,9 +1,8 @@
-import { products } from "../../data/products";
 import CustomizationProductCard from "./CustomizationProductCard";
 
-const ProductSelection = ({addProduct}) => {
+const ProductSelection = ({ products = [], addProduct }) => {
   return (
-    <section className="mt-12 ">
+    <section className="mt-12">
       {/* Section Heading */}
       <div className="mb-10">
         <p className="font-semibold uppercase tracking-[0.2em] text-[#C97A34]">
@@ -21,15 +20,21 @@ const ProductSelection = ({addProduct}) => {
       </div>
 
       {/* Products Grid */}
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {products.map((product) => (
-          <CustomizationProductCard
-            key={product.id}
-            product={product}
-            addProduct={addProduct}
-          />
-        ))}
-      </div>
+      {products.length > 0 ? (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (
+            <CustomizationProductCard
+              key={product.id}
+              product={product}
+              addProduct={addProduct}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="py-12 text-center text-[#6A5B4E]">
+          No products available.
+        </div>
+      )}
     </section>
   );
 };

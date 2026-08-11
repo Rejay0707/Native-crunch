@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
-import { categories } from "../../data/products";
 
-const ProductTabs = ({ selectedCategory, setSelectedCategory }) => {
+const ProductTabs = ({
+  categories = [],
+  selectedCategory,
+  setSelectedCategory,
+}) => {
   return (
     <motion.div
       initial={{
@@ -47,9 +50,9 @@ const ProductTabs = ({ selectedCategory, setSelectedCategory }) => {
           }}
           onClick={() => setSelectedCategory(category.id)}
           className={`
+            rounded-full
             px-5
             py-2
-            rounded-full
             text-sm
             font-medium
             transition-all
@@ -58,7 +61,7 @@ const ProductTabs = ({ selectedCategory, setSelectedCategory }) => {
             ${
               selectedCategory === category.id
                 ? "bg-[#C97A34] text-white shadow-lg"
-                : "bg-white border border-[#e5d8c9] text-[#2E1E13]"
+                : "border border-[#e5d8c9] bg-white text-[#2E1E13]"
             }
           `}
         >

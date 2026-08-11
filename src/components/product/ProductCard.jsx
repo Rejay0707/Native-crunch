@@ -257,7 +257,6 @@
 
 // export default ProductCard;
 
-
 import { useState, useEffect } from "react";
 import Button from "../common/Button";
 import { useNavigate } from "react-router-dom";
@@ -268,7 +267,7 @@ const ProductCard = ({ product }) => {
   const [showMessage, setShowMessage] = useState(false);
   const navigate = useNavigate();
   const { cart, addToCart, decreaseQuantity, setQuantity } = useCart(); // ✅ Import setQuantity from context
-  
+
   // Default to 50g, otherwise 40g, otherwise the first variant
   const [selectedVariant, setSelectedVariant] = useState(
     product.variants.find((v) => v.weight === "50g") ||
@@ -306,20 +305,26 @@ const ProductCard = ({ product }) => {
       >
         <div className="bg-[#faf7f2] p-3 md:p-5 overflow-hidden">
           <div
-            onClick={() => navigate(`/product/${product.id}`)}
+            onClick={() => {
+              if (window.innerWidth < 768) {
+                setShowBack((prev) => !prev);
+              } else {
+                navigate(`/product/${product.id}`);
+              }
+            }}
             className="
-  relative
-  flex
-  items-center
-  justify-center
-  w-full
-  h-[260px]
-  sm:h-[300px]
-  md:h-[320px]
-  lg:h-[340px]
-  group
-  cursor-pointer
-"
+    relative
+    flex
+    items-center
+    justify-center
+    w-full
+    h-[260px]
+    sm:h-[300px]
+    md:h-[320px]
+    lg:h-[340px]
+    group
+    cursor-pointer
+  "
           >
             {/* FRONT */}
             <img

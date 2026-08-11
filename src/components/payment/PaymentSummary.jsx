@@ -149,6 +149,7 @@ const PaymentSummary = ({
   shippingCharge,
   total,
   shippingDetails,
+  paymentMethod,
 }) => {
   const { setCart } = useCart();
   const { createOrder } = useOrders();
@@ -167,6 +168,7 @@ const PaymentSummary = ({
       subtotal,
       shippingCharge,
       total,
+      paymentMethod,
     });
 
     // Clear cart after order is created

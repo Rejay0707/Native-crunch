@@ -17,10 +17,13 @@ const Home = () => {
   const { addToCart, message } = useCart();
 
   const {
+    categories,
     selectedCategory,
     setSelectedCategory,
     filteredProducts,
     bestSellers,
+    loading,
+    error,
   } = useHomeContainer();
 
   return (
@@ -35,7 +38,6 @@ const Home = () => {
         </div>
       )}
 
-      
       <HeroSlider />
 
       {/* <BestSellerSection products={bestSellers} /> */}
@@ -73,6 +75,7 @@ const Home = () => {
 
           <div className="mt-8">
             <ProductTabs
+              categories={categories}
               selectedCategory={selectedCategory}
               setSelectedCategory={setSelectedCategory}
             />

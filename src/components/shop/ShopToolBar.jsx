@@ -53,7 +53,7 @@ const ShopToolBar = ({
             Products
           </p>
 
-          <select
+          {/* <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}
             className="rounded-xl border border-[#E7D8CA] bg-white px-4 py-2 text-sm outline-none transition focus:border-[#8B5E3C]"
@@ -63,7 +63,7 @@ const ShopToolBar = ({
             <option value="name-desc">Name (Z - A)</option>
             <option value="price-low">Price: Low → High</option>
             <option value="price-high">Price: High → Low</option>
-          </select>
+          </select> */}
         </div>
       </div>
     </section>

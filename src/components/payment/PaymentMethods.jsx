@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import {
   CreditCard,
   Smartphone,
@@ -7,9 +7,11 @@ import {
   MapPin,
 } from "lucide-react";
 
-const PaymentMethods = ({ shippingDetails }) => {
-  const [paymentMethod, setPaymentMethod] = useState("upi");
-
+const PaymentMethods = ({
+  shippingDetails,
+  paymentMethod,
+  setPaymentMethod,
+}) => {
   const methods = [
     {
       id: "upi",
@@ -26,7 +28,6 @@ const PaymentMethods = ({ shippingDetails }) => {
       title: "Net Banking",
       icon: <Building2 size={20} />,
     },
-    
   ];
 
   return (
@@ -42,9 +43,7 @@ const PaymentMethods = ({ shippingDetails }) => {
 
         {shippingDetails ? (
           <div className="space-y-2 text-[#444]">
-            <p className="font-semibold text-lg">
-              {shippingDetails.fullName}
-            </p>
+            <p className="font-semibold text-lg">{shippingDetails.fullName}</p>
 
             <p>{shippingDetails.mobile}</p>
 
@@ -52,20 +51,16 @@ const PaymentMethods = ({ shippingDetails }) => {
 
             <p>
               {shippingDetails.address}
-              {shippingDetails.landmark &&
-                `, ${shippingDetails.landmark}`}
+              {shippingDetails.landmark && `, ${shippingDetails.landmark}`}
             </p>
 
             <p>
-              {shippingDetails.city},{" "}
-              {shippingDetails.state} -{" "}
+              {shippingDetails.city}, {shippingDetails.state} -{" "}
               {shippingDetails.pincode}
             </p>
           </div>
         ) : (
-          <p className="text-red-500">
-            Shipping details not found.
-          </p>
+          <p className="text-red-500">Shipping details not found.</p>
         )}
       </div>
 
@@ -86,22 +81,16 @@ const PaymentMethods = ({ shippingDetails }) => {
               }`}
             >
               <div className="flex items-center gap-4">
-                <div className="text-[#C97A34]">
-                  {method.icon}
-                </div>
+                <div className="text-[#C97A34]">{method.icon}</div>
 
-                <span className="font-medium">
-                  {method.title}
-                </span>
+                <span className="font-medium">{method.title}</span>
               </div>
 
               <input
                 type="radio"
                 value={method.id}
                 checked={paymentMethod === method.id}
-                onChange={() =>
-                  setPaymentMethod(method.id)
-                }
+                onChange={() => setPaymentMethod(method.id)}
               />
             </label>
           ))}
