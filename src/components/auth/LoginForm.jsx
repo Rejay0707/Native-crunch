@@ -106,19 +106,19 @@ const LoginForm = ({ onSubmit }) => {
           Remember me
         </label>
 
-        <button
-          type="button"
+        <Link
+          to="/forgot-password"
           className="
-            cursor-pointer
-            text-sm
-            font-medium
-            text-[#C97A34]
-            transition
-            hover:text-[#A85F24]
-          "
+    cursor-pointer
+    text-sm
+    font-medium
+    text-[#C97A34]
+    transition
+    hover:text-[#A85F24]
+  "
         >
           Forgot Password?
-        </button>
+        </Link>
       </div>
 
       {/* Login Button */}
