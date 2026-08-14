@@ -8,14 +8,17 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { CartProvider } from "./context/CartContext";
 import { CheckoutProvider } from "./context/CheckoutContext";
+import AuthProvider from "./context/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CartProvider>
-      <CheckoutProvider>
-        <App />
-      </CheckoutProvider>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <CheckoutProvider>
+          <App />
+        </CheckoutProvider>
+      </CartProvider>
+    </AuthProvider>
 
     <ToastContainer
       position="top-right"

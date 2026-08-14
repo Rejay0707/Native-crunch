@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { ShoppingBag, Search, User, Package, Menu, X } from "lucide-react";
+import { useAuth } from "../../context/useAuth";
 import { useCart } from "../../context/CartContext";
 import { useOrders } from "../../context/OrderContext";
 import logo from "../../assets/logo3 (2).png";
 
 const Navbar = () => {
+  const { user, isAuthenticated, logout } = useAuth();
+
+  console.log("Navbar user:", user);
+  console.log("Authenticated:", isAuthenticated);
+
   const navigate = useNavigate();
   // const location = useLocation();
   // const isAboutPage = location.pathname === "/about";
@@ -113,27 +119,39 @@ const Navbar = () => {
 
             {/* PRODUCTS */}
             <button
-              onClick={() => navigate("/customization")}
+              onClick={() => {
+                if (!isAuthenticated) {
+                  navigate("/login");
+                  return;
+                }
+
+                navigate("/customization");
+              }}
               className={navButtonClass}
             >
               Customization
             </button>
 
             <>
-              {orders.length > 0 && (
-                <>
-                  <span className="text-[#ead9c8]">|</span>
+              <>
+                <span className="text-[#ead9c8]">|</span>
 
-                  <button
-                    onClick={() => navigate("/orders")}
-                    className={navButtonClass}
-                  >
-                    Orders
-                  </button>
-                </>
-              )}
+                <button
+                  onClick={() => {
+                    if (!isAuthenticated) {
+                      navigate("/login");
+                      return;
+                    }
 
-              <span className="text-[#ead9c8]">|</span>
+                    navigate("/orders");
+                  }}
+                  className={navButtonClass}
+                >
+                  Orders
+                </button>
+              </>
+
+              {/* <span className="text-[#ead9c8]">|</span> */}
 
               {/* ABOUT */}
               <div className="group relative">
@@ -207,10 +225,121 @@ const Navbar = () => {
             </button>
 
             {/* User - Desktop + Mobile */}
-            <button
-              onClick={() => navigate("/login")}
-              title="Login"
-              className="
+            {/* User - Desktop + Mobile */}
+            {isAuthenticated ? (
+              <div className="relative group">
+                <button
+                  type="button"
+                  title={user?.name || "Account"}
+                  className="
+        flex
+        h-10
+        items-center
+        gap-2
+        rounded-full
+        border
+        border-[#d8b897]/40
+        bg-[#5C4033]
+        px-3
+        text-[#F8F1E7]
+        transition
+        hover:bg-white/25
+        cursor-pointer
+      "
+                >
+                  <User size={18} />
+
+                  <span className="hidden xl:block max-w-[120px] truncate text-sm">
+                    {user?.name}
+                  </span>
+                </button>
+
+                {/* Account Dropdown */}
+                <div
+                  className="
+        absolute
+        right-0
+        top-full
+        mt-2
+        w-64
+        rounded-xl
+        border
+        border-[#E8DED3]
+        bg-white
+        p-4
+        shadow-xl
+        opacity-0
+        invisible
+        translate-y-2
+        transition-all
+        duration-200
+        group-hover:visible
+        group-hover:opacity-100
+        group-hover:translate-y-0
+      "
+                >
+                  {/* User Information */}
+                  <div className="border-b border-[#E8DED3] pb-3">
+                    <p className="font-semibold text-[#2E1E13]">{user?.name}</p>
+
+                    <p className="mt-1 truncate text-sm text-[#6A5B4E]">
+                      {user?.email}
+                    </p>
+                  </div>
+
+                  {/* My Account */}
+                  <button
+                    type="button"
+                    onClick={() => navigate("/account")}
+                    className="
+          mt-3
+          w-full
+          rounded-lg
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-medium
+          text-[#2E1E13]
+          transition
+          hover:bg-[#F8F2EA]
+          cursor-pointer
+        "
+                  >
+                    My Account
+                  </button>
+
+                  {/* Logout */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      logout();
+                      navigate("/login");
+                    }}
+                    className="
+          mt-1
+          w-full
+          rounded-lg
+          px-3
+          py-2
+          text-left
+          text-sm
+          font-medium
+          text-red-600
+          transition
+          hover:bg-red-50
+          cursor-pointer
+        "
+                  >
+                    Logout
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <button
+                onClick={() => navigate("/login")}
+                title="Login"
+                className="
       flex
       h-10
       w-10
@@ -225,13 +354,21 @@ const Navbar = () => {
       hover:bg-white/25
       cursor-pointer
     "
-            >
-              <User size={18} />
-            </button>
+              >
+                <User size={18} />
+              </button>
+            )}
 
             {/* Orders - Desktop only */}
             <button
-              onClick={() => navigate("/orders")}
+              onClick={() => {
+                if (!isAuthenticated) {
+                  navigate("/login");
+                  return;
+                }
+
+                navigate("/orders");
+              }}
               title="My Orders"
               className="
       hidden
@@ -255,7 +392,14 @@ const Navbar = () => {
 
             {/* Cart - Desktop + Mobile */}
             <button
-              onClick={() => navigate("/cart")}
+              onClick={() => {
+                if (!isAuthenticated) {
+                  navigate("/login");
+                  return;
+                }
+
+                navigate("/cart");
+              }}
               title="Cart"
               className="
       relative
@@ -336,6 +480,12 @@ const Navbar = () => {
 
               <button
                 onClick={() => {
+                  if (!isAuthenticated) {
+                    navigate("/login");
+                    setIsOpen(false);
+                    return;
+                  }
+
                   navigate("/customization");
                   setIsOpen(false);
                 }}
@@ -344,17 +494,22 @@ const Navbar = () => {
                 Customization
               </button>
 
-              {orders.length > 0 && (
-                <button
-                  onClick={() => {
-                    navigate("/orders");
+              {/* <span className="text-[#ead9c8]">|</span> */}
+              <button
+                onClick={() => {
+                  if (!isAuthenticated) {
+                    navigate("/login");
                     setIsOpen(false);
-                  }}
-                  className="text-left text-[#F8F1E7]"
-                >
-                  Orders
-                </button>
-              )}
+                    return;
+                  }
+
+                  navigate("/orders");
+                  setIsOpen(false);
+                }}
+                className="text-left text-[#F8F1E7]"
+              >
+                Orders
+              </button>
 
               <button
                 onClick={() => {

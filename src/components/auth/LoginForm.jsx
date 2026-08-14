@@ -2,11 +2,18 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, loading, error }) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      {/* Error */}
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          {error}
+        </div>
+      )}
+
       {/* Email */}
       <div>
         <label
@@ -18,6 +25,7 @@ const LoginForm = ({ onSubmit }) => {
 
         <input
           id="email"
+          name="email"
           type="email"
           required
           placeholder="Enter your email"
@@ -53,6 +61,7 @@ const LoginForm = ({ onSubmit }) => {
         <div className="relative">
           <input
             id="password"
+            name="password"
             type={showPassword ? "text" : "password"}
             required
             placeholder="Enter your password"
@@ -109,13 +118,13 @@ const LoginForm = ({ onSubmit }) => {
         <Link
           to="/forgot-password"
           className="
-    cursor-pointer
-    text-sm
-    font-medium
-    text-[#C97A34]
-    transition
-    hover:text-[#A85F24]
-  "
+            cursor-pointer
+            text-sm
+            font-medium
+            text-[#C97A34]
+            transition
+            hover:text-[#A85F24]
+          "
         >
           Forgot Password?
         </Link>
@@ -124,6 +133,7 @@ const LoginForm = ({ onSubmit }) => {
       {/* Login Button */}
       <button
         type="submit"
+        disabled={loading}
         className="
           w-full
           cursor-pointer
@@ -136,9 +146,11 @@ const LoginForm = ({ onSubmit }) => {
           transition
           hover:bg-[#B66E2F]
           active:scale-[0.99]
+          disabled:cursor-not-allowed
+          disabled:opacity-60
         "
       >
-        Login
+        {loading ? "Logging in..." : "Login"}
       </button>
 
       {/* Register */}
