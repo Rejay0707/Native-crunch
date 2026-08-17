@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 
-const ForgotPasswordForm = ({ onSubmit }) => {
+const ForgotPasswordForm = ({ onSubmit, loading, error }) => {
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      {/* Error */}
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          {error}
+        </div>
+      )}
+
       {/* Email */}
       <div>
         <label
@@ -14,9 +21,11 @@ const ForgotPasswordForm = ({ onSubmit }) => {
 
         <input
           id="email"
+          name="email"
           type="email"
           required
           placeholder="Enter your email"
+          disabled={loading}
           className="
             w-full
             rounded-lg
@@ -33,6 +42,8 @@ const ForgotPasswordForm = ({ onSubmit }) => {
             focus:border-[#C97A34]
             focus:ring-2
             focus:ring-[#C97A34]/10
+            disabled:cursor-not-allowed
+            disabled:bg-gray-50
           "
         />
       </div>
@@ -40,6 +51,7 @@ const ForgotPasswordForm = ({ onSubmit }) => {
       {/* Send OTP */}
       <button
         type="submit"
+        disabled={loading}
         className="
           w-full
           cursor-pointer
@@ -52,9 +64,11 @@ const ForgotPasswordForm = ({ onSubmit }) => {
           transition
           hover:bg-[#B66E2F]
           active:scale-[0.99]
+          disabled:cursor-not-allowed
+          disabled:opacity-60
         "
       >
-        Send OTP
+        {loading ? "Sending OTP..." : "Send OTP"}
       </button>
 
       {/* Back to Login */}

@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-const ResetPasswordForm = ({ onSubmit }) => {
+const ResetPasswordForm = ({ onSubmit, loading, error }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      {/* Error */}
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+          {error}
+        </div>
+      )}
+
       {/* New Password */}
       <div>
         <label
@@ -19,6 +26,7 @@ const ResetPasswordForm = ({ onSubmit }) => {
         <div className="relative">
           <input
             id="password"
+            name="password"
             type={showPassword ? "text" : "password"}
             required
             minLength={6}
@@ -56,9 +64,15 @@ const ResetPasswordForm = ({ onSubmit }) => {
               transition
               hover:text-[#2E1E13]
             "
-            aria-label={showPassword ? "Hide password" : "Show password"}
+            aria-label={
+              showPassword ? "Hide password" : "Show password"
+            }
           >
-            {showPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+            {showPassword ? (
+              <EyeOff size={19} />
+            ) : (
+              <Eye size={19} />
+            )}
           </button>
         </div>
 
@@ -79,6 +93,7 @@ const ResetPasswordForm = ({ onSubmit }) => {
         <div className="relative">
           <input
             id="confirmPassword"
+            name="password_confirmation"
             type={showConfirmPassword ? "text" : "password"}
             required
             minLength={6}
@@ -105,7 +120,9 @@ const ResetPasswordForm = ({ onSubmit }) => {
 
           <button
             type="button"
-            onClick={() => setShowConfirmPassword((prev) => !prev)}
+            onClick={() =>
+              setShowConfirmPassword((prev) => !prev)
+            }
             className="
               absolute
               right-3
@@ -122,7 +139,11 @@ const ResetPasswordForm = ({ onSubmit }) => {
                 : "Show confirm password"
             }
           >
-            {showConfirmPassword ? <EyeOff size={19} /> : <Eye size={19} />}
+            {showConfirmPassword ? (
+              <EyeOff size={19} />
+            ) : (
+              <Eye size={19} />
+            )}
           </button>
         </div>
       </div>
@@ -130,6 +151,7 @@ const ResetPasswordForm = ({ onSubmit }) => {
       {/* Reset Password */}
       <button
         type="submit"
+        disabled={loading}
         className="
           w-full
           cursor-pointer
@@ -142,9 +164,11 @@ const ResetPasswordForm = ({ onSubmit }) => {
           transition
           hover:bg-[#B66E2F]
           active:scale-[0.99]
+          disabled:cursor-not-allowed
+          disabled:opacity-60
         "
       >
-        Reset Password
+        {loading ? "Resetting Password..." : "Reset Password"}
       </button>
     </form>
   );

@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const BASE_URL =
-  "https://softlancex.com/native-crunch/backend/public/api";
+const BASE_URL = "https://softlancex.com/native-crunch/backend/public/api";
 
 export const registerUser = async (userData) => {
   const response = await axios.post(`${BASE_URL}/register`, userData, {
@@ -21,6 +20,29 @@ export const loginUser = async (credentials) => {
       "Content-Type": "application/json",
     },
   });
+
+  return response.data;
+};
+
+export const forgotPassword = async (email) => {
+  const response = await axios.post(
+    `${BASE_URL}/forgot-password`,
+    {
+      email,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    },
+  );
+
+  return response.data;
+};
+
+export const resetPassword = async (userData) => {
+  const response = await axios.post(`${BASE_URL}/reset-password`, userData);
 
   return response.data;
 };
