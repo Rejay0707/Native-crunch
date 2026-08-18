@@ -26,17 +26,12 @@ const ForgotPasswordContainer = () => {
 
       console.log("Forgot password response:", response);
 
-      // OTP verification page
-      navigate("/verify-otp", {
-        state: {
-          email,
-        },
-      });
+      // Store email for the complete reset flow
+      sessionStorage.setItem("resetEmail", email);
+
+      navigate("/verify-otp");
     } catch (error) {
       console.error("Forgot password error:", error);
-
-      console.log("Status:", error.response?.status);
-      console.log("Data:", error.response?.data);
 
       const message = error.response?.data?.message || "Unable to send OTP.";
 

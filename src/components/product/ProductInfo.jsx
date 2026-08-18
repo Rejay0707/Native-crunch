@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import ProductWeightSelector from "./ProductWeightSelector";
 import QuantitySelector from "./QuantitySelector";
+import { useAuth } from "../../context/useAuth";
 
 const ProductInfo = ({
   product,
@@ -13,7 +15,17 @@ const ProductInfo = ({
   onBuyNow,
   showMessage,
 }) => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const totalPrice = selectedVariant.price * quantity;
+  const handleBuyNow = () => {
+    if (!isAuthenticated) {
+      navigate("/login");
+      return;
+    }
+
+    onBuyNow();
+  };
 
   return (
     <div className="flex flex-col justify-center">
@@ -132,7 +144,7 @@ const ProductInfo = ({
         </button>
 
         <button
-          onClick={onBuyNow}
+          onClick={handleBuyNow}
           className="
             rounded-xl
             border

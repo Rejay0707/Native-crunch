@@ -41,8 +41,24 @@ export const forgotPassword = async (email) => {
   return response.data;
 };
 
+export const verifyResetOtp = async (userData) => {
+  const response = await axios.post(
+    `${BASE_URL}/verify-reset-otp`,
+    userData,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }
+  );
+
+  return response.data;
+};
+
 export const resetPassword = async (userData) => {
   const response = await axios.post(`${BASE_URL}/reset-password`, userData);
 
   return response.data;
 };
+

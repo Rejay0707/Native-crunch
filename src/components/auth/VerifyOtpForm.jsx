@@ -14,33 +14,34 @@ const VerifyOtpForm = ({ onSubmit }) => {
 
         <input
           id="otp"
+          name="otp"
           type="text"
           inputMode="numeric"
           maxLength={6}
           required
           placeholder="Enter 6-digit OTP"
           className="
-            w-full
-            rounded-lg
-            border
-            border-[#D9CEC3]
-            bg-white
-            px-4
-            py-3
-            text-center
-            text-lg
-            font-semibold
-            tracking-[0.4em]
-            text-[#2E1E13]
-            outline-none
-            transition
-            placeholder:text-sm
-            placeholder:tracking-normal
-            placeholder:text-[#A69A90]
-            focus:border-[#C97A34]
-            focus:ring-2
-            focus:ring-[#C97A34]/10
-          "
+    w-full
+    rounded-lg
+    border
+    border-[#D9CEC3]
+    bg-white
+    px-4
+    py-3
+    text-center
+    text-lg
+    font-semibold
+    tracking-[0.4em]
+    text-[#2E1E13]
+    outline-none
+    transition
+    placeholder:text-sm
+    placeholder:tracking-normal
+    placeholder:text-[#A69A90]
+    focus:border-[#C97A34]
+    focus:ring-2
+    focus:ring-[#C97A34]/10
+  "
         />
       </div>
 

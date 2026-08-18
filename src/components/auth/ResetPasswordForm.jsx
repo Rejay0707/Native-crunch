@@ -29,7 +29,7 @@ const ResetPasswordForm = ({ onSubmit, loading, error }) => {
             name="password"
             type={showPassword ? "text" : "password"}
             required
-            minLength={6}
+            minLength={8}
             placeholder="Enter new password"
             className="
               w-full
@@ -77,7 +77,7 @@ const ResetPasswordForm = ({ onSubmit, loading, error }) => {
         </div>
 
         <p className="mt-2 text-xs text-[#8A796B]">
-          Password must be at least 6 characters.
+          Password must be at least 8 characters.
         </p>
       </div>
 

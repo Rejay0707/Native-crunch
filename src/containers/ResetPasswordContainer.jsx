@@ -34,8 +34,6 @@ const ResetPasswordContainer = () => {
       const token = sessionStorage.getItem("resetToken");
 
       // Check what is actually stored
-      console.log("Reset email:", email);
-      console.log("Reset token:", token);
 
       if (!email) {
         setError("Reset session expired. Please request a new OTP.");
@@ -47,7 +45,7 @@ const ResetPasswordContainer = () => {
 
       const response = await resetPassword({
         email,
-        token,
+        reset_token: token,
         password,
         password_confirmation: passwordConfirmation,
       });
@@ -66,8 +64,6 @@ const ResetPasswordContainer = () => {
         "Unable to reset password. Please try again.";
 
       setError(message);
-    } finally {
-      setLoading(false);
     }
   };
 
