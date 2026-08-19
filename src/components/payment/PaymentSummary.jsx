@@ -140,42 +140,21 @@
 // export default PaymentSummary;
 
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../context/CartContext";
-import { useOrders } from "../../context/OrderContext";
 
 const PaymentSummary = ({
-  cart,
-  subtotal,
-  shippingCharge,
-  total,
+  order,
   shippingDetails,
   paymentMethod,
 }) => {
-  const { setCart } = useCart();
-  const { createOrder } = useOrders();
-
   const navigate = useNavigate();
 
   const handlePayment = () => {
-    if (cart.length === 0) {
-      return;
-    }
+    console.log("Payment method:", paymentMethod);
+    console.log("Order ID:", order.id);
+    console.log("Order Number:", order.order_number);
 
-    // Create and save the order
-    const order = createOrder({
-      cart,
-      shippingDetails,
-      subtotal,
-      shippingCharge,
-      total,
-      paymentMethod,
-    });
-
-    // Clear cart after order is created
-    setCart([]);
-
-    // Go to success page with the order ID
-    navigate(`/success?orderId=${order.id}`);
+    // Payment API will be connected here later.
+    // For now, just verify the order information.
   };
 
   return (
@@ -183,7 +162,9 @@ const PaymentSummary = ({
       {/* Shipping Address */}
       <div className="mb-6 rounded-xl border border-[#E8D8C8] bg-[#FAF7F2] p-4">
         <div className="mb-3 flex items-center justify-between">
-          <h3 className="font-semibold text-[#2E1E13]">Shipping Address</h3>
+          <h3 className="font-semibold text-[#2E1E13]">
+            Shipping Address
+          </h3>
 
           <button
             type="button"
@@ -194,47 +175,70 @@ const PaymentSummary = ({
           </button>
         </div>
 
-        {shippingDetails ? (
-          <>
-            <p className="font-medium">{shippingDetails.fullName}</p>
+        <p className="font-medium">
+          {shippingDetails.fullName}
+        </p>
 
-            <p className="text-sm text-gray-600">{shippingDetails.mobile}</p>
+        <p className="text-sm text-gray-600">
+          {shippingDetails.mobile}
+        </p>
 
-            <p className="mt-2 text-sm text-gray-600">
-              {shippingDetails.address}
-            </p>
+        <p className="mt-2 text-sm text-gray-600">
+          {shippingDetails.address}
+        </p>
 
-            <p className="text-sm text-gray-600">
-              {shippingDetails.landmark && `${shippingDetails.landmark}, `}
-              {shippingDetails.city}, {shippingDetails.state} -{" "}
-              {shippingDetails.pincode}
-            </p>
-          </>
-        ) : (
-          <p className="text-sm text-gray-500">
-            Shipping address not available.
-          </p>
-        )}
+        <p className="text-sm text-gray-600">
+          {shippingDetails.landmark &&
+            `${shippingDetails.landmark}, `}
+
+          {shippingDetails.city}, {shippingDetails.state} -{" "}
+          {shippingDetails.pincode}
+        </p>
+      </div>
+
+      {/* Order information */}
+      <div className="mb-6">
+        <p className="text-sm text-gray-500">
+          Order Number
+        </p>
+
+        <p className="font-semibold text-[#2E1E13]">
+          {order.order_number}
+        </p>
       </div>
 
       {/* Order Summary */}
-      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">Order Summary</h2>
+      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">
+        Order Summary
+      </h2>
 
+      {/* Items */}
       <div className="space-y-5">
-        {cart.map((item) => (
+        {order.items?.map((item, index) => (
           <div
-            key={`${item.id}-${item.weight}`}
-            className="flex items-center justify-between"
+            key={item.id || index}
+            className="flex items-center justify-between gap-4"
           >
             <div>
-              <p className="font-semibold">{item.name}</p>
+              <p className="font-semibold">
+                {item.product_name ||
+                  item.name ||
+                  "Product"}
+              </p>
 
               <p className="text-sm text-gray-500">
-                {item.weight} × {item.quantity}
+                {item.weight && `${item.weight} × `}
+                {item.quantity}
               </p>
             </div>
 
-            <p className="font-semibold">₹{item.price * item.quantity}</p>
+            <p className="font-semibold">
+              ₹
+              {item.subtotal ||
+                item.total ||
+                item.price * item.quantity ||
+                0}
+            </p>
           </div>
         ))}
       </div>
@@ -245,27 +249,25 @@ const PaymentSummary = ({
       <div className="flex justify-between">
         <span>Subtotal</span>
 
-        <span>₹{subtotal}</span>
+        <span>
+          ₹{order.subtotal}
+        </span>
       </div>
 
       {/* Shipping */}
       <div className="mt-3 flex justify-between">
         <span>Shipping</span>
 
-        {shippingCharge === 0 ? (
-          <span className="font-semibold text-green-600">FREE</span>
+        {Number(order.shipping_charge) === 0 ? (
+          <span className="font-semibold text-green-600">
+            FREE
+          </span>
         ) : (
-          <span>₹{shippingCharge}</span>
+          <span>
+            ₹{order.shipping_charge}
+          </span>
         )}
       </div>
-
-      {/* Free Shipping Message */}
-      {shippingCharge > 0 && (
-        <p className="mt-4 rounded-lg bg-[#FFF4E8] p-3 text-sm text-[#8B5E3C]">
-          Add <strong>₹{Math.max(0, 500 - subtotal)}</strong> more to get{" "}
-          <strong>FREE shipping.</strong>
-        </p>
-      )}
 
       <hr className="my-6" />
 
@@ -273,14 +275,26 @@ const PaymentSummary = ({
       <div className="flex justify-between text-xl font-bold">
         <span>Total</span>
 
-        <span>₹{total}</span>
+        <span>
+          ₹{order.total}
+        </span>
+      </div>
+
+      {/* Payment method */}
+      <div className="mt-5 rounded-xl bg-[#FAF7F2] p-4">
+        <p className="text-sm text-gray-500">
+          Payment Method
+        </p>
+
+        <p className="mt-1 font-semibold uppercase text-[#2E1E13]">
+          {paymentMethod}
+        </p>
       </div>
 
       {/* Pay Now */}
       <button
         type="button"
         onClick={handlePayment}
-        disabled={cart.length === 0}
         className="
           mt-8
           w-full
@@ -292,8 +306,6 @@ const PaymentSummary = ({
           text-white
           transition
           hover:bg-[#B66E2F]
-          disabled:cursor-not-allowed
-          disabled:bg-gray-300
         "
       >
         Pay Now

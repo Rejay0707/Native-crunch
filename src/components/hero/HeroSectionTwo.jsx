@@ -86,7 +86,7 @@ const HeroSectionTwo = () => {
                 "Family Favourite",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-3">
-                  <div className="h-3 w-3 rounded-full bg-[#C97A34]" />
+                  <div className="h-3 w-3 rounded-full bg-[#e8b085]" />
                   <span className="font-medium text-[#2E1E13]">{item}</span>
                 </div>
               ))}

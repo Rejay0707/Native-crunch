@@ -1,4 +1,10 @@
-const CheckoutForm = ({ register, errors, handleSubmit, onSubmit }) => {
+const CheckoutForm = ({
+  register,
+  errors,
+  handleSubmit,
+  onSubmit,
+  // isSubmitting,
+}) => {
   return (
     <form
       id="checkout-form"

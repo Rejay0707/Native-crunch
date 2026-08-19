@@ -1,4 +1,3 @@
-
 import { Minus, Plus } from "lucide-react";
 
 const OrderSummary = ({
@@ -8,17 +7,16 @@ const OrderSummary = ({
   total,
   increaseQuantity,
   decreaseQuantity,
+  isSubmitting,
 }) => {
   return (
     <div className="sticky top-28 min-w-0 overflow-hidden rounded-3xl bg-white p-6 shadow-lg">
-      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">
-        Order Summary
-      </h2>
+      <h2 className="mb-6 text-2xl font-bold text-[#2E1E13]">Order Summary</h2>
 
       <div className="space-y-5">
         {cart.map((item) => (
           <div
-            key={`${item.id}-${item.weight}`}
+            key={item.product_variant_id}
             className="flex min-w-0 justify-between gap-3"
           >
             <div className="min-w-0 flex-1">
@@ -26,7 +24,7 @@ const OrderSummary = ({
 
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <button
-                  onClick={() => decreaseQuantity(item.id, item.weight)}
+                  onClick={() => decreaseQuantity(item.product_variant_id)}
                   type="button"
                   className="flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-full border hover:bg-[#C97A34] hover:text-white"
                 >
@@ -38,7 +36,7 @@ const OrderSummary = ({
                 </span>
 
                 <button
-                  onClick={() => increaseQuantity(item.id, item.weight)}
+                  onClick={() => increaseQuantity(item.product_variant_id)}
                   type="button"
                   className="flex h-7 w-7 shrink-0 cursor-pointer items-center justify-center rounded-full border hover:bg-[#C97A34] hover:text-white"
                 >
@@ -93,9 +91,7 @@ const OrderSummary = ({
         <span>Shipping</span>
 
         {shippingCharge === 0 ? (
-          <span className="shrink-0 font-semibold text-green-600">
-            FREE
-          </span>
+          <span className="shrink-0 font-semibold text-green-600">FREE</span>
         ) : (
           <span className="shrink-0">₹{shippingCharge}</span>
         )}
@@ -120,27 +116,26 @@ const OrderSummary = ({
       <button
         type="submit"
         form="checkout-form"
-        disabled={cart.length === 0}
+        disabled={cart.length === 0 || isSubmitting}
         className="
-          mt-8
-          w-full
-          cursor-pointer
-          rounded-full
-          bg-[#C97A34]
-          py-4
-          font-semibold
-          text-white
-          transition
-          hover:bg-[#b56d2f]
-          disabled:cursor-not-allowed
-          disabled:bg-gray-300
-        "
+    mt-8
+    w-full
+    cursor-pointer
+    rounded-full
+    bg-[#C97A34]
+    py-4
+    font-semibold
+    text-white
+    transition
+    hover:bg-[#b56d2f]
+    disabled:cursor-not-allowed
+    disabled:bg-gray-300
+  "
       >
-        Proceed to Payment
+        {isSubmitting ? "Processing Order..." : "Proceed to Payment"}
       </button>
     </div>
   );
 };
 
 export default OrderSummary;
-

@@ -246,7 +246,23 @@ const RegisterForm = ({ onSubmit, loading, error }) => {
           className="mt-1 cursor-pointer accent-[#C97A34]"
         />
 
-        <span>I agree to the Terms & Conditions and Privacy Policy.</span>
+        <span>
+          I agree to the{" "}
+          <Link
+            to="/terms-and-conditions"
+            className="font-medium text-[#C97A34] hover:underline"
+          >
+            Terms & Conditions
+          </Link>{" "}
+          and{" "}
+          <Link
+            to="/privacy-policy"
+            className="font-medium text-[#C97A34] hover:underline"
+          >
+            Privacy Policy
+          </Link>
+          .
+        </span>
       </label>
 
       {/* Submit */}
