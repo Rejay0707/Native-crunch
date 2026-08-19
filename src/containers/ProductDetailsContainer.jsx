@@ -133,8 +133,10 @@ const ProductDetailsContainer = () => {
         setLoading(true);
 
         const data = await fetchProducts();
+        console.log("API products:", data);
 
         const mappedProducts = data.map(mapProduct);
+        console.log("Mapped products:", mappedProducts);
 
         const foundProduct = mappedProducts.find(
           (item) => item.id === Number(id)

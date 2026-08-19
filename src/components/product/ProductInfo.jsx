@@ -96,16 +96,15 @@ const ProductInfo = ({
       {/* Divider */}
       <div className="my-8 h-px bg-[#E7D8CA]" />
 
-      {/* Description */}
-      <p
-        className="
-          leading-8
-          text-[#6A5B4E]
-        "
-      >
-        {product.description ||
-          "Handcrafted using traditional recipes with premium natural ingredients for authentic taste."}
-      </p>
+      {/* Short Description */}
+      <p className="leading-8 text-[#6A5B4E]">{product.shortDescription}</p>
+
+      
+
+      {/* Full Description */}
+      {product.description && (
+        <p className="mt-4 leading-8 text-[#6A5B4E]">{product.description}</p>
+      )}
 
       {/* Weight Selector */}
       <ProductWeightSelector
