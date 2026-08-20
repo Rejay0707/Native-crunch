@@ -393,10 +393,6 @@ const Navbar = () => {
             {/* Cart - Desktop + Mobile */}
             <button
               onClick={() => {
-                if (!isAuthenticated) {
-                  navigate("/login");
-                  return;
-                }
 
                 navigate("/cart");
               }}

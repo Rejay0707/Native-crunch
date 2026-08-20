@@ -118,17 +118,14 @@
 
 import { useCart } from "../context/CartContext";
 import Cart from "../components/cart/Cart";
+import { useAuth } from "../context/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const CartContainer = () => {
-  const {
-    cart,
-    increaseQuantity,
-    decreaseQuantity,
-    setQuantity,
-    removeItem,
-  } = useCart();
+  const { cart, increaseQuantity, decreaseQuantity, setQuantity, removeItem } =
+    useCart();
 
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   const total = cart.reduce((sum, item) => {
@@ -136,10 +133,7 @@ const CartContainer = () => {
       return sum + Number(item.total || 0);
     }
 
-    return (
-      sum +
-      Number(item.price || 0) * Number(item.quantity || 0)
-    );
+    return sum + Number(item.price || 0) * Number(item.quantity || 0);
   }, 0);
 
   return (
@@ -150,7 +144,14 @@ const CartContainer = () => {
       decreaseQty={decreaseQuantity}
       setQty={setQuantity}
       removeItem={removeItem}
-      onCheckout={() => navigate("/checkout")}
+      onCheckout={() => {
+        if (!isAuthenticated) {
+          navigate("/login");
+          return;
+        }
+
+        navigate("/checkout");
+      }}
       onShopMore={() => navigate("/shop")}
     />
   );
