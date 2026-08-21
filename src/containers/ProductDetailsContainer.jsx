@@ -181,15 +181,20 @@ const ProductDetailsContainer = () => {
   }
 
   const images = [
-    {
-      id: "front",
-      image: product.image,
-    },
-    {
-      id: "back",
-      image: product.backImage,
-    },
-  ];
+  {
+    id: "front",
+    image: product.image,
+  },
+  {
+    id: "back",
+    image: product.backImage,
+  },
+
+  ...(product.images || []).map((image, index) => ({
+    id: `additional-${index}`,
+    image: image.image || image,
+  })),
+];
 
   const handleIncrease = () => {
     setProductQuantity((prev) => Number(prev || 0) + 1);

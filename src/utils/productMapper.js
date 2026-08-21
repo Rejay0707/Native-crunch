@@ -18,6 +18,7 @@ export const mapProduct = (product) => {
 
     image: product.image,
     backImage: product.back_image,
+    images: product.images,
 
     slug: product.slug,
     shortDescription: product.short_description,

@@ -16,6 +16,7 @@ const Navbar = () => {
   // const location = useLocation();
   // const isAboutPage = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
+  const [isAccountOpen, setIsAccountOpen] = useState(false);
 
   const { cart } = useCart();
   const { orders } = useOrders();
@@ -152,6 +153,7 @@ const Navbar = () => {
               </>
 
               {/* <span className="text-[#ead9c8]">|</span> */}
+              <span className="text-[#ead9c8]">|</span>
 
               {/* ABOUT */}
               <div className="group relative">
@@ -204,7 +206,7 @@ const Navbar = () => {
           {/* RIGHT SIDE */}
           <div className="flex flex-1 items-center justify-end gap-2">
             {/* Search - Desktop only */}
-            <button
+            {/* <button
               className="
       hidden
       h-10
@@ -222,15 +224,16 @@ const Navbar = () => {
     "
             >
               <Search size={18} />
-            </button>
+            </button> */}
 
             {/* User - Desktop + Mobile */}
             {/* User - Desktop + Mobile */}
             {isAuthenticated ? (
-              <div className="relative group">
+              <div className="relative">
                 <button
                   type="button"
                   title={user?.name || "Account"}
+                  onClick={() => setIsAccountOpen(!isAccountOpen)}
                   className="
         flex
         h-10
@@ -254,86 +257,86 @@ const Navbar = () => {
                   </span>
                 </button>
 
-                {/* Account Dropdown */}
-                <div
-                  className="
-        absolute
-        right-0
-        top-full
-        mt-2
-        w-64
-        rounded-xl
-        border
-        border-[#E8DED3]
-        bg-white
-        p-4
-        shadow-xl
-        opacity-0
-        invisible
-        translate-y-2
-        transition-all
-        duration-200
-        group-hover:visible
-        group-hover:opacity-100
-        group-hover:translate-y-0
-      "
-                >
-                  {/* User Information */}
-                  <div className="border-b border-[#E8DED3] pb-3">
-                    <p className="font-semibold text-[#2E1E13]">{user?.name}</p>
+                {isAccountOpen && (
+                  <div
+                    className="
+          absolute
+          right-0
+          top-full
+          mt-2
+          w-64
+          rounded-xl
+          border
+          border-[#E8DED3]
+          bg-white
+          p-4
+          shadow-xl
+          z-50
+        "
+                  >
+                    {/* User Information */}
+                    <div className="border-b border-[#E8DED3] pb-3">
+                      <p className="font-semibold text-[#2E1E13]">
+                        {user?.name}
+                      </p>
 
-                    <p className="mt-1 truncate text-sm text-[#6A5B4E]">
-                      {user?.email}
-                    </p>
+                      <p className="mt-1 truncate text-sm text-[#6A5B4E]">
+                        {user?.email}
+                      </p>
+                    </div>
+
+                    {/* My Account */}
+                    {/* <button
+                      type="button"
+                      onClick={() => {
+                        navigate("/account");
+                        setIsAccountOpen(false);
+                      }}
+                      className="
+            mt-3
+            w-full
+            rounded-lg
+            px-3
+            py-2
+            text-left
+            text-sm
+            font-medium
+            text-[#2E1E13]
+            transition
+            hover:bg-[#F8F2EA]
+            cursor-pointer
+          "
+                    >
+                      My Account
+                    </button> */}
+
+                    {/* Logout */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        logout();
+                        setIsAccountOpen(false);
+                        navigate("/login");
+                      }}
+                      className="
+            mt-1
+            w-full
+            rounded-lg
+            px-3
+            py-2
+            text-left
+            text-sm
+            font-medium
+            text-red-600
+            transition
+            hover:bg-red-50
+            cursor-pointer
+          "
+                    >
+                      Logout
+                    </button>
                   </div>
-
-                  {/* My Account */}
-                  <button
-                    type="button"
-                    onClick={() => navigate("/account")}
-                    className="
-          mt-3
-          w-full
-          rounded-lg
-          px-3
-          py-2
-          text-left
-          text-sm
-          font-medium
-          text-[#2E1E13]
-          transition
-          hover:bg-[#F8F2EA]
-          cursor-pointer
-        "
-                  >
-                    My Account
-                  </button>
-
-                  {/* Logout */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      logout();
-                      navigate("/login");
-                    }}
-                    className="
-          mt-1
-          w-full
-          rounded-lg
-          px-3
-          py-2
-          text-left
-          text-sm
-          font-medium
-          text-red-600
-          transition
-          hover:bg-red-50
-          cursor-pointer
-        "
-                  >
-                    Logout
-                  </button>
-                </div>
+                )}
               </div>
             ) : (
               <button
@@ -393,7 +396,6 @@ const Navbar = () => {
             {/* Cart - Desktop + Mobile */}
             <button
               onClick={() => {
-
                 navigate("/cart");
               }}
               title="Cart"
