@@ -11,11 +11,10 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand */}
-
           <div className="col-span-2 lg:col-span-1">
-            <Link to="/" className="flex flex-1 items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-3 group">
               <div className="flex items-center gap-3">
                 <img
                   src={logo}
@@ -27,6 +26,7 @@ const Footer = () => {
                   <h3 className="font-bold text-lg md:text-xl">
                     Native Crunch
                   </h3>
+
                   <p className="text-xs md:text-sm text-gray-300">
                     Snack in Native Way
                   </p>
@@ -37,7 +37,7 @@ const Footer = () => {
             <p className="mt-4 md:mt-5 text-sm md:text-base text-gray-300 leading-6 md:leading-7">
               Inspired by traditional recipes, crafted with carefully selected
               ingredients and made for today's lifestyle. Every bite brings
-              together authentic taste, quality and convenience
+              together authentic taste, quality and convenience.
             </p>
           </div>
 
@@ -56,6 +56,7 @@ const Footer = () => {
                   All Bars
                 </Link>
               </li>
+
               <li>
                 <Link
                   to="/shop"
@@ -64,7 +65,8 @@ const Footer = () => {
                   Peanut Butter Bars
                 </Link>
               </li>
-              <li className="hover:text-white transition cursor-pointer">
+
+              <li>
                 <Link
                   to="/shop"
                   className="hover:text-white transition cursor-pointer"
@@ -72,7 +74,8 @@ const Footer = () => {
                   Peanut Chikki Bars
                 </Link>
               </li>
-              <li className="hover:text-white transition cursor-pointer">
+
+              <li>
                 <Link
                   to="/shop"
                   className="hover:text-white transition cursor-pointer"
@@ -83,7 +86,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
           {/* Company */}
           <div>
             <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
@@ -98,29 +100,65 @@ const Footer = () => {
               </li>
 
               <li>
-                <Link
-                  to="/about"
-                  className="hover:text-white cursor-pointer transition"
-                >
+                <Link to="/about" className="hover:text-white transition">
                   Ingredients
                 </Link>
               </li>
 
               <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-white cursor-pointer transition"
-                >
+                <Link to="/contact" className="hover:text-white transition">
                   FAQs
                 </Link>
               </li>
 
               <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-white cursor-pointer transition"
-                >
+                <Link to="/contact" className="hover:text-white transition">
                   Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+              Policies
+            </h4>
+
+            <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
+              <li>
+                <Link
+                  to="/privacy-policy"
+                  className="hover:text-white transition"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/terms-and-conditions"
+                  className="hover:text-white transition"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/refund-policy"
+                  className="hover:text-white transition"
+                >
+                  Refund & Cancellation
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/shipping-policy"
+                  className="hover:text-white transition"
+                >
+                  Shipping & Delivery
                 </Link>
               </li>
             </ul>
@@ -138,6 +176,7 @@ const Footer = () => {
                 href="https://www.instagram.com/nativecrunch.nc"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Instagram"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
                 <FaInstagram className="text-sm text-white md:text-lg" />
@@ -147,6 +186,7 @@ const Footer = () => {
                 href="https://www.facebook.com/NativeCrunch2"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Facebook"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
                 <FaFacebookF className="text-sm text-white md:text-lg" />
@@ -156,6 +196,7 @@ const Footer = () => {
                 href="https://www.youtube.com/@NativeCrunch-NC"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="YouTube"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
                 <FaYoutube className="text-sm text-white md:text-lg" />
@@ -165,6 +206,7 @@ const Footer = () => {
                 href="https://x.com/NativeCrunchNC"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="X / Twitter"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-[#C97A34] transition hover:scale-110 md:h-10 md:w-10"
               >
                 <FaXTwitter className="text-sm text-white md:text-lg" />

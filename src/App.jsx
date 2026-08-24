@@ -7,6 +7,10 @@ import TermsAndConditions from "./pages/TermsAndConditions";
 import ForgotPassword from "./pages/ForgotPassword";
 import VerifyOtp from "./pages/VerifyOtp";
 import ResetPassword from "./pages/ResetPassword";
+import PrivacyPolicyPage from "./pages/policies/PrivacyPolicyPage";
+import TermsAndConditionsPage from "./pages/policies/TermsAndConditionsPage";
+import RefundPolicy from "./pages/policies/RefundPolicy";
+import ShippingPolicy from "./pages/policies/ShippingPolicy";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Shop from "./pages/Shop";
@@ -45,6 +49,16 @@ function App() {
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/verify-otp" element={<VerifyOtp />} />
               <Route path="/reset-password" element={<ResetPassword />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+
+              <Route
+                path="/terms-and-conditions"
+                element={<TermsAndConditionsPage />}
+              />
+
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+
+              <Route path="/shipping-policy" element={<ShippingPolicy />} />
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/shop" element={<Shop />} />
