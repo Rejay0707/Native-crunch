@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import heroImage from "../../assets/hero1.png";
+import heroImage from "../../assets/hero1 (1).png";
 
 const HeroSectionTwo = () => {
   const navigate = useNavigate();
