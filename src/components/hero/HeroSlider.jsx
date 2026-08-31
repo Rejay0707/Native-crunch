@@ -22,11 +22,11 @@ const HeroSlider = () => {
   return (
     <section
       className="
-        relative
-        min-h-screen
-        lg:h-screen
-        overflow-hidden
-      "
+    relative
+    h-[950px]
+    lg:h-[650px]
+    overflow-hidden
+  "
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -53,7 +53,9 @@ const HeroSlider = () => {
       {/* Previous */}
       {activeSlide > 0 && (
         <button
-          onClick={() => setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length)}
+          onClick={() =>
+            setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length)
+          }
           className="absolute left-3 sm:left-5 lg:left-8 top-[42%] sm:top-1/2 -translate-y-1/2 z-50 flex h-10 w-10 sm:h-12 sm:w-12 lg:h-14 lg:w-14 items-center justify-center rounded-full bg-[#C97A34] border border-white/20 text-white hover:bg-[#b96d2d] transition-all duration-300"
         >
           <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7" />

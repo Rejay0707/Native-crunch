@@ -8,13 +8,13 @@ const HeroSection = () => {
 
   return (
     <section
-  className="
+      className="
     relative
     h-full
     overflow-hidden
     bg-[#120905]
   "
->
+    >
       {/* Desktop Background Image */}
       {/* Desktop / Laptop Background */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden">
@@ -82,17 +82,9 @@ const HeroSection = () => {
     relative
     z-20
     flex
-    items-center
-
-    min-h-[850px]
-    lg:min-h-screen
-
-    pt-24
-    pb-24
-
-    lg:pt-12
-    lg:pb-12
-  "
+    items-start
+    pt-12
+    min-h-full "
       >
         <div
           className="
@@ -138,9 +130,9 @@ const HeroSection = () => {
                 text-[42px]
 sm:text-[40px]
 md:text-[54px]
-lg:text-[54px]
-xl:text-[78px]
-2xl:text-[86px]
+lg:text-[48px]
+xl:text-[60px]
+2xl:text-[68px]
               "
             >
               Handcrafted
@@ -153,7 +145,7 @@ xl:text-[78px]
             {/* Tamil Text */}
             <p
               className="
-                mt-6
+                mt-4
                 text-white/80
                 text-base
                 md:text-lg
@@ -165,7 +157,7 @@ xl:text-[78px]
             {/* Description */}
             <p
               className="
-                mt-6
+                mt-4
                 text-white/70
                 leading-8
                 text-[15px]
@@ -179,7 +171,7 @@ xl:text-[78px]
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-4 mt-10">
+            <div className="flex flex-wrap gap-4 mt-6">
               <button
                 onClick={() => navigate("/shop")}
                 className="
@@ -228,10 +220,10 @@ xl:text-[78px]
               </button>
             </div>
             {/* Feature Stats */}
-            <div className="mt-16">
+            <div className="mt-8">
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-8 max-w-5xl">
                 <div>
-                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-[#D98A43] text-xl md:text-2xl font-semibold">
                     Natural
                   </h3>
 
@@ -241,7 +233,7 @@ xl:text-[78px]
                 </div>
 
                 <div>
-                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-[#D98A43] text-xl md:text-2xl font-semibold">
                     No
                   </h3>
 
@@ -253,7 +245,7 @@ xl:text-[78px]
                 </div>
 
                 <div>
-                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-[#D98A43] text-xl md:text-2xl font-semibold">
                     No
                   </h3>
 
@@ -265,7 +257,7 @@ xl:text-[78px]
                 </div>
 
                 <div>
-                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-[#D98A43] text-xl md:text-2xl font-semibold">
                     Protein
                   </h3>
 
@@ -275,7 +267,7 @@ xl:text-[78px]
                 </div>
 
                 <div>
-                  <h3 className="text-[#D98A43] text-2xl md:text-3xl font-semibold">
+                  <h3 className="text-[#D98A43] text-xl md:text-2xl font-semibold">
                     Added
                   </h3>
 

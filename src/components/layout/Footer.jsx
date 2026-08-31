@@ -1,5 +1,5 @@
 import logo from "../../assets/logo3 (2).png";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaInstagram,
   FaFacebookF,
@@ -8,6 +8,12 @@ import {
 } from "react-icons/fa6";
 
 const Footer = () => {
+  const location = useLocation();
+
+  const isShopPage = location.pathname === "/shop";
+  const isAboutPage = location.pathname === "/about";
+  const isContactPage = location.pathname === "/contact";
+
   return (
     <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
@@ -42,82 +48,132 @@ const Footer = () => {
           </div>
 
           {/* Shop */}
-          <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
-              <Link to="/shop">Shop</Link>
-            </h4>
+          {!isShopPage && (
+            <div>
+              <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+                <Link to="/shop">Shop</Link>
+              </h4>
 
-            <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
-              <li>
-                <Link
-                  to="/shop"
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  All Bars
-                </Link>
-              </li>
+              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
+                <li>
+                  <Link
+                    to="/shop"
+                    className="hover:text-white transition cursor-pointer"
+                  >
+                    All Bars
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/shop"
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Peanut Butter Bars
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/shop"
+                    className="hover:text-white transition cursor-pointer"
+                  >
+                    Peanut Butter Bars
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/shop"
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Peanut Chikki Bars
-                </Link>
-              </li>
+                <li>
+                  <Link
+                    to="/shop"
+                    className="hover:text-white transition cursor-pointer"
+                  >
+                    Peanut Chikki Bars
+                  </Link>
+                </li>
 
-              <li>
-                <Link
-                  to="/shop"
-                  className="hover:text-white transition cursor-pointer"
-                >
-                  Specialty Bars
-                </Link>
-              </li>
-            </ul>
-          </div>
+                <li>
+                  <Link
+                    to="/shop"
+                    className="hover:text-white transition cursor-pointer"
+                  >
+                    Specialty Bars
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
 
           {/* Company */}
-          <div>
-            <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
-              Company
-            </h4>
+          {!isAboutPage && !isContactPage && (
+            <div>
+              <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+                Company
+              </h4>
 
-            <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
-              <li>
-                <Link to="/about" className="hover:text-white transition">
-                  About Us
-                </Link>
-              </li>
+              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
+                <li>
+                  <Link to="/about" className="hover:text-white transition">
+                    About Us
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/about" className="hover:text-white transition">
-                  Ingredients
-                </Link>
-              </li>
+                <li>
+                  <Link to="/about" className="hover:text-white transition">
+                    Ingredients
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/contact" className="hover:text-white transition">
-                  FAQs
-                </Link>
-              </li>
+                <li>
+                  <Link to="/contact" className="hover:text-white transition">
+                    FAQs
+                  </Link>
+                </li>
 
-              <li>
-                <Link to="/contact" className="hover:text-white transition">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
+                <li>
+                  <Link to="/contact" className="hover:text-white transition">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
+
+          {/* Company section when on About page */}
+          {isAboutPage && (
+            <div>
+              <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+                Company
+              </h4>
+
+              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
+                <li>
+                  <Link to="/contact" className="hover:text-white transition">
+                    FAQs
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/contact" className="hover:text-white transition">
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
+
+          {/* Company section when on Contact page */}
+          {isContactPage && (
+            <div>
+              <h4 className="font-semibold text-base md:text-lg mb-4 md:mb-5">
+                Company
+              </h4>
+
+              <ul className="space-y-2 md:space-y-3 text-sm md:text-base text-gray-300">
+                <li>
+                  <Link to="/about" className="hover:text-white transition">
+                    About Us
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/about" className="hover:text-white transition">
+                    Ingredients
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
 
           {/* Policies */}
           <div>

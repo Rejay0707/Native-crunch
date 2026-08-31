@@ -119,37 +119,61 @@ const Navbar = () => {
             <span className="text-[#ead9c8]">|</span>
 
             {/* PRODUCTS */}
-            <button
-              onClick={() => {
-                if (!isAuthenticated) {
-                  navigate("/login");
-                  return;
-                }
+            <div className="group relative">
+              <button
+                onClick={() => {
+                  if (!isAuthenticated) {
+                    navigate("/login");
+                    return;
+                  }
 
-                navigate("/customization");
-              }}
-              className={navButtonClass}
-            >
-              Customization
-            </button>
+                  navigate("/customization");
+                }}
+                className={navButtonClass}
+              >
+                Customization
+              </button>
+
+              <div className={dropdownClass}>
+                <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
+                  Customization
+                </h3>
+
+                <p className="text-base leading-7 text-[#4a4a4a]">
+                  Create your own personalized snack.
+                </p>
+              </div>
+            </div>
 
             <>
               <>
                 <span className="text-[#ead9c8]">|</span>
 
-                <button
-                  onClick={() => {
-                    if (!isAuthenticated) {
-                      navigate("/login");
-                      return;
-                    }
+                <div className="group relative">
+                  <button
+                    onClick={() => {
+                      if (!isAuthenticated) {
+                        navigate("/login");
+                        return;
+                      }
 
-                    navigate("/orders");
-                  }}
-                  className={navButtonClass}
-                >
-                  Orders
-                </button>
+                      navigate("/orders");
+                    }}
+                    className={navButtonClass}
+                  >
+                    Orders
+                  </button>
+
+                  <div className={dropdownClass}>
+                    <h3 className="border-b border-[#ece2d7] pb-2 text-lg font-semibold text-black">
+                      Orders
+                    </h3>
+
+                    <p className="text-base leading-7 text-[#4a4a4a]">
+                      View and track your orders.
+                    </p>
+                  </div>
+                </div>
               </>
 
               {/* <span className="text-[#ead9c8]">|</span> */}

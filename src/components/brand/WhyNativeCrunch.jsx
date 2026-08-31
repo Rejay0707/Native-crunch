@@ -1,7 +1,6 @@
 import {
   Leaf,
   WheatOff,
-  CandyOff,
   Apple,
   Dumbbell,
   HeartHandshake,
@@ -9,7 +8,6 @@ import {
 
 const features = [
   { icon: Leaf, title: "Real Ingredients" },
-  { icon: CandyOff, title: "No Refined white Sugar" },
   { icon: Apple, title: "Natural Flavours" },
   { icon: WheatOff, title: "Added Prebiotic Fiber" },
   { icon: Dumbbell, title: "Protein Rich" },
