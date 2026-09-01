@@ -65,18 +65,6 @@ const ShopToolBar = ({
             Products
           </p>
 
-          {/* Sort - currently disabled */}
-          {/* <select
-            value={sortBy}
-            onChange={(e) => onSortChange(e.target.value)}
-            className="rounded-xl border border-[#E7D8CA] bg-white px-4 py-2 text-sm outline-none transition focus:border-[#8B5E3C]"
-          >
-            <option value="default">Featured</option>
-            <option value="name-asc">Name (A - Z)</option>
-            <option value="name-desc">Name (Z - A)</option>
-            <option value="price-low">Price: Low → High</option>
-            <option value="price-high">Price: High → Low</option>
-          </select> */}
         </div>
       </div>
     </section>

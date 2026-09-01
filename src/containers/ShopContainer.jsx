@@ -133,6 +133,7 @@ const ShopContainer = () => {
             <ShopProductGrid
               products={sortedSelectedProducts}
               onAddToCart={addToCart}
+              recommendationProducts={sortProducts(products).slice(0, 4)}
             />
 
             {/* Other Products */}

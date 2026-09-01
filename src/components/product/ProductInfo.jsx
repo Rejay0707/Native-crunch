@@ -14,6 +14,8 @@ const ProductInfo = ({
   onAddToCart,
   onBuyNow,
   showMessage,
+  isOutOfStock,
+  stock,
 }) => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
@@ -99,8 +101,6 @@ const ProductInfo = ({
       {/* Short Description */}
       <p className="leading-8 text-[#6A5B4E]">{product.shortDescription}</p>
 
-      
-
       {/* Full Description */}
       {product.description && (
         <p className="mt-4 leading-8 text-[#6A5B4E]">{product.description}</p>
@@ -119,49 +119,59 @@ const ProductInfo = ({
         onIncrease={onIncrease}
         onDecrease={onDecrease}
         onQuantityChange={onQuantityChange}
+        maxStock={stock}
       />
 
       {/* Buttons */}
-      <div className="mt-10 flex flex-wrap gap-4">
-        <button
-          onClick={onAddToCart}
-          className="
-            rounded-xl
-            bg-[#C97A34]
-            px-8
-            py-4
-            font-semibold
-            text-white
-            transition-all
-            duration-300
-            hover:bg-[#B66E2F]
-            hover:scale-105
-            cursor-pointer
-          "
-        >
-          Add To Cart
-        </button>
+      {/* Buttons */}
+      {isOutOfStock ? (
+        <div className="mt-10">
+          <div className="rounded-xl border border-red-200 bg-red-50 px-6 py-4 text-center text-sm font-semibold text-red-600">
+            This variant is currently out of stock.
+          </div>
+        </div>
+      ) : (
+        <div className="mt-10 flex flex-wrap gap-4">
+          <button
+            onClick={onAddToCart}
+            className="
+        rounded-xl
+        bg-[#C97A34]
+        px-8
+        py-4
+        font-semibold
+        text-white
+        transition-all
+        duration-300
+        hover:bg-[#B66E2F]
+        hover:scale-105
+        cursor-pointer
+      "
+          >
+            Add To Cart
+          </button>
 
-        <button
-          onClick={handleBuyNow}
-          className="
-            rounded-xl
-            border
-            border-[#C97A34]
-            px-8
-            py-4
-            font-semibold
-            text-[#C97A34]
-            transition-all
-            duration-300
-            hover:bg-[#C97A34]
-            hover:text-white
-            cursor-pointer
-          "
-        >
-          Buy Now
-        </button>
-      </div>
+          <button
+            onClick={handleBuyNow}
+            className="
+        rounded-xl
+        border
+        border-[#C97A34]
+        px-8
+        py-4
+        font-semibold
+        text-[#C97A34]
+        transition-all
+        duration-300
+        hover:bg-[#C97A34]
+        hover:text-white
+        cursor-pointer
+      "
+          >
+            Buy Now
+          </button>
+        </div>
+      )}
       {showMessage && (
         <div
           className="

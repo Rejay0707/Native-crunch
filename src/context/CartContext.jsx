@@ -24,59 +24,74 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("nativeCrunchCart", JSON.stringify(cart));
   }, [cart]);
 
-  // ==========================================
-  // ADD PRODUCT TO CART
-  // ==========================================
+  
+// ==========================================
+// ADD PRODUCT TO CART
+// ==========================================
 
-  const addToCart = (product, quantity = 1) => {
-    const selectedVariant =
-      product.selectedVariant ||
-      product.variants?.find((v) => v.weight === "50g") ||
-      product.variants?.find((v) => v.weight === "40g") ||
-      product.variants?.[0];
+const addToCart = (product, quantity = 1) => {
+  const selectedVariant =
+    product.selectedVariant ||
+    product.variants?.find((v) => v.weight === "50g") ||
+    product.variants?.find((v) => v.weight === "40g") ||
+    product.variants?.[0];
 
-    if (!selectedVariant) {
-      console.error("No product variant found:", product);
-      return;
-    }
+  if (!selectedVariant) {
+    console.error("No product variant found:", product);
+    return;
+  }
 
-    const quantityToAdd = Math.max(
-      1,
-      Number(quantity) || 1,
+  const quantityToAdd = Math.max(
+    1,
+    Number(quantity) || 1,
+  );
+
+  setCart((prev) => {
+    const existing = prev.find(
+      (item) =>
+        item.product_variant_id === selectedVariant.id,
     );
 
-    setCart((prev) => {
-      const existing = prev.find(
+    // ==========================================
+    // EXISTING PRODUCT
+    // Increase quantity + move to TOP
+    // ==========================================
+
+    if (existing) {
+      const updatedItem = {
+        ...existing,
+        quantity:
+          Number(existing.quantity) + quantityToAdd,
+      };
+
+      const remainingItems = prev.filter(
         (item) =>
-          item.product_variant_id === selectedVariant.id,
+          item.product_variant_id !== selectedVariant.id,
       );
 
-      if (existing) {
-        return prev.map((item) =>
-          item.product_variant_id === selectedVariant.id
-            ? {
-                ...item,
-                quantity:
-                  Number(item.quantity) + quantityToAdd,
-              }
-            : item,
-        );
-      }
+      return [updatedItem, ...remainingItems];
+    }
 
-      return [
-        ...prev,
-        {
-          product_variant_id: selectedVariant.id,
-          product_id: product.id,
-          name: product.name,
-          weight: selectedVariant.weight,
-          price: selectedVariant.price,
-          quantity: quantityToAdd,
-          image: product.image,
-        },
-      ];
-    });
-  };
+    // ==========================================
+    // NEW PRODUCT
+    // Add directly to TOP
+    // ==========================================
+
+    const newItem = {
+      product_variant_id: selectedVariant.id,
+      product_id: product.id,
+      name: product.name,
+      weight: selectedVariant.weight,
+      price: selectedVariant.price,
+      quantity: quantityToAdd,
+      image: product.image,
+    };
+
+    return [newItem, ...prev];
+  });
+};
+
+
 
   // ==========================================
   // SET EXACT QUANTITY

@@ -127,6 +127,9 @@ const ProductDetailsContainer = () => {
   const [quantity, setProductQuantity] = useState(1);
   const [showMessage, setShowMessage] = useState(false);
 
+  const stock = Number(selectedVariant?.stock) || 0;
+  const isOutOfStock = stock <= 0;
+
   useEffect(() => {
     const loadProduct = async () => {
       try {
@@ -139,7 +142,7 @@ const ProductDetailsContainer = () => {
         console.log("Mapped products:", mappedProducts);
 
         const foundProduct = mappedProducts.find(
-          (item) => item.id === Number(id)
+          (item) => item.id === Number(id),
         );
 
         setProduct(foundProduct || null);
@@ -165,9 +168,7 @@ const ProductDetailsContainer = () => {
 
         <section className="min-h-screen bg-[#F8F2EA] py-20 lg:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <p className="text-center text-[#6A5B4E]">
-              Loading product...
-            </p>
+            <p className="text-center text-[#6A5B4E]">Loading product...</p>
           </div>
         </section>
 
@@ -181,50 +182,83 @@ const ProductDetailsContainer = () => {
   }
 
   const images = [
-  {
-    id: "front",
-    image: product.image,
-  },
-  {
-    id: "back",
-    image: product.backImage,
-  },
+    {
+      id: "front",
+      image: product.image,
+    },
+    {
+      id: "back",
+      image: product.backImage,
+    },
 
-  ...(product.images || []).map((image, index) => ({
-    id: `additional-${index}`,
-    image: image.image || image,
-  })),
-];
+    ...(product.images || []).map((image, index) => ({
+      id: `additional-${index}`,
+      image: image.image || image,
+    })),
+  ];
 
   const handleIncrease = () => {
-    setProductQuantity((prev) => Number(prev || 0) + 1);
+    const maxStock = Number(selectedVariant?.stock) || 0;
+
+    setProductQuantity((prev) => {
+      const currentQuantity = Number(prev || 0);
+
+      if (currentQuantity >= maxStock) {
+        return currentQuantity;
+      }
+
+      return currentQuantity + 1;
+    });
   };
 
   const handleDecrease = () => {
-    setProductQuantity((prev) =>
-      Number(prev) > 1 ? Number(prev) - 1 : 1
-    );
+    setProductQuantity((prev) => (Number(prev) > 1 ? Number(prev) - 1 : 1));
   };
 
   const handleQuantityChange = (value) => {
-    setProductQuantity(value);
+    if (value === "") {
+      setProductQuantity("");
+      return;
+    }
+
+    const maxStock = Number(selectedVariant?.stock) || 0;
+    const requestedQuantity = Number(value);
+
+    if (requestedQuantity > maxStock) {
+      setProductQuantity(maxStock);
+      return;
+    }
+
+    setProductQuantity(requestedQuantity);
   };
 
   const handleAddToCart = () => {
-    addToCart(
-      {
-        ...product,
-        selectedVariant,
-      },
-      Number(quantity) || 1
-    );
+  const maxStock = Number(selectedVariant?.stock) || 0;
+  const requestedQuantity = Number(quantity) || 0;
 
-    setShowMessage(true);
+  if (maxStock <= 0) {
+    return;
+  }
 
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 2500);
-  };
+  if (requestedQuantity > maxStock) {
+    setProductQuantity(maxStock);
+    return;
+  }
+
+  addToCart(
+    {
+      ...product,
+      selectedVariant,
+    },
+    requestedQuantity
+  );
+
+  setShowMessage(true);
+
+  setTimeout(() => {
+    setShowMessage(false);
+  }, 2500);
+};
 
   const handleBuyNow = () => {
     handleAddToCart();
@@ -243,7 +277,15 @@ const ProductDetailsContainer = () => {
             <ProductInfo
               product={product}
               selectedVariant={selectedVariant}
-              onVariantChange={setSelectedVariant}
+              onVariantChange={(variant) => {
+                setSelectedVariant(variant);
+
+                if (Number(variant.stock) > 0) {
+                  setProductQuantity(1);
+                } else {
+                  setProductQuantity(0);
+                }
+              }}
               quantity={quantity}
               onIncrease={handleIncrease}
               onDecrease={handleDecrease}
@@ -251,6 +293,8 @@ const ProductDetailsContainer = () => {
               onAddToCart={handleAddToCart}
               onBuyNow={handleBuyNow}
               showMessage={showMessage}
+              isOutOfStock={isOutOfStock}
+              stock={stock}
             />
           </div>
         </div>

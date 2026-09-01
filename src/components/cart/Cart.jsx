@@ -181,8 +181,10 @@
 
 // export default Cart;
 
-import { Minus, Plus, Trash2 } from "lucide-react";
+import { Minus, Plus, Trash2, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+
+import ProductCard from "../product/ProductCard";
 
 const Cart = ({
   cart,
@@ -192,8 +194,10 @@ const Cart = ({
   removeItem,
   onCheckout,
   onShopMore,
+  recommendedProducts = [],
 }) => {
   const [quantityInputs, setQuantityInputs] = useState({});
+  const [showRecommendations, setShowRecommendations] = useState(false);
 
   // Sync quantity inputs with cart
   useEffect(() => {
@@ -214,7 +218,6 @@ const Cart = ({
   const handleQuantityChange = (productVariantId, value) => {
     const key = `${productVariantId}`;
 
-    // Allow only numbers
     if (!/^\d*$/.test(value)) return;
 
     setQuantityInputs((prev) => ({
@@ -244,7 +247,6 @@ const Cart = ({
 
   // Calculate total
   const tempTotal = cart.reduce((sum, item) => {
-    // Custom gift box
     if (item.type === "customGiftBox") {
       return sum + Number(item.total || 0);
     }
@@ -262,253 +264,459 @@ const Cart = ({
   }, 0);
 
   return (
-    <div className="rounded-3xl bg-white shadow-lg">
-      {/* Header */}
-      <div className="border-b p-5">
-        <h2 className="text-2xl font-bold text-[#2E1E13]">Your Cart</h2>
-      </div>
+    <div className="space-y-6">
+      {/* =====================================================
+          DESKTOP / LAPTOP LAYOUT
+      ====================================================== */}
 
-      {/* Cart Items */}
-      <div className="p-5">
-        {cart.length === 0 ? (
-          <p className="py-10 text-center text-gray-500">Your cart is empty.</p>
-        ) : (
-          cart.map((item) => {
-            // --------------------------------
-            // Custom Gift Box
-            // --------------------------------
-            if (item.type === "customGiftBox") {
-              return (
-                <div
-                  key={item.id}
-                  className="mb-6 rounded-3xl border border-[#E8DED3] bg-[#FCFAF8] p-6"
-                >
-                  <h3 className="text-lg font-semibold text-[#2E1E13]">
-                    Personalized Gift Box
-                  </h3>
+      <div className="hidden lg:grid lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-8">
+        {/* CART */}
+        <div className="rounded-3xl bg-white shadow-lg">
+          {/* Header */}
+          <div className="border-b p-5">
+            <h2 className="text-2xl font-bold text-[#2E1E13]">Your Cart</h2>
+          </div>
 
-                  <p className="mt-2 text-sm text-gray-500">Custom Gift Box</p>
-
-                  <p className="mt-3 font-bold text-[#2E1E13]">₹{item.total}</p>
-                </div>
-              );
-            }
-
-            // --------------------------------
-            // Normal Product
-            // --------------------------------
-
-            const key = `${item.product_variant_id}`;
-
-            const inputValue =
-              quantityInputs[key] !== undefined
-                ? quantityInputs[key]
-                : String(item.quantity || 1);
-
-            return (
-              <div key={key} className="mb-6 flex gap-4 border-b pb-5">
-                {/* Product Image */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="
-                    h-20
-                    w-20
-                    rounded-xl
-                    bg-[#faf7f2]
-                    object-contain
-                    p-2
-                    sm:h-24
-                    sm:w-24
-                    md:h-28
-                    md:w-28
-                    lg:h-36
-                    lg:w-36
-                    xl:h-40
-                    xl:w-40
-                  "
-                />
-
-                {/* Product Details */}
-                <div className="flex-1">
-                  {/* Product Name */}
-                  <h3
-                    className="
-                      text-base
-                      font-semibold
-                      text-[#2E1E13]
-                      md:text-lg
-                      lg:text-xl
-                    "
-                  >
-                    {item.name}
-                  </h3>
-
-                  {/* Weight */}
-                  <p className="mt-2 text-sm text-gray-500">
-                    Weight: {item.weight}
-                  </p>
-
-                  {/* Price */}
-                  <div className="mt-3">
-                    <p className="text-base font-bold text-[#2E1E13] md:text-lg">
-                      ₹{item.price} × {inputValue || "0"}
-                    </p>
-
-                    <p className="text-sm font-bold text-black-500 md:text-base">
-                      Subtotal ₹
-                      {Number(item.price || 0) * (Number(inputValue) || 0)}
-                    </p>
-                  </div>
-
-                  {/* Quantity Controls */}
-                  <div className="mt-4 flex items-center gap-3">
-                    {/* Decrease */}
-                    <button
-                      type="button"
-                      onClick={() => decreaseQty(item.product_variant_id)}
-                      className="
-      flex
-      h-8
-      w-8
-      cursor-pointer
-      items-center
-      justify-center
-      rounded-full
-      border
-      transition
-      hover:bg-[#C97A34]
-      hover:text-white
-    "
+          {/* Cart Items */}
+          <div className="p-5">
+            {cart.length === 0 ? (
+              <p className="py-10 text-center text-gray-500">
+                Your cart is empty.
+              </p>
+            ) : (
+              cart.map((item) => {
+                {
+                  /* Custom Gift Box */
+                }
+                if (item.type === "customGiftBox") {
+                  return (
+                    <div
+                      key={item.id}
+                      className="mb-6 rounded-3xl border border-[#E8DED3] bg-[#FCFAF8] p-6"
                     >
-                      <Minus size={16} />
-                    </button>
+                      <h3 className="text-lg font-semibold text-[#2E1E13]">
+                        Personalized Gift Box
+                      </h3>
 
-                    {/* Quantity Input */}
-                    <input
-                      type="text"
-                      inputMode="numeric"
-                      value={inputValue}
-                      onChange={(e) =>
-                        handleQuantityChange(
-                          item.product_variant_id,
-                          e.target.value,
-                        )
-                      }
-                      onBlur={() => handleQuantityBlur(item.product_variant_id)}
+                      <p className="mt-2 text-sm text-gray-500">
+                        Custom Gift Box
+                      </p>
+
+                      <p className="mt-3 font-bold text-[#2E1E13]">
+                        ₹{item.total}
+                      </p>
+                    </div>
+                  );
+                }
+
+                const key = `${item.product_variant_id}`;
+
+                const inputValue =
+                  quantityInputs[key] !== undefined
+                    ? quantityInputs[key]
+                    : String(item.quantity || 1);
+
+                return (
+                  <div key={key} className="mb-6 flex gap-4 border-b pb-5">
+                    {/* Image */}
+                    <img
+                      src={item.image}
+                      alt={item.name}
                       className="
-      h-8
-      w-12
-      rounded-md
-      border
-      border-[#E7D8CA]
-      bg-white
-      text-center
-      font-semibold
-      text-[#2E1E13]
-      outline-none
-      transition-all
-      focus:border-[#C97A34]
-      focus:ring-2
-      focus:ring-[#C97A34]/20
-    "
-                      aria-label="Quantity"
+                        h-28
+                        w-28
+                        rounded-xl
+                        bg-[#faf7f2]
+                        object-contain
+                        p-2
+                        xl:h-32
+                        xl:w-32
+                      "
                     />
 
-                    {/* Increase */}
-                    <button
-                      type="button"
-                      onClick={() => increaseQty(item.product_variant_id)}
-                      className="
-      flex
-      h-8
-      w-8
-      cursor-pointer
-      items-center
-      justify-center
-      rounded-full
-      border
-      transition
-      hover:bg-[#C97A34]
-      hover:text-white
-    "
-                    >
-                      <Plus size={16} />
-                    </button>
+                    {/* Details */}
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-[#2E1E13]">
+                        {item.name}
+                      </h3>
 
-                    {/* Remove */}
-                    <button
-                      type="button"
-                      onClick={() => removeItem(item.product_variant_id)}
-                      className="
-      ml-auto
-      cursor-pointer
-      text-red-500
-      transition
-      hover:text-red-700
-    "
-                    >
-                      <Trash2 size={18} />
-                    </button>
+                      <p className="mt-2 text-sm text-gray-500">
+                        Weight: {item.weight}
+                      </p>
+
+                      <div className="mt-3">
+                        <p className="text-base font-bold text-[#2E1E13]">
+                          ₹{item.price} × {inputValue || "0"}
+                        </p>
+
+                        <p className="text-base font-bold text-black">
+                          Subtotal ₹
+                          {Number(item.price || 0) * (Number(inputValue) || 0)}
+                        </p>
+                      </div>
+
+                      {/* Quantity */}
+                      <div className="mt-4 flex items-center gap-3">
+                        <button
+                          type="button"
+                          onClick={() => decreaseQty(item.product_variant_id)}
+                          className="
+                            flex h-8 w-8 cursor-pointer
+                            items-center justify-center
+                            rounded-full border transition
+                            hover:bg-[#C97A34]
+                            hover:text-white
+                          "
+                        >
+                          <Minus size={16} />
+                        </button>
+
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={inputValue}
+                          onChange={(e) =>
+                            handleQuantityChange(
+                              item.product_variant_id,
+                              e.target.value,
+                            )
+                          }
+                          onBlur={() =>
+                            handleQuantityBlur(item.product_variant_id)
+                          }
+                          className="
+                            h-8 w-12 rounded-md border
+                            border-[#E7D8CA]
+                            bg-white text-center
+                            font-semibold text-[#2E1E13]
+                            outline-none
+                            focus:border-[#C97A34]
+                            focus:ring-2
+                            focus:ring-[#C97A34]/20
+                          "
+                        />
+
+                        <button
+                          type="button"
+                          onClick={() => increaseQty(item.product_variant_id)}
+                          className="
+                            flex h-8 w-8 cursor-pointer
+                            items-center justify-center
+                            rounded-full border transition
+                            hover:bg-[#C97A34]
+                            hover:text-white
+                          "
+                        >
+                          <Plus size={16} />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => removeItem(item.product_variant_id)}
+                          className="
+                            ml-auto cursor-pointer
+                            text-red-500 transition
+                            hover:text-red-700
+                          "
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })
+                );
+              })
+            )}
+          </div>
+
+          {/* Cart Footer */}
+          <div className="border-t p-5">
+            <div className="mb-5 flex justify-between text-xl font-bold">
+              <span>Total</span>
+              <span>₹{tempTotal}</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={onShopMore}
+              className="
+                mb-3 w-full cursor-pointer
+                rounded-full border border-[#C97A34]
+                py-3 font-semibold text-[#C97A34]
+                transition hover:bg-[#F8F2EA]
+              "
+            >
+              ← Shop More
+            </button>
+
+            <button
+              type="button"
+              disabled={cart.length === 0}
+              onClick={onCheckout}
+              className="
+                w-full cursor-pointer
+                rounded-full bg-[#C97A34]
+                py-3 font-semibold text-white
+                transition hover:bg-[#b56d2f]
+                disabled:cursor-not-allowed
+                disabled:bg-gray-300
+              "
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+
+        {/* =================================================
+            YOU MIGHT LIKE
+        ================================================== */}
+
+        {recommendedProducts.length > 0 && (
+          <div className="rounded-3xl bg-white p-5 shadow-lg">
+            <h2 className="text-xl font-bold text-[#2E1E13]">You Might Like</h2>
+
+            <p className="mt-1 text-sm text-[#6A5B4E]">
+              Add something extra to your order
+            </p>
+
+            <div className="mt-5 space-y-6">
+              {recommendedProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
         )}
       </div>
 
-      {/* Cart Footer */}
-      <div className="border-t p-5">
-        {/* Total */}
-        <div className="mb-5 flex justify-between text-xl font-bold">
-          <span>Total</span>
+      {/* =====================================================
+          TABLET + MOBILE
+      ====================================================== */}
 
-          <span>₹{tempTotal}</span>
+      <div className="lg:hidden">
+        <div className="rounded-3xl bg-white shadow-lg">
+          {/* Header */}
+          <div className="border-b p-5">
+            <h2 className="text-2xl font-bold text-[#2E1E13]">Your Cart</h2>
+          </div>
+
+          {/* Cart Items */}
+          <div className="p-5">
+            {cart.length === 0 ? (
+              <p className="py-10 text-center text-gray-500">
+                Your cart is empty.
+              </p>
+            ) : (
+              cart.map((item) => {
+                if (item.type === "customGiftBox") {
+                  return (
+                    <div
+                      key={item.id}
+                      className="mb-6 rounded-3xl border border-[#E8DED3] bg-[#FCFAF8] p-6"
+                    >
+                      <h3 className="text-lg font-semibold text-[#2E1E13]">
+                        Personalized Gift Box
+                      </h3>
+
+                      <p className="mt-2 text-sm text-gray-500">
+                        Custom Gift Box
+                      </p>
+
+                      <p className="mt-3 font-bold text-[#2E1E13]">
+                        ₹{item.total}
+                      </p>
+                    </div>
+                  );
+                }
+
+                const key = `${item.product_variant_id}`;
+
+                const inputValue =
+                  quantityInputs[key] !== undefined
+                    ? quantityInputs[key]
+                    : String(item.quantity || 1);
+
+                return (
+                  <div key={key} className="mb-6 flex gap-4 border-b pb-5">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="
+                        h-20 w-20 rounded-xl
+                        bg-[#faf7f2]
+                        object-contain p-2
+                        sm:h-24 sm:w-24
+                      "
+                    />
+
+                    <div className="flex-1">
+                      <h3 className="text-base font-semibold text-[#2E1E13]">
+                        {item.name}
+                      </h3>
+
+                      <p className="mt-2 text-sm text-gray-500">
+                        Weight: {item.weight}
+                      </p>
+
+                      <div className="mt-3">
+                        <p className="text-sm font-bold text-[#2E1E13]">
+                          ₹{item.price} × {inputValue || "0"}
+                        </p>
+
+                        <p className="text-sm font-bold text-black">
+                          Subtotal ₹
+                          {Number(item.price || 0) * (Number(inputValue) || 0)}
+                        </p>
+                      </div>
+
+                      <div className="mt-4 flex items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => decreaseQty(item.product_variant_id)}
+                          className="
+                            flex h-8 w-8 cursor-pointer
+                            items-center justify-center
+                            rounded-full border
+                            hover:bg-[#C97A34]
+                            hover:text-white
+                          "
+                        >
+                          <Minus size={15} />
+                        </button>
+
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          value={inputValue}
+                          onChange={(e) =>
+                            handleQuantityChange(
+                              item.product_variant_id,
+                              e.target.value,
+                            )
+                          }
+                          onBlur={() =>
+                            handleQuantityBlur(item.product_variant_id)
+                          }
+                          className="
+                            h-8 w-10 rounded-md border
+                            border-[#E7D8CA]
+                            text-center font-semibold
+                            outline-none
+                            focus:border-[#C97A34]
+                          "
+                        />
+
+                        <button
+                          type="button"
+                          onClick={() => increaseQty(item.product_variant_id)}
+                          className="
+                            flex h-8 w-8 cursor-pointer
+                            items-center justify-center
+                            rounded-full border
+                            hover:bg-[#C97A34]
+                            hover:text-white
+                          "
+                        >
+                          <Plus size={15} />
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={() => removeItem(item.product_variant_id)}
+                          className="ml-auto text-red-500"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+
+          {/* Cart Footer */}
+          <div className="border-t p-5">
+            <div className="mb-5 flex justify-between text-xl font-bold">
+              <span>Total</span>
+              <span>₹{tempTotal}</span>
+            </div>
+
+            <button
+              type="button"
+              onClick={onShopMore}
+              className="
+                mb-3 w-full cursor-pointer
+                rounded-full border border-[#C97A34]
+                py-3 font-semibold text-[#C97A34]
+              "
+            >
+              ← Shop More
+            </button>
+
+            <button
+              type="button"
+              disabled={cart.length === 0}
+              onClick={onCheckout}
+              className="
+                w-full cursor-pointer
+                rounded-full bg-[#C97A34]
+                py-3 font-semibold text-white
+                disabled:cursor-not-allowed
+                disabled:bg-gray-300
+              "
+            >
+              Checkout
+            </button>
+          </div>
         </div>
 
-        {/* Shop More */}
-        <button
-          type="button"
-          onClick={onShopMore}
-          className="
-            mb-3
-            w-full
-            cursor-pointer
-            rounded-full
-            border
-            border-[#C97A34]
-            py-3
-            font-semibold
-            text-[#C97A34]
-            transition
-            hover:bg-[#F8F2EA]
-          "
-        >
-          ← Shop More
-        </button>
+        {/* =================================================
+            MOBILE / TABLET RECOMMENDATIONS
+        ================================================== */}
 
-        {/* Checkout */}
-        <button
-          type="button"
-          disabled={cart.length === 0}
-          onClick={onCheckout}
-          className="
-            w-full
-            cursor-pointer
-            rounded-full
-            bg-[#C97A34]
-            py-3
-            font-semibold
-            text-white
-            transition
-            hover:bg-[#b56d2f]
-            disabled:cursor-not-allowed
-            disabled:bg-gray-300
-          "
-        >
-          Checkout
-        </button>
+        {recommendedProducts.length > 0 && (
+          <div className="mt-5 overflow-hidden rounded-3xl bg-white shadow-lg">
+            <button
+              type="button"
+              onClick={() => setShowRecommendations((prev) => !prev)}
+              className="
+                flex w-full cursor-pointer
+                items-center justify-between
+                px-5 py-5
+                text-left
+              "
+            >
+              <div>
+                <h2 className="text-lg font-bold text-[#2E1E13]">
+                  ☰ You Might Like
+                </h2>
+
+                <p className="mt-1 text-xs text-[#6A5B4E]">
+                  Recommended products for you
+                </p>
+              </div>
+
+              <ChevronDown
+                size={22}
+                className={`
+                  text-[#C97A34]
+                  transition-transform duration-300
+                  ${showRecommendations ? "rotate-180" : ""}
+                `}
+              />
+            </button>
+
+            {showRecommendations && (
+              <div className="border-t border-[#E8DED3] p-5">
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                  {recommendedProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

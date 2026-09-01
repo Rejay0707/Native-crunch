@@ -6,7 +6,7 @@ const ShopHero = () => {
 
   return (
     <section className="bg-[#F8F2EA] border-b border-[#E8DCCF]">
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div className="mx-auto max-w-5xl px-6 py-6 lg:px-8">
         {/* Breadcrumb */}
         {/* <div className="mb-6 flex items-center gap-2 text-sm text-[#8B5E3C]">
           <button
@@ -22,7 +22,7 @@ const ShopHero = () => {
         </div> */}
 
         {/* Heading */}
-        <h1 className="text-4xl font-bold text-[#2E1E13] md:text-5xl">
+        <h1 className="text-3xl font-bold text-[#2E1E13] md:text-4xl">
           Discover Our Healthy Snack Collection
         </h1>
 
