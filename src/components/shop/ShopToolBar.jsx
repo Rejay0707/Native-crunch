@@ -1,4 +1,4 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 
 const ShopToolBar = ({
   categories,
@@ -24,8 +24,20 @@ const ShopToolBar = ({
           placeholder="Search products..."
           value={search}
           onChange={(e) => onSearchChange(e.target.value)}
-          className="w-full rounded-xl border border-[#E7D8CA] bg-white py-4 pl-14 pr-5 outline-none transition-all duration-300 focus:border-[#8B5E3C] focus:ring-2 focus:ring-[#8B5E3C]/20"
+          className="w-full rounded-xl border border-[#E7D8CA] bg-white py-4 pl-14 pr-14 outline-none transition-all duration-300 focus:border-[#8B5E3C] focus:ring-2 focus:ring-[#8B5E3C]/20"
         />
+
+        {/* Clear Search Button */}
+        {search && (
+          <button
+            type="button"
+            onClick={() => onSearchChange("")}
+            aria-label="Clear search"
+            className="absolute right-4 top-1/2 flex -translate-y-1/2 cursor-pointer items-center justify-center rounded-full p-1.5 text-gray-400 transition hover:bg-[#F8F2EA] hover:text-[#8B5E3C]"
+          >
+            <X size={20} />
+          </button>
+        )}
       </div>
 
       {/* Categories + Product Count */}
@@ -53,6 +65,7 @@ const ShopToolBar = ({
             Products
           </p>
 
+          {/* Sort - currently disabled */}
           {/* <select
             value={sortBy}
             onChange={(e) => onSortChange(e.target.value)}

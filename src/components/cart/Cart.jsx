@@ -181,7 +181,6 @@
 
 // export default Cart;
 
-
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -266,17 +265,13 @@ const Cart = ({
     <div className="rounded-3xl bg-white shadow-lg">
       {/* Header */}
       <div className="border-b p-5">
-        <h2 className="text-2xl font-bold text-[#2E1E13]">
-          Your Cart
-        </h2>
+        <h2 className="text-2xl font-bold text-[#2E1E13]">Your Cart</h2>
       </div>
 
       {/* Cart Items */}
       <div className="p-5">
         {cart.length === 0 ? (
-          <p className="py-10 text-center text-gray-500">
-            Your cart is empty.
-          </p>
+          <p className="py-10 text-center text-gray-500">Your cart is empty.</p>
         ) : (
           cart.map((item) => {
             // --------------------------------
@@ -292,13 +287,9 @@ const Cart = ({
                     Personalized Gift Box
                   </h3>
 
-                  <p className="mt-2 text-sm text-gray-500">
-                    Custom Gift Box
-                  </p>
+                  <p className="mt-2 text-sm text-gray-500">Custom Gift Box</p>
 
-                  <p className="mt-3 font-bold text-[#2E1E13]">
-                    ₹{item.total}
-                  </p>
+                  <p className="mt-3 font-bold text-[#2E1E13]">₹{item.total}</p>
                 </div>
               );
             }
@@ -315,10 +306,7 @@ const Cart = ({
                 : String(item.quantity || 1);
 
             return (
-              <div
-                key={key}
-                className="mb-6 flex gap-4 border-b pb-5"
-              >
+              <div key={key} className="mb-6 flex gap-4 border-b pb-5">
                 {/* Product Image */}
                 <img
                   src={item.image}
@@ -367,10 +355,9 @@ const Cart = ({
                       ₹{item.price} × {inputValue || "0"}
                     </p>
 
-                    <p className="text-sm text-gray-500 md:text-base">
+                    <p className="text-sm font-bold text-black-500 md:text-base">
                       Subtotal ₹
-                      {Number(item.price || 0) *
-                        (Number(inputValue) || 0)}
+                      {Number(item.price || 0) * (Number(inputValue) || 0)}
                     </p>
                   </div>
 
@@ -379,22 +366,20 @@ const Cart = ({
                     {/* Decrease */}
                     <button
                       type="button"
-                      onClick={() =>
-                        decreaseQty(item.product_variant_id)
-                      }
+                      onClick={() => decreaseQty(item.product_variant_id)}
                       className="
-                        flex
-                        h-8
-                        w-8
-                        cursor-pointer
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        transition
-                        hover:bg-[#C97A34]
-                        hover:text-white
-                      "
+      flex
+      h-8
+      w-8
+      cursor-pointer
+      items-center
+      justify-center
+      rounded-full
+      border
+      transition
+      hover:bg-[#C97A34]
+      hover:text-white
+    "
                     >
                       <Minus size={16} />
                     </button>
@@ -410,45 +395,43 @@ const Cart = ({
                           e.target.value,
                         )
                       }
-                      onBlur={() =>
-                        handleQuantityBlur(
-                          item.product_variant_id,
-                        )
-                      }
+                      onBlur={() => handleQuantityBlur(item.product_variant_id)}
                       className="
-                        w-8
-                        border-b-2
-                        border-transparent
-                        bg-transparent
-                        text-center
-                        font-semibold
-                        text-[#2E1E13]
-                        outline-none
-                        transition-colors
-                        focus:border-[#C97A34]
-                      "
+      h-8
+      w-12
+      rounded-md
+      border
+      border-[#E7D8CA]
+      bg-white
+      text-center
+      font-semibold
+      text-[#2E1E13]
+      outline-none
+      transition-all
+      focus:border-[#C97A34]
+      focus:ring-2
+      focus:ring-[#C97A34]/20
+    "
                       aria-label="Quantity"
                     />
 
                     {/* Increase */}
                     <button
                       type="button"
-                      onClick={() =>
-                        increaseQty(item.product_variant_id)
-                      }
+                      onClick={() => increaseQty(item.product_variant_id)}
                       className="
-                        flex
-                        h-8
-                        w-8
-                        cursor-pointer
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        transition
-                        hover:bg-[#C97A34]
-                        hover:text-white
-                      "
+      flex
+      h-8
+      w-8
+      cursor-pointer
+      items-center
+      justify-center
+      rounded-full
+      border
+      transition
+      hover:bg-[#C97A34]
+      hover:text-white
+    "
                     >
                       <Plus size={16} />
                     </button>
@@ -456,16 +439,14 @@ const Cart = ({
                     {/* Remove */}
                     <button
                       type="button"
-                      onClick={() =>
-                        removeItem(item.product_variant_id)
-                      }
+                      onClick={() => removeItem(item.product_variant_id)}
                       className="
-                        ml-auto
-                        cursor-pointer
-                        text-red-500
-                        transition
-                        hover:text-red-700
-                      "
+      ml-auto
+      cursor-pointer
+      text-red-500
+      transition
+      hover:text-red-700
+    "
                     >
                       <Trash2 size={18} />
                     </button>

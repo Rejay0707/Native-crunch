@@ -725,32 +725,37 @@ const ProductCard = ({ product }) => {
               /* ==================================================
                   QUANTITY CONTROLS
               ================================================== */
+
               <div
                 className="
-                  flex
-                  items-center
-                  gap-3
-                  rounded-xl
-                  bg-[#F8F2EA]
-                  px-3
-                  py-2
-                "
+    flex
+    items-center
+    gap-3
+    rounded-xl
+    bg-[#F8F2EA]
+    px-3
+    py-2
+  "
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* MINUS */}
                 <button
+                  type="button"
                   className="
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-white
-                    text-lg
-                    font-bold
-                    cursor-pointer
-                  "
+      flex
+      h-8
+      w-8
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-lg
+      font-bold
+      cursor-pointer
+      transition
+      hover:bg-[#C97A34]
+      hover:text-white
+    "
                   onClick={handleDecrease}
                 >
                   -
@@ -765,36 +770,46 @@ const ProductCard = ({ product }) => {
                   onChange={handleQuantityChange}
                   onBlur={handleQuantityBlur}
                   className="
-                    font-semibold
-                    text-[#2E1E13]
-                    text-center
-                    bg-transparent
-                    outline-none
-                    w-5
-                    cursor-text
-                  "
+      h-8
+      w-10
+      rounded-md
+      border
+      border-[#E7D8CA]
+      bg-white
+      text-center
+      font-semibold
+      text-[#2E1E13]
+      outline-none
+      cursor-text
+      transition-all
+      focus:border-[#C97A34]
+      focus:ring-2
+      focus:ring-[#C97A34]/20
+    "
                   aria-label="Quantity"
                 />
 
                 {/* PLUS */}
                 <button
+                  type="button"
                   disabled={quantity >= stock}
                   className={`
-                    flex
-                    h-8
-                    w-8
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-white
-                    text-lg
-                    font-bold
-                    ${
-                      quantity >= stock
-                        ? "cursor-not-allowed opacity-40"
-                        : "cursor-pointer"
-                    }
-                  `}
+      flex
+      h-8
+      w-8
+      items-center
+      justify-center
+      rounded-full
+      bg-white
+      text-lg
+      font-bold
+      transition
+      ${
+        quantity >= stock
+          ? "cursor-not-allowed opacity-40"
+          : "cursor-pointer hover:bg-[#C97A34] hover:text-white"
+      }
+    `}
                   onClick={handleIncrease}
                 >
                   +
