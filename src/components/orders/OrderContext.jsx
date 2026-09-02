@@ -1,72 +1,122 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./useAuth";
+
+import {
+  getOrders as getOrdersApi,
+  getOrderById as getOrderByIdApi,
+} from "../api/orderApi";
 
 const OrderContext = createContext();
 
 export const OrderProvider = ({ children }) => {
-  const [orders, setOrders] = useState(() => {
-    const savedOrders = localStorage.getItem("nativeCrunchOrders");
+  const navigate = useNavigate();
+  const { token } = useAuth();
 
-    return savedOrders ? JSON.parse(savedOrders) : [];
-  });
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    localStorage.setItem("nativeCrunchOrders", JSON.stringify(orders));
-  }, [orders]);
+  const handleUnauthorized = useCallback(() => {
+    setOrders([]);
+    setError("Your session has expired. Please login again.");
+    navigate("/login", { replace: true });
+  }, [navigate]);
 
-  const createOrder = ({
-    cart,
-    shippingDetails,
-    subtotal,
-    shippingCharge,
-    total,
-  }) => {
-    const order = {
-      id: `NC${Date.now()}`,
-      createdAt: new Date().toISOString(),
+  const fetchOrders = useCallback(async () => {
+    if (!token) {
+      setOrders([]);
+      setLoading(false);
+      return;
+    }
 
-      status: "Processing",
+    setLoading(true);
+    setError("");
 
-      items: cart.map((item) => ({
-        id: item.id,
-        name: item.name,
-        weight: item.weight,
-        price: item.price,
-        quantity: item.quantity,
-      })),
+    try {
+      const result = await getOrdersApi(token);
 
-      shippingDetails: {
-        fullName: shippingDetails?.fullName || "",
-        mobile: shippingDetails?.mobile || "",
-        address: shippingDetails?.address || "",
-        landmark: shippingDetails?.landmark || "",
-        city: shippingDetails?.city || "",
-        state: shippingDetails?.state || "",
-        pincode: shippingDetails?.pincode || "",
-      },
+      setOrders(Array.isArray(result?.orders) ? result.orders : []);
+    } catch (err) {
+      console.error("Fetch orders error:", err);
 
-      subtotal,
-      shippingCharge,
-      total,
+      if (err.status === 401) {
+        handleUnauthorized();
+        return;
+      }
 
-      estimatedDelivery: "3 - 5 working days",
-    };
+      setError(err.message || "Unable to load your orders.");
+      setOrders([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [token, handleUnauthorized]);
 
-    setOrders((prev) => [order, ...prev]);
+  const getOrderById = useCallback(
+    async (orderId) => {
+      if (!token) {
+        handleUnauthorized();
 
-    return order;
-  };
+        return {
+          notFound: false,
+          order: null,
+        };
+      }
 
-  const getOrderById = (orderId) => {
-    return orders.find((order) => order.id === orderId);
-  };
+      const numericOrderId = Number(orderId);
+
+      if (!Number.isInteger(numericOrderId) || numericOrderId <= 0) {
+        return {
+          notFound: true,
+          order: null,
+        };
+      }
+
+      try {
+        const result = await getOrderByIdApi(numericOrderId, token);
+
+        return {
+          notFound: false,
+          order: result?.order || null,
+        };
+      } catch (err) {
+        console.error("Fetch order details error:", err);
+
+        if (err.status === 401) {
+          handleUnauthorized();
+
+          return {
+            notFound: false,
+            order: null,
+          };
+        }
+
+        if (err.status === 404) {
+          return {
+            notFound: true,
+            order: null,
+          };
+        }
+
+        return {
+          notFound: false,
+          order: null,
+          error: err.message || "Unable to load order details.",
+        };
+      }
+    },
+    [token, handleUnauthorized],
+  );
 
   return (
     <OrderContext.Provider
       value={{
         orders,
-        createOrder,
+        loading,
+        error,
+        fetchOrders,
         getOrderById,
       }}
     >
@@ -75,4 +125,12 @@ export const OrderProvider = ({ children }) => {
   );
 };
 
-export const useOrder = () => useContext(OrderContext);
+export const useOrders = () => {
+  const context = useContext(OrderContext);
+
+  if (!context) {
+    throw new Error("useOrders must be used inside an OrderProvider");
+  }
+
+  return context;
+};
