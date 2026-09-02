@@ -32,6 +32,7 @@ export const OrderProvider = ({ children }) => {
    * ============================================================
    */
   const handleUnauthorized = useCallback(() => {
+    console.log("Order API: Unauthorized");
     localStorage.removeItem("token");
 
     setOrders([]);
@@ -49,8 +50,10 @@ export const OrderProvider = ({ children }) => {
    */
   const fetchOrders = useCallback(async () => {
     const token = getToken();
+    console.log("Order API: fetchOrders() called"); console.log("Order API: token available:", !!token);
 
     if (!token) {
+      console.log("Order API: No token found");
       setOrders([]);
       setLoading(false);
       return;
@@ -60,7 +63,9 @@ export const OrderProvider = ({ children }) => {
     setError("");
 
     try {
+      console.log("Order API: Calling GET /orders");
       const result = await getOrdersApi(token);
+      console.log("Order API: GET /orders response:", result);
 
       setOrders(Array.isArray(result?.orders) ? result.orders : []);
     } catch (err) {
