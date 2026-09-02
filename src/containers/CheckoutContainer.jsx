@@ -41,6 +41,8 @@ const CheckoutContainer = () => {
   const {
     register,
     handleSubmit,
+    watch,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -226,6 +228,8 @@ const CheckoutContainer = () => {
               register={register}
               errors={errors}
               handleSubmit={handleSubmit}
+              watch={watch}
+              setValue={setValue}
               onSubmit={onSubmit}
               isSubmitting={isSubmitting}
             />
