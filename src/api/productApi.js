@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 const BASE_URL =
-  "https://softlancex.com/native-crunch/backend/public/api";
+  "https://nativecrunch.com/backend/api";
 
 export const fetchProducts = async () => {
   const response = await fetch(`${BASE_URL}/products`);

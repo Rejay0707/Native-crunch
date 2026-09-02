@@ -1,4 +1,4 @@
-const BASE_URL = "https://softlancex.com/native-crunch/backend/public/api";
+const BASE_URL = "https://nativecrunch.com/backend/api";
 
 export const initiatePayment = async (orderId, token) => {
   const response = await fetch(`${BASE_URL}/payments/${orderId}/initiate`, {

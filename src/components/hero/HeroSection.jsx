@@ -19,22 +19,16 @@ const HeroSection = () => {
       {/* Desktop / Laptop Background */}
       <div className="hidden lg:block absolute inset-0 overflow-hidden">
         <img
-          src={heroProduct}
-          alt=""
-          className="
-      w-full
-      h-full
-      object-cover
-      object-right
-      xl:blur-0
-      lg:blur-[0px]
-      2xl:scale-100
-      xl:scale-105
-      lg:scale-110
-      transition-all
-      duration-500
-    "
-        />
+  src={heroProduct}
+  alt=""
+  className="
+    h-full
+    w-full
+    max-w-none
+    object-contain
+    object-right
+  "
+/>
 
         {/* Gradient Overlay */}
         <div

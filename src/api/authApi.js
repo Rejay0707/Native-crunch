@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://softlancex.com/native-crunch/backend/public/api";
+const BASE_URL = "https://nativecrunch.com/backend/api";
 
 export const registerUser = async (userData) => {
   const response = await axios.post(`${BASE_URL}/register`, userData, {

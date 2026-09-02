@@ -1,6 +1,6 @@
 
 const BASE_URL =
-  "https://softlancex.com/native-crunch/backend/public/api";
+  "https://nativecrunch.com/backend/api";
 
 /*
  * ============================================================
