@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+
 import App from "./App";
 import "./index.css";
 
@@ -9,16 +11,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "./context/CartContext";
 import { CheckoutProvider } from "./context/CheckoutContext";
 import AuthProvider from "./context/AuthProvider";
+import { OrderProvider } from "./context/OrderContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <CartProvider>
-        <CheckoutProvider>
-          <App />
-        </CheckoutProvider>
-      </CartProvider>
-    </AuthProvider>
+    <BrowserRouter>
+      <AuthProvider>
+        <CartProvider>
+          <CheckoutProvider>
+            <OrderProvider>
+              <App />
+            </OrderProvider>
+          </CheckoutProvider>
+        </CartProvider>
+      </AuthProvider>
+    </BrowserRouter>
 
     <ToastContainer
       position="top-right"
