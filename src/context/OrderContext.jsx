@@ -21,9 +21,15 @@ export const OrderProvider = ({ children }) => {
    * ============================================================
    * GET CUSTOMER TOKEN
    * ============================================================
+   *
+   * AuthProvider stores the customer token as:
+   *
+   * localStorage.setItem("authToken", authToken)
+   *
+   * Therefore OrderContext must use the same key.
    */
   const getToken = () => {
-    return localStorage.getItem("token");
+    return localStorage.getItem("authToken");
   };
 
   /*
@@ -33,7 +39,12 @@ export const OrderProvider = ({ children }) => {
    */
   const handleUnauthorized = useCallback(() => {
     console.log("Order API: Unauthorized");
-    localStorage.removeItem("token");
+
+    /*
+     * Clear the same authentication data used by AuthProvider.
+     */
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("authUser");
 
     setOrders([]);
     setError("Your session has expired. Please login again.");
@@ -50,10 +61,13 @@ export const OrderProvider = ({ children }) => {
    */
   const fetchOrders = useCallback(async () => {
     const token = getToken();
-    console.log("Order API: fetchOrders() called"); console.log("Order API: token available:", !!token);
+
+    console.log("Order API: fetchOrders() called");
+    console.log("Order API: token available:", !!token);
 
     if (!token) {
       console.log("Order API: No token found");
+
       setOrders([]);
       setLoading(false);
       return;
@@ -64,12 +78,14 @@ export const OrderProvider = ({ children }) => {
 
     try {
       console.log("Order API: Calling GET /orders");
+
       const result = await getOrdersApi(token);
+
       console.log("Order API: GET /orders response:", result);
 
       setOrders(Array.isArray(result?.orders) ? result.orders : []);
     } catch (err) {
-      console.error("Fetch orders error:", err);
+      console.error("Order API: Fetch orders error:", err);
 
       if (err.status === 401) {
         handleUnauthorized();
@@ -86,7 +102,7 @@ export const OrderProvider = ({ children }) => {
 
   /*
    * ============================================================
-   * GET SINGLE ORDER
+   * GET SINGLE CUSTOMER ORDER
    * ============================================================
    *
    * GET /orders/{orderId}
@@ -95,7 +111,13 @@ export const OrderProvider = ({ children }) => {
     async (orderId) => {
       const token = getToken();
 
+      console.log("Order API: getOrderById() called:", orderId);
+
+      console.log("Order API: token available:", !!token);
+
       if (!token) {
+        console.log("Order API: No token found for order details");
+
         handleUnauthorized();
 
         return {
@@ -116,6 +138,8 @@ export const OrderProvider = ({ children }) => {
        * Reject invalid IDs before calling the API.
        */
       if (!Number.isInteger(numericOrderId) || numericOrderId <= 0) {
+        console.log("Order API: Invalid order ID:", orderId);
+
         return {
           notFound: true,
           order: null,
@@ -123,17 +147,21 @@ export const OrderProvider = ({ children }) => {
       }
 
       try {
+        console.log("Order API: Calling GET /orders/", numericOrderId);
+
         const result = await getOrderByIdApi(numericOrderId, token);
+
+        console.log("Order API: GET /orders/{id} response:", result);
 
         return {
           notFound: false,
           order: result?.order || null,
         };
       } catch (err) {
-        console.error("Fetch order details error:", err);
+        console.error("Order API: Fetch order details error:", err);
 
         /*
-         * 401
+         * 401 Unauthorized
          */
         if (err.status === 401) {
           handleUnauthorized();
@@ -145,13 +173,7 @@ export const OrderProvider = ({ children }) => {
         }
 
         /*
-         * 404
-         *
-         * This can mean:
-         * - order doesn't exist
-         * - order belongs to another customer
-         *
-         * We don't expose any order information.
+         * 404 Not Found
          */
         if (err.status === 404) {
           return {
@@ -161,7 +183,7 @@ export const OrderProvider = ({ children }) => {
         }
 
         /*
-         * Other errors
+         * Other API errors
          */
         return {
           notFound: false,
