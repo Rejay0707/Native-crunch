@@ -1,4 +1,4 @@
-import heroProduct from "../../assets/hero/native-crunch-hero-bg1.png";
+import heroProduct from "../../assets/hero/hero1 (2).png";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";

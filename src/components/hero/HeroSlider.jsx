@@ -24,7 +24,7 @@ const HeroSlider = () => {
       className="
     relative
     h-[950px]
-    lg:h-[650px]
+    lg:h-[700px]
     overflow-hidden
   "
     >

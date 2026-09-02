@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-2 md:px-4 py-8 md:py-10">
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
@@ -297,7 +297,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-[#4a3427] mt-10 md:mt-14 pt-6 md:pt-8 text-center text-gray-400 text-xs md:text-sm">
+        <div className="border-t border-[#4a3427] mt-10 md:mt-14 pt-6 md:pt-4 text-center text-gray-400 text-xs md:text-sm">
           © 2025 Native Crunch. All Rights Reserved.
         </div>
       </div>

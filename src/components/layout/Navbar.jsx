@@ -59,7 +59,9 @@ const Navbar = () => {
               <span
                 className="text-[24px] font-normal uppercase tracking-[0.18em] text-[#2E1E13]"
                 style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
+                  fontFamily: "'Ostrich Sans Inline', sans-serif",
+                  transform: "scaleY(1.25)",
+                  transformOrigin: "center",
                 }}
               >
                 NATIVE CRUNCH

@@ -14,6 +14,16 @@ html {
   --color-success: #3f8c4f;
 }
 
+
+@font-face {
+  font-family: "Ostrich Sans Inline";
+  src: url("./assets/fonts/OstrichSansInline-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 @keyframes announcement {
   from {
     transform: translateX(100vw);
