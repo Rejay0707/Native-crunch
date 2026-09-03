@@ -1,7 +1,13 @@
+import AnnouncementBar from "../components/layout/AnnouncementBar";
 import CheckoutContainer from "../containers/CheckoutContainer";
 
 const Checkout = () => {
-  return <CheckoutContainer />;
+  return (
+    <>
+      <AnnouncementBar />
+      <CheckoutContainer />;
+    </>
+  );
 };
 
 export default Checkout;

@@ -1,7 +1,13 @@
+import AnnouncementBar from "../components/layout/AnnouncementBar";
 import ProductDetailsContainer from "../containers/ProductDetailsContainer";
 
 const ProductDetails = () => {
-  return <ProductDetailsContainer />;
+  return (
+    <>
+      <AnnouncementBar />
+      <ProductDetailsContainer />;
+    </>
+  );
 };
 
 export default ProductDetails;

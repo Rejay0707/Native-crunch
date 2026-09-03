@@ -17,7 +17,11 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-[#2E1E13] text-white mt-2">
       <div className="max-w-7xl mx-auto px-2 md:px-4 py-8 md:py-10">
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12">
+        <div
+          className={`grid grid-cols-2 gap-8 md:gap-12 ${
+            isShopPage ? "lg:grid-cols-4" : "lg:grid-cols-5"
+          }`}
+        >
           {/* Brand */}
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 group">

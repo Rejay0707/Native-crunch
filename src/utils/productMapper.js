@@ -2,7 +2,10 @@ export const mapProduct = (product) => {
   return {
     id: product.id,
     name: product.name,
+
     category: product.category?.slug || "",
+    categoryId: product.category?.id || null,
+
     tags: product.tags?.map((tag) => tag.name) || [],
 
     variants:
@@ -30,7 +33,8 @@ export const mapProduct = (product) => {
 
 export const mapCategory = (category) => {
   return {
-    id: category.slug,
+    id: category.id,
+    slug: category.slug,
     label: category.name,
   };
 };

@@ -163,7 +163,7 @@ const CartContainer = () => {
 
   const recommendedProducts = products
     .filter((product) => !cartProductIds.includes(Number(product.id)))
-    .slice(0, 3);
+    .slice(0, 5);
 
   // -----------------------------
   // Total

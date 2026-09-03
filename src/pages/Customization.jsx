@@ -1,7 +1,13 @@
+import AnnouncementBar from "../components/layout/AnnouncementBar";
 import CustomizationContainer from "../containers/CustomizationContainer";
 
 const Customization = () => {
-  return <CustomizationContainer />;
+  return (
+    <>
+      <AnnouncementBar />
+      <CustomizationContainer />;
+    </>
+  );
 };
 
 export default Customization;
