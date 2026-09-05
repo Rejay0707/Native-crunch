@@ -39,20 +39,23 @@ const PolicyLayout = ({ title, lastUpdated, sections = [] }) => {
       {/* =========================
           HEADER
       ========================== */}
+      {/* =========================
+    HEADER
+========================== */}
       <section className="bg-[#2E1E13] text-white">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-6 md:py-16 lg:py-20">
+        <div className="mx-auto max-w-6xl px-5 py-6 sm:px-6 sm:py-8 md:py-10">
           {/* Back */}
           <Link
             to="/"
             className="
-              mb-6
-              inline-flex
-              items-center
-              text-sm
-              text-[#D9B38C]
-              transition
-              hover:text-white
-            "
+        mb-3
+        inline-flex
+        items-center
+        text-sm
+        text-[#D9B38C]
+        transition
+        hover:text-white
+      "
           >
             ← Back to Home
           </Link>
@@ -60,14 +63,14 @@ const PolicyLayout = ({ title, lastUpdated, sections = [] }) => {
           {/* Title */}
           <h1
             className="
-              max-w-3xl
-              font-serif
-              text-4xl
-              font-semibold
-              leading-tight
-              sm:text-5xl
-              lg:text-6xl
-            "
+        max-w-3xl
+        font-serif
+        text-3xl
+        font-semibold
+        leading-tight
+        sm:text-4xl
+        lg:text-5xl
+      "
           >
             {title}
           </h1>
@@ -75,13 +78,13 @@ const PolicyLayout = ({ title, lastUpdated, sections = [] }) => {
           {/* Description */}
           <p
             className="
-              mt-5
-              max-w-2xl
-              text-base
-              leading-7
-              text-white/70
-              md:text-lg
-            "
+        mt-2
+        max-w-2xl
+        text-sm
+        leading-6
+        text-white/70
+        sm:text-base
+      "
           >
             Please take a moment to review our policies and understand how we
             handle your information and services.
@@ -89,7 +92,7 @@ const PolicyLayout = ({ title, lastUpdated, sections = [] }) => {
 
           {/* Last Updated */}
           {lastUpdated && (
-            <p className="mt-6 text-sm text-[#D9B38C]">
+            <p className="mt-3 text-xs text-[#D9B38C] sm:text-sm">
               Last updated: {lastUpdated}
             </p>
           )}
@@ -99,7 +102,7 @@ const PolicyLayout = ({ title, lastUpdated, sections = [] }) => {
       {/* =========================
           POLICY SECTIONS
       ========================== */}
-      <section className="mx-auto max-w-6xl px-5 py-10 sm:px-6 md:py-16">
+      <section className="mx-auto max-w-6xl px-5 py-7 sm:px-6 md:py-10">
         <div className="mb-8">
           <p className="text-sm font-medium uppercase tracking-[3px] text-[#C97A34]">
             Policy Details

@@ -106,10 +106,14 @@ export const useHomeContainer = () => {
             label: "All Products",
           },
           ...categoriesData.map(mapCategory).sort((a, b) => {
-            return (
-              categoryOrder.indexOf(Number(a.id)) -
-              categoryOrder.indexOf(Number(b.id))
-            );
+            const indexA = categoryOrder.indexOf(Number(a.id));
+            const indexB = categoryOrder.indexOf(Number(b.id));
+
+            const orderA = indexA === -1 ? categoryOrder.length : indexA;
+
+            const orderB = indexB === -1 ? categoryOrder.length : indexB;
+
+            return orderA - orderB;
           }),
         ];
 

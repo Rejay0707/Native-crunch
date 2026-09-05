@@ -1,4 +1,6 @@
+import Navbar from "../../components/layout/Navbar";
 import PolicyLayout from "../../components/policies/PolicyLayout";
+import Footer from "../../components/layout/Footer";
 
 const PrivacyPolicyPage = () => {
   const sections = [
@@ -168,11 +170,15 @@ const PrivacyPolicyPage = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <PolicyLayout
       title="Privacy Policy"
       lastUpdated="August 2026"
       sections={sections}
     />
+    <Footer />
+    </>
   );
 };
 

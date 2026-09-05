@@ -6,6 +6,7 @@ const BASE_URL =
 
 export const fetchProducts = async () => {
   const response = await fetch(`${BASE_URL}/products`);
+  console.log(response)
 
   if (!response.ok) {
     throw new Error("Failed to fetch products");

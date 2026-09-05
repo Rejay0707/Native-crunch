@@ -1,4 +1,6 @@
+import Navbar from "../../components/layout/Navbar";
 import PolicyLayout from "../../components/policies/PolicyLayout";
+import Footer from "../../components/layout/Footer";
 
 const TermsAndConditionsPage = () => {
   const sections = [
@@ -191,11 +193,15 @@ const TermsAndConditionsPage = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <PolicyLayout
-      title="Terms & Conditions"
+      title="Privacy Policy"
       lastUpdated="August 2026"
       sections={sections}
     />
+    <Footer />
+    </>
   );
 };
 

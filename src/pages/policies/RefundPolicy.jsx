@@ -1,4 +1,6 @@
+import Navbar from "../../components/layout/Navbar";
 import PolicyLayout from "../../components/policies/PolicyLayout";
+import Footer from "../../components/layout/Footer";
 
 const RefundPolicy = () => {
   const sections = [
@@ -125,11 +127,15 @@ const RefundPolicy = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <PolicyLayout
-      title="Refund & Cancellation Policy"
+      title="Privacy Policy"
       lastUpdated="August 2026"
       sections={sections}
     />
+    <Footer />
+    </>
   );
 };
 

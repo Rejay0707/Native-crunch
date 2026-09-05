@@ -1,4 +1,6 @@
+import Navbar from "../../components/layout/Navbar";
 import PolicyLayout from "../../components/policies/PolicyLayout";
+import Footer from "../../components/layout/Footer";
 
 const ShippingPolicy = () => {
   const sections = [
@@ -125,11 +127,15 @@ const ShippingPolicy = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <PolicyLayout
-      title="Shipping & Delivery"
+      title="Privacy Policy"
       lastUpdated="August 2026"
       sections={sections}
     />
+    <Footer />
+    </>
   );
 };
 
